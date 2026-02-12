@@ -1,0 +1,84 @@
+// Importar variáveis e mixins primeiro
+@use "variables" as *;
+@use "mixin" as *;
+@use "animations" as *;
+@use "common-elements" as *;
+@use "sectionHeaderWithSidebar" as *;
+@use "header" as *;
+@use "hero" as *;
+@use "quemSomos" as *;
+@use "services" as *;
+@use "passoAPasso" as *;
+@use "process" as *;
+@use "values" as *;
+@use "method" as *;
+@use "testimonials" as *;
+@use "you-center" as *;
+@use "porQueSuno" as *;
+@use "equipe" as *;
+@use "estrutura" as *;
+@use "faq" as *;
+@use "contato" as *;
+@use "pageHero" as *;
+@use "footer" as *;
+@use "hide" as *;
+// Reset
+* {
+ padding: 0;
+ margin: 0;
+ ::selection {
+  background-color: var(--color-primary);
+  color: var(--color-txt-light);
+ }
+}
+
+// Variáveis CSS
+:root {
+ --color-txt: #333;
+ --color-txt-light: #fafafa;
+ --background-color: #fff;
+ --color-primary: #dc2626;
+ --color-dark: #1a1a1a;
+ --color-dark-light: #0d0d0d;
+ --color-primary-light: #fbe9e9;
+ /* Hat: saída próxima de var(--color-primary) #dc2626 — fundo claro (base #000) e fundo escuro (base #fff) */
+ --hat-filter-light: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(99%) contrast(87%);
+ --hat-filter-dark: brightness(5%) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(99%) contrast(100%);
+}
+
+// Tipografia
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+html {
+ color: var(--color-txt);
+ scroll-behavior: smooth;
+}
+
+body {
+ background-color: var(--background-color);
+ font-family: $usedFont;
+ font-weight: 400;
+ @media screen and (max-width: 1220px) {
+  overflow-x: hidden;
+ }
+}
+
+::placeholder {
+ font-family: $usedFont;
+}
+
+// Layout
+.wrapper {
+ position: relative;
+ width: 100%;
+ max-width: 1420px;
+ box-sizing: border-box;
+ margin-right: auto;
+ margin-left: auto;
+ @media screen and (max-width: 1599px) {
+  max-width: 1180px;
+  @media screen and (max-width: 1220px) {
+   padding-right: 16px;
+   padding-left: 16px;
+  }
+ }
+}

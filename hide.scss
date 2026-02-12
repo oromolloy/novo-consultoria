@@ -1,0 +1,20 @@
+// ============================================
+// HIDE — TEMPORÁRIO: esconde outros módulos para ver só os novos blocos.
+// No main.scss: comente a linha "@use 'hide'" para ver todas as seções.
+// ============================================
+.header,
+.hero100,
+.services,
+.passoAPasso,
+.process,
+.values,
+.method,
+.you-center,
+.equipe,
+.estrutura,
+.faq,
+.testimonials,
+.quemSomos,
+.porQueSuno {
+    //display: none !important;
+}
