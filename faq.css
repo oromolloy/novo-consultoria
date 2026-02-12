@@ -1,0 +1,178 @@
+.faq {
+  display: block;
+  width: 100%;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-color: #f3f3f3;
+}
+@media screen and (min-width: 801px) {
+  .faq {
+    margin-bottom: 64px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .faq {
+    margin-bottom: 32px;
+  }
+}
+.faq .wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.faq__list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 940px;
+  margin: 0 auto;
+  gap: 16px;
+}
+@media screen and (max-width: 1220px) {
+  .faq__list {
+    gap: 14px;
+  }
+}
+@media screen and (max-width: 1220px) and (max-width: 800px) {
+  .faq__list {
+    gap: 12px;
+  }
+}
+.faq__item {
+  display: block;
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+  border: 1px solid rgb(from var(--color-dark) r g b/0.1);
+  border-radius: 12px;
+  background-color: var(--background-color);
+  overflow: hidden;
+  margin: 0;
+  transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.faq__item[open] {
+  border-color: rgb(from var(--color-primary) r g b/0.3);
+}
+.faq__summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  height: 72px;
+  padding: 0 24px;
+  box-sizing: border-box;
+  cursor: pointer;
+  color: var(--color-dark);
+  font-size: 18px;
+  font-weight: 600;
+  list-style: none;
+  margin: 0;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media screen and (max-width: 1220px) {
+  .faq__summary {
+    height: 68px;
+    padding: 0 20px;
+    font-size: 17px;
+  }
+}
+@media screen and (max-width: 1220px) and (max-width: 800px) {
+  .faq__summary {
+    height: 64px;
+    padding: 0 18px;
+    font-size: 16px;
+  }
+}
+.faq__summary::marker, .faq__summary::-webkit-details-marker {
+  content: "";
+  display: none;
+}
+.faq__summary:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+.faq__item[open] .faq__summary {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+.faq__summaryText {
+  flex: 1;
+  min-width: 0;
+  font-weight: 700;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.faq__chevron {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin-left: 16px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+@media screen and (max-width: 800px) {
+  .faq__chevron {
+    width: 20px;
+    height: 20px;
+    margin-left: 12px;
+  }
+}
+.faq__chevron::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%) rotate(0deg);
+  background-image: url('data:image/svg+xml,<%3Fxml version="1.0" encoding="UTF-8"%3F><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media screen and (max-width: 800px) {
+  .faq__chevron::before {
+    width: 20px;
+    height: 20px;
+  }
+}
+.faq__item[open] .faq__chevron::before {
+  transform: translate(-50%, -50%) rotate(180deg);
+  background-image: url('data:image/svg+xml,<%3Fxml version="1.0" encoding="UTF-8"%3F><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>');
+}
+.faq__summary:hover .faq__chevron::before {
+  background-image: url('data:image/svg+xml,<%3Fxml version="1.0" encoding="UTF-8"%3F><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>');
+}
+.faq__content {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 24px 24px 24px;
+  box-sizing: border-box;
+  color: rgb(from var(--color-dark) r g b/0.7);
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+@media screen and (max-width: 1220px) {
+  .faq__content {
+    padding: 0 20px 20px 20px;
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 1220px) and (max-width: 800px) {
+  .faq__content {
+    padding: 0 18px 18px 18px;
+    font-size: 14px;
+  }
+}
+.faq__content p {
+  padding: 0;
+  margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}/*# sourceMappingURL=faq.css.map */

@@ -1,0 +1,327 @@
+@use "variables" as *;
+@use "mixin" as *;
+// Section Header - Componente reutilizável para headers de seções
+.sectionHeader {
+ display: flex;
+ flex-direction: row;
+ margin-bottom: 48px;
+ justify-content: center;
+ align-items: center;
+ text-align: center;
+ @media screen and (max-width: 1220px) {
+  flex-direction: column;
+  margin-bottom: 40px;
+  @media screen and (max-width: 800px) {
+   margin-bottom: 32px;
+   @media screen and (max-width: 800px) {
+    margin-bottom: 28px;
+   }
+  }
+ }
+ &__img {
+  position: relative;
+  bottom: -61px;
+  width: 420px;
+  @media screen and (max-width: 1220px) {
+   width: 250px;
+   bottom: -21px;
+  }
+ }
+ &__hat {
+  display: inline-block;
+  width: min-content;
+  color: #000;
+  filter: var(--hat-filter-light);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  white-space: nowrap;
+  @media screen and (max-width: 800px) {
+   font-size: 13px;
+   margin-bottom: 12px;
+   @media screen and (max-width: 800px) {
+    font-size: 12px;
+    margin-bottom: 10px;
+   }
+  }
+ }
+ &__title {
+  color: var(--color-dark);
+  font-family: $titleFont;
+  font-size: 47px;
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 24px;
+  @media screen and (max-width: 1220px) {
+   font-size: 42px;
+   margin-bottom: 20px;
+   @media screen and (max-width: 800px) {
+    font-size: 36px;
+    margin-bottom: 18px;
+    @media screen and (max-width: 800px) {
+     font-size: 28px;
+     margin-bottom: 16px;
+    }
+   }
+  }
+
+  span {
+   font-family: $titleFont;
+   color: var(--color-primary);
+  }
+ }
+ &__desc {
+  width: 100%;
+  max-width: 700px;
+  color: rgb(from var(--color-dark) r g b / 0.7);
+  font-size: 18px;
+  line-height: 1.6;
+  @media screen and (max-width: 1220px) {
+   font-size: 17px;
+   @media screen and (max-width: 800px) {
+    font-size: 16px;
+    @media screen and (max-width: 800px) {
+     font-size: 15px;
+    }
+   }
+  }
+ }
+ &--noImg {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+ }
+ &--dark {
+  .sectionHeader__title {
+   color: var(--color-txt-light);
+   font-family: $titleFont;
+
+   span {
+    font-family: $titleFont;
+   }
+  }
+  .sectionHeader__desc {
+   color: rgb(from var(--color-txt-light) r g b / 0.7);
+  }
+  .sectionHeader__hat {
+   color: #fff;
+   filter: var(--hat-filter-dark);
+  }
+ }
+
+ // Especialização: título em 2 colunas + corpo + sidebar sticky (estrutura e responsividade; mídia/btn no módulo sectionHeaderWithSidebar)
+ &--withStickySidebar {
+  display: block;
+  margin-bottom: 0;
+  text-align: left;
+  & .sectionHeader__grid {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 48px;
+   align-items: start;
+   @media screen and (max-width: 1220px) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    @media screen and (max-width: 800px) {
+     gap: 32px;
+    }
+   }
+  }
+  & .sectionHeader__header {
+   grid-column: 1 / -1;
+   display: flex;
+   flex-direction: column;
+   order: 0;
+  }
+  & .sectionHeader__title {
+   margin-bottom: 32px;
+   @media screen and (max-width: 1220px) {
+    font-size: 36px;
+    margin-bottom: 24px;
+    @media screen and (max-width: 800px) {
+     font-size: 28px;
+     margin-bottom: 20px;
+    }
+   }
+  }
+  & .sectionHeader__body {
+   display: flex;
+   flex-direction: column;
+   order: 1;
+  }
+  & .sectionHeader__text {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   color: rgb(from var(--color-dark) r g b / 0.7);
+   font-size: 18px;
+   line-height: 1.6;
+   @media screen and (max-width: 1220px) {
+    font-size: 16px;
+    gap: 18px;
+    @media screen and (max-width: 800px) {
+     font-size: 15px;
+     gap: 16px;
+    }
+   }
+   .sectionHeader__hat {
+    margin-bottom: 0;
+   }
+   .sectionHeader__title {
+    margin-bottom: 0;
+   }
+   p:first-of-type {
+    font-size: 18px;
+    @media screen and (max-width: 1220px) {
+     font-size: 16px;
+     @media screen and (max-width: 800px) {
+      font-size: 15px;
+     }
+    }
+   }
+  }
+  & .sectionHeader__footer {
+   display: flex;
+   align-items: center;
+   gap: 16px;
+   margin-top: 32px;
+   @media screen and (max-width: 1220px) {
+    margin-top: 28px;
+    @media screen and (max-width: 800px) {
+     margin-top: 24px;
+     gap: 12px;
+    }
+   }
+  }
+  & .sectionHeader__footerLine {
+   width: 48px;
+   height: 4px;
+   background-color: var(--color-primary);
+   border-radius: 2px;
+   flex-shrink: 0;
+   @media screen and (max-width: 800px) {
+    width: 40px;
+    height: 3px;
+   }
+  }
+  & .sectionHeader__footerText {
+   font-size: 14px;
+   font-weight: 500;
+   color: rgb(from var(--color-dark) r g b / 0.7);
+   @media screen and (max-width: 800px) {
+    font-size: 13px;
+   }
+  }
+  & .sectionHeader__sidebar {
+   position: relative;
+   width: 100%;
+   order: 2;
+   @media screen and (min-width: 1221px) {
+    position: sticky;
+    top: 120px;
+   }
+  }
+ }
+ // Sidebar à esquerda: mídia à esquerda, texto à direita
+ &--withStickySidebar--sidebarLeft {
+  & .sectionHeader__body {
+   order: 2;
+  }
+  & .sectionHeader__sidebar {
+   order: 1;
+  }
+ }
+}
+
+// Botões comuns - Componentes reutilizáveis para botões primários e secundários
+.btn-primary,
+.btn-secondary {
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ gap: 8px;
+ padding: 16px 40px;
+ border: solid 2px;
+ border-radius: 8px;
+ font-size: 16px;
+ font-weight: 600;
+ text-decoration: none;
+ cursor: pointer;
+ box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+ transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+ @media screen and (max-width: 800px) {
+  padding: 14px 32px;
+  font-size: 15px;
+  @media screen and (max-width: 800px) {
+   padding: 12px 28px;
+   font-size: 14px;
+  }
+ }
+ svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  @media screen and (max-width: 800px) {
+   width: 18px;
+   height: 18px;
+  }
+ }
+}
+
+.btn-primary {
+ position: relative;
+ border-color: var(--color-primary);
+ background-color: var(--color-primary);
+ color: var(--color-txt-light);
+ &:hover {
+  transform: translateY(-2px);
+  background-color: #b91c1c;
+  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.4);
+  svg {
+   transform: translateX(4px);
+  }
+  &::after {
+   transform: translateX(2px);
+  }
+ }
+ &::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 16px;
+  bottom: 0;
+  width: 16px;
+  height: 16px;
+  background-image: url('data:image/svg+xml,<%3Fxml version="1.0" encoding="UTF-8"%3F><svg class="lucide lucide-arrow-right ml-2 group-hover:translate-x-1 transition-transform" width="20" height="20" fill="none" stroke="%23fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m5 12h14"/><path d="m12 5 7 7-7 7"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 16px;
+  margin: auto;
+  transition: all 0.3s;
+ }
+ // Se tiver SVG inline, esconde o ::after
+ &:has(svg) {
+  &::after {
+   display: none;
+  }
+ }
+}
+
+.btn-secondary {
+ border-color: var(--color-txt-light);
+ background-color: transparent;
+ color: var(--color-txt-light);
+ box-shadow:
+  0 4px 6px -1px rgba(0, 0, 0, 0.1),
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);
+ &:hover {
+  transform: translateY(-2px);
+  background-color: var(--color-txt-light);
+  color: var(--color-dark);
+  box-shadow:
+   0 10px 15px -3px rgba(250, 250, 250, 0.2),
+   0 4px 6px -2px rgba(250, 250, 250, 0.15);
+ }
+}
+
