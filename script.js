@@ -145,24 +145,19 @@ const observer = new IntersectionObserver((entries) => {
                 const prefix = originalText.match(/^[^\d]*/) ?.[0] || "";
                 const suffix = originalText.match(/[^\d]*$/) ?.[0] || "";
 
-                // Extrai o valor final do HTML
                 const targetValue = extractNumber(originalText);
 
-                // Zera imediatamente para evitar CLS (mantém o formato exato)
                 if (suffix.includes("Bi")) {
                     element.textContent = prefix + "0.0" + suffix;
                 } else {
-                    // Para milhares, SEMPRE usa "0.000" para manter o mesmo tamanho visual
                     element.textContent = prefix + "0.000" + suffix;
                 }
 
-                // Pequeno delay para garantir que o zero foi aplicado
                 requestAnimationFrame(() => {
                     element.dataset.animated = "true";
                     animateNumber(element, targetValue);
                 });
             } else {
-                // Marca como animado mesmo que não precise animar
                 element.dataset.animated = "true";
             }
 

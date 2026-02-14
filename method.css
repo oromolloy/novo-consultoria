@@ -177,8 +177,7 @@
 .method__stepCard {
   position: relative;
   background-color: rgb(from var(--color-txt-light) r g b/0.05);
-  -webkit-backdrop-filter: blur(8px);
-          backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   border-radius: 16px;
   padding: 24px 32px;
   border: 1px solid rgb(from var(--color-txt-light) r g b/0.1);

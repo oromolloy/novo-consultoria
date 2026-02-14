@@ -44,6 +44,22 @@
     transform: translateY(-6px) translateX(-2px);
   }
 }
+@keyframes cardFloatTop {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(8px) translateX(2px);
+  }
+}
+@keyframes cardFloatBottom {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-8px) translateX(-3px);
+  }
+}
 @keyframes cardSlideInLeft {
   0% {
     opacity: 0;
@@ -62,5 +78,59 @@
   100% {
     opacity: 1;
     transform: translateX(0) translateY(0);
+  }
+}
+@keyframes cardSlideInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-24px) translateX(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}
+@keyframes cardSlideInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) translateX(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+}
+@keyframes circleRingRotate1 {
+  from {
+    transform: translate(-50%, -50%) rotate(286.926deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(646.926deg);
+  }
+}
+@keyframes circleRingRotate2 {
+  from {
+    transform: translate(-50%, -50%) rotate(-22.568deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(-382.568deg);
+  }
+}
+@keyframes circleRingRotate3 {
+  from {
+    transform: translate(-50%, -50%) rotate(213.852deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(573.852deg);
+  }
+}
+@keyframes circleCenterGlow {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.08);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 24px 2px rgba(220, 38, 38, 0.12);
   }
 }/*# sourceMappingURL=animations.css.map */
