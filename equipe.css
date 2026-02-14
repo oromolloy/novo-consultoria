@@ -20,6 +20,9 @@
   display: flex;
   flex-direction: column;
 }
+.equipe .sectionHeader__desc {
+  max-width: 760px;
+}
 .equipe__list {
   position: relative;
   width: 100%;
@@ -260,6 +263,7 @@
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 2;
+  filter: drop-shadow(0px 0px 4px #000);
 }
 @media screen and (max-width: 1220px) {
   .equipe__cardInitials {
@@ -295,7 +299,7 @@
 }
 .equipe__cardName {
   font-family: "Montserrat", "Arial", sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--color-dark);
   text-transform: uppercase;
@@ -308,14 +312,13 @@
   }
 }
 .equipe__cardRole {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--color-primary);
   margin-bottom: 12px;
 }
 @media screen and (max-width: 800px) {
   .equipe__cardRole {
-    font-size: 13px;
     margin-bottom: 10px;
   }
 }
@@ -323,12 +326,6 @@
   font-size: 14px;
   line-height: 1.6;
   color: rgb(from var(--color-dark) r g b/0.7);
-  display: block;
-  display: -webkit-box;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
 }
 @media screen and (max-width: 800px) {
   .equipe__cardDesc {
