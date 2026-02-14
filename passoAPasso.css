@@ -63,11 +63,12 @@
   }
 }
 .passoAPasso__item:last-child {
-  background: linear-gradient(135deg, var(--color-primary-light, #fbe9e9) 0%, #fdf5f5 50%, #fff 100%);
+  z-index: 1;
+  background: linear-gradient(135deg, #d0f5e3 0%, #e8faf1 50%, #f4fdf9 100%);
   padding: 28px 24px 28px 28px;
   border-radius: 16px;
-  border-left: 4px solid var(--color-primary);
-  box-shadow: 0 4px 24px rgb(from var(--color-primary) r g b/0.1), 0 1px 4px rgba(0, 0, 0, 0.04);
+  border-left: 4px solid #25D366;
+  box-shadow: 0 4px 24px rgba(37, 211, 102, 0.12), 0 1px 4px rgba(0, 0, 0, 0.04);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 @media screen and (max-width: 1220px) {
@@ -87,7 +88,7 @@
   }
 }
 .passoAPasso__item:last-child:hover {
-  box-shadow: 0 8px 32px rgb(from var(--color-primary) r g b/0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 32px rgba(37, 211, 102, 0.16), 0 2px 8px rgba(0, 0, 0, 0.06);
   transform: translateY(-2px);
 }
 .passoAPasso__number {
@@ -128,7 +129,8 @@
   }
 }
 .passoAPasso__item:last-child .passoAPasso__circle {
-  box-shadow: 0 0 0 4px rgb(from var(--color-primary) r g b/0.25);
+  background-color: #25D366;
+  box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.25);
 }
 .passoAPasso__line {
   position: absolute;
