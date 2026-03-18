@@ -386,3 +386,66 @@ document.addEventListener('DOMContentLoaded', function() {
 // ============================================
 // ESTRUTURA SLIDER - FIM
 // ============================================
+
+// ============================================
+// DEPOIMENTOS EM VÍDEO - MODAL (abre vídeo em tela, para ao fechar)
+// ============================================
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("depoimentosVideoModal");
+    const modalIframe = document.getElementById("depoimentosVideoModalIframe");
+    const modalClose = document.getElementById("depoimentosVideoModalClose");
+    const modalBackdrop = document.querySelector(".depoimentosVideo__modalBackdrop");
+    const cardLinks = document.querySelectorAll(".depoimentosVideo .depoimentosVideo__cardLink");
+
+    function getYouTubeVideoId(url) {
+        if (!url) return null;
+        try {
+            const u = new URL(url);
+            if (u.hostname === "www.youtu.be" || u.hostname === "youtu.be") return u.pathname.slice(1) || null;
+            if (u.hostname.includes("youtube.com") && u.searchParams.has("v")) return u.searchParams.get("v");
+        } catch (_) {}
+        return null;
+    }
+
+    function openModal(videoId) {
+        if (!modal || !modalIframe || !videoId) return;
+        modalIframe.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
+        modal.classList.add("depoimentosVideo__modal--open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        if (modalClose) modalClose.focus();
+    }
+
+    function closeModal() {
+        if (!modal || !modalIframe) return;
+        modal.classList.remove("depoimentosVideo__modal--open");
+        modal.setAttribute("aria-hidden", "true");
+        modalIframe.src = "";
+        document.body.style.overflow = "";
+    }
+
+    cardLinks.forEach(function (link) {
+        link.addEventListener("click", function (e) {
+            const videoId = getYouTubeVideoId(link.getAttribute("href") || "");
+            if (!videoId) return;
+            e.preventDefault();
+            openModal(videoId);
+        });
+    });
+
+    if (modalClose) {
+        modalClose.addEventListener("click", closeModal);
+    }
+    if (modalBackdrop) {
+        modalBackdrop.addEventListener("click", closeModal);
+    }
+
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && modal && modal.classList.contains("depoimentosVideo__modal--open")) {
+            closeModal();
+        }
+    });
+});
+// ============================================
+// DEPOIMENTOS EM VÍDEO - MODAL FIM
+// ============================================

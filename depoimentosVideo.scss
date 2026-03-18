@@ -1,0 +1,633 @@
+@use "variables" as *;
+@use "mixin" as *;
+
+// ============================================
+// DEPOIMENTOS EM VÍDEO
+// ============================================
+.depoimentosVideo {
+  display: block;
+  width: 100%;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-color: var(--background-color);
+  @include endOfModule();
+
+  @media screen and (max-width: 1220px) {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    @media screen and (max-width: 800px) {
+      padding-top: 56px;
+      padding-bottom: 56px;
+    }
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 32px;
+    @media screen and (max-width: 1220px) {
+      margin-bottom: 28px;
+      @media screen and (max-width: 800px) {
+        margin-bottom: 24px;
+      }
+    }
+  }
+
+  &__hat {
+    display: inline-block;
+    color: var(--color-primary);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 16px;
+    @media screen and (max-width: 1220px) {
+      @media screen and (max-width: 800px) {
+        font-size: 13px;
+        margin-bottom: 12px;
+      }
+    }
+  }
+
+  &__title {
+    font-family: $titleFont;
+    font-size: 47px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-dark);
+    margin-bottom: 24px;
+    max-width: 920px;
+    margin-left: auto;
+    margin-right: auto;
+    @media screen and (max-width: 1220px) {
+      font-size: 42px;
+      margin-bottom: 20px;
+      @media screen and (max-width: 800px) {
+        font-size: 36px;
+        margin-bottom: 18px;
+        @media screen and (max-width: 800px) {
+          font-size: 28px;
+          margin-bottom: 16px;
+        }
+      }
+    }
+    span {
+      color: var(--color-primary);
+    }
+  }
+
+  &__desc {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgb(from var(--color-dark) r g b / 0.7);
+    max-width: 640px;
+    margin: 0 auto;
+    @media screen and (max-width: 1220px) {
+      font-size: 17px;
+      @media screen and (max-width: 800px) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 64px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid rgb(from var(--color-dark) r g b / 0.12);
+    @media screen and (max-width: 1220px) {
+      gap: 32px;
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      @media screen and (max-width: 800px) {
+        gap: 24px;
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+      }
+    }
+  }
+
+  &__stat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    @media screen and (max-width: 800px) {
+      gap: 10px;
+    }
+  }
+
+  &__statIcon {
+    position: relative;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: rgb(from var(--color-primary) r g b / 0.1);
+    @media screen and (max-width: 800px) {
+      width: 40px;
+      height: 40px;
+    }
+    &--users::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      transform: translate(-50%, -50%);
+      background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/%3E%3Ccircle cx="9" cy="7" r="4"/%3E%3Cpath d="M22 21v-2a4 4 0 0 0-3-3.87"/%3E%3Cpath d="M16 3.13a4 4 0 0 1 0 7.75"/%3E%3C/svg%3E');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+    &--star::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      transform: translate(-50%, -50%);
+      background-image: url('data:image/svg+xml,%3Csvg fill="%23dc2626" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/%3E%3C/svg%3E');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+    &--shield::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      transform: translate(-50%, -50%);
+      background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/%3E%3C/svg%3E');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+  }
+
+  &__statNumber {
+    font-family: $titleFont;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-dark);
+    @media screen and (max-width: 1220px) {
+      font-size: 22px;
+      @media screen and (max-width: 800px) {
+        font-size: 20px;
+      }
+    }
+  }
+
+  &__statLabel {
+    font-size: 12px;
+    color: rgb(from var(--color-dark) r g b / 0.5);
+    @media screen and (max-width: 800px) {
+      font-size: 11px;
+    }
+  }
+
+  // Grid: vídeo destacado 778×500px + 2 laterais (50% da altura cada, com gap)
+  &__grid {
+    display: grid;
+    grid-template-columns: 778px 1fr;
+    grid-template-rows: calc((500px - 54px) / 2) calc((500px - 54px) / 2);
+    gap: 54px;
+    width: 100%;
+    min-height: 0;
+    @media screen and (max-width: 1220px) {
+      grid-template-columns: minmax(320px, 778px) minmax(260px, 1fr);
+      grid-template-rows: calc((500px - 20px) / 2) calc((500px - 20px) / 2);
+      gap: 20px;
+      @media screen and (max-width: 800px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 16px;
+      }
+    }
+  }
+
+  // Um wrap por card para a decoração (deco em cada vídeo)
+  &__cardWrap {
+    position: relative;
+    min-height: 0;
+    display: flex;
+    &--featured {
+      grid-row: span 2;
+      @media screen and (max-width: 800px) {
+        grid-row: span 1;
+      }
+    }
+  }
+
+  &__deco {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    pointer-events: none;
+    &--top {
+      top: -16px;
+      right: -16px;
+      background-color: rgb(from var(--color-primary) r g b / 0.1);
+      transform: rotate(2deg);
+      @media screen and (max-width: 800px) {
+        top: -12px;
+        right: -12px;
+        border-radius: 12px;
+      }
+    }
+    &--border {
+      bottom: -16px;
+      left: -16px;
+      border: 2px solid rgb(from var(--color-primary) r g b / 0.2);
+      @media screen and (max-width: 800px) {
+        bottom: -12px;
+        left: -12px;
+        border-radius: 12px;
+      }
+    }
+  }
+
+  &__card {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    min-height: 0;
+    display: block;
+    border-radius: 16px;
+    border: 1px solid rgb(from var(--color-primary) r g b / 0.1);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+  }
+
+  &__cardLink {
+    display: block;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+      transform: translateY(-2px);
+    }
+    &:hover .depoimentosVideo__cardThumb {
+      transform: scale(1.08);
+    }
+    &:hover .depoimentosVideo__cardOverlay {
+      opacity: 0.5;
+    }
+    &:hover .depoimentosVideo__cardPlay {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+  }
+
+  &__card--featured {
+    min-height: 0;
+    display: flex;
+    @media screen and (max-width: 800px) {
+      display: block;
+    }
+  }
+
+  &__card--featured &__cardLink {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    @media screen and (max-width: 800px) {
+      display: block;
+    }
+  }
+
+  &__card--featured &__cardThumbWrap {
+    flex: 1;
+    min-height: 0;
+    aspect-ratio: unset;
+    height: 100%;
+    @media screen and (max-width: 800px) {
+      height: auto;
+      aspect-ratio: 16 / 10;
+    }
+  }
+
+  &__cardThumbWrap {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__card:not(&__card--featured) &__cardThumbWrap {
+    height: 100%;
+    min-height: 0;
+    aspect-ratio: unset;
+    @media screen and (max-width: 800px) {
+      height: auto;
+      aspect-ratio: 16 / 9;
+    }
+  }
+
+  &__card:not(&__card--featured) {
+    min-height: 0;
+    display: flex;
+    @media screen and (max-width: 800px) {
+      display: block;
+    }
+  }
+
+  &__card:not(&__card--featured) &__cardLink {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    @media screen and (max-width: 800px) {
+      display: block;
+    }
+  }
+
+  &__cardThumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s ease;
+  }
+
+  &__cardOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--color-dark) 0%, rgb(from var(--color-dark) r g b / 0.5) 50%, transparent 100%);
+    opacity: 0.7;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  &__cardOverlaySide {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgb(from var(--color-dark) r g b / 0.3), transparent 50%);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &__cardPlayWrap {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  &__cardPlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    box-shadow: 0 8px 32px rgba(220, 38, 38, 0.4);
+    transition: transform 0.3s ease;
+    @media screen and (max-width: 800px) {
+      width: 64px;
+      height: 64px;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 52%;
+      width: 28px;
+      height: 28px;
+      transform: translate(-50%, -50%);
+      background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23fafafa" stroke="%23fafafa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolygon points="6 3 20 12 6 21 6 3"/%3E%3C/svg%3E');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      z-index: 1;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 80px;
+      height: 80px;
+      transform: translate(-50%, -50%);
+      border: 3px solid rgb(from var(--color-primary) r g b / 0.85);
+      border-radius: 50%;
+      z-index: -1;
+      animation: depoimentosVideoCardPlayWave 2s ease-out infinite;
+      @media screen and (max-width: 800px) {
+        width: 64px;
+        height: 64px;
+      }
+    }
+  }
+
+  &__cardCaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 24px;
+    @media screen and (max-width: 1220px) {
+      padding: 18px 20px;
+      @media screen and (max-width: 800px) {
+        padding: 16px 18px;
+      }
+    }
+  }
+
+  &__cardCaptionInner {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  &__cardQuoteIcon {
+    position: relative;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: rgb(from var(--color-primary) r g b / 0.2);
+    backdrop-filter: blur(4px);
+    @media screen and (max-width: 800px) {
+      width: 28px;
+      height: 28px;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 14px;
+      height: 14px;
+      transform: translate(-50%, -50%);
+      background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%23dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/%3E%3Cpath d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/%3E%3C/svg%3E');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+  }
+
+  &__cardTitle {
+    font-family: $titleFont;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-txt-light);
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.8),
+      0 2px 8px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(0, 0, 0, 0.4);
+    letter-spacing: 0.02em;
+    @media screen and (max-width: 800px) {
+      font-size: 14px;
+    }
+  }
+
+  &__cardDesc {
+    font-size: 13px;
+    color: var(--color-txt-light);
+    margin-top: 4px;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.85),
+      0 2px 6px rgba(0, 0, 0, 0.5),
+      0 0 16px rgba(0, 0, 0, 0.35);
+    line-height: 1.4;
+    @media screen and (max-width: 800px) {
+      font-size: 12px;
+      margin-top: 2px;
+    }
+  }
+
+  // Modal: vídeo em destaque com fundo escurecido
+  &__modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+    &.depoimentosVideo__modal--open {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  &__modalBackdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.88);
+    cursor: pointer;
+  }
+
+  &__modalContent {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    max-height: calc(100vh - 48px);
+    z-index: 1;
+    @media screen and (max-width: 1220px) {
+      max-width: 92vw;
+      @media screen and (max-width: 800px) {
+        max-height: calc(100vh - 32px);
+      }
+    }
+  }
+
+  &__modalClose {
+    position: absolute;
+    top: -48px;
+    right: 0;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 50%;
+    background-color: rgb(from var(--color-dark) r g b / 0.8);
+    cursor: pointer;
+    z-index: 2;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 2px;
+      background-color: #fff;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    &:hover {
+      background-color: var(--color-primary);
+    }
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+    @media screen and (max-width: 800px) {
+      top: -40px;
+      width: 40px;
+      height: 40px;
+      &::before,
+      &::after {
+        width: 16px;
+      }
+    }
+  }
+
+  &__modalIframeWrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+  }
+
+  &__modalIframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+@keyframes depoimentosVideoCardPlayWave {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    border-width: 3px;
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.4);
+    border-width: 2px;
+    opacity: 0;
+  }
+}
