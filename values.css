@@ -13,12 +13,6 @@
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) {
   .values {
-    padding-top: 56px;
-    padding-bottom: 112px;
-  }
-}
-@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 800px) {
-  .values {
     padding-top: 48px;
     padding-bottom: 80px;
   }
@@ -40,11 +34,6 @@
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) {
   .values__grid {
-    gap: 18px;
-  }
-}
-@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 800px) {
-  .values__grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
@@ -64,11 +53,6 @@
   }
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) {
-  .values__card {
-    padding: 20px;
-  }
-}
-@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 800px) {
   .values__card {
     padding: 18px;
   }
@@ -91,13 +75,6 @@
   flex-shrink: 0;
 }
 @media screen and (max-width: 800px) {
-  .values__cardIcon {
-    width: 52px;
-    height: 52px;
-    margin-bottom: 20px;
-  }
-}
-@media screen and (max-width: 800px) and (max-width: 800px) {
   .values__cardIcon {
     width: 48px;
     height: 48px;
@@ -172,12 +149,6 @@
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) {
   .values__cardTitle {
-    font-size: 18px;
-    margin-bottom: 18px;
-  }
-}
-@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 800px) {
-  .values__cardTitle {
     font-size: 17px;
     margin-bottom: 16px;
   }
@@ -194,11 +165,6 @@
   display: none;
 }
 @media screen and (max-width: 800px) {
-  .values__cardList {
-    gap: 10px;
-  }
-}
-@media screen and (max-width: 800px) and (max-width: 800px) {
   .values__cardList {
     gap: 8px;
   }
@@ -253,11 +219,6 @@
   line-height: 1.6;
 }
 @media screen and (max-width: 800px) {
-  .values__cardText {
-    font-size: 13px;
-  }
-}
-@media screen and (max-width: 800px) and (max-width: 800px) {
   .values__cardText {
     font-size: 13px;
   }
