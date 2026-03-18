@@ -115,7 +115,7 @@ Não há mixins de animação; os keyframes são usados diretamente nos módulos
 ## 6. Common-elements
 
 - **.sectionHeader** — cabeçalho de seção: `__img`, `__hat`, `__title`, `__desc`. Modificadores: `--noImg`, `--dark`, `--withStickySidebar` (grid 2 colunas, header em 1/-1, body + sidebar; sidebar com `position: sticky; top: 120px` em ≥1221px). O hat usa filtros de contraste (ver variáveis).
-- **Seções com sidebar sticky (ex.: Quem Somos):** não usar `overflow-x: hidden` no bloco em viewports grandes, senão o sticky quebra. Aplicar `overflow-x: hidden` apenas em breakpoints menores (ex.: `max-width: 1220px`) onde a sidebar não é sticky.
+- **Seções com coluna sticky:** não usar `overflow-x: hidden` no bloco em viewports grandes, senão o sticky quebra. Aplicar `overflow-x: hidden` apenas em `max-width: 1220px` (quando o layout vira 1 coluna). Blocos que usam esse padrão: **quemSomos** (sidebar sticky), **method** (`method__content` com `position: sticky; top: 128px` em ≥1221px), **you-center** (`you-center__models` com `position: sticky; top: 128px` em ≥1221px).
 - **.btn-primary** / **.btn-secondary** — botões globais. O `.btn-primary` tem seta em `::after` (SVG em data-URI); se o botão tiver `<svg>` filho, usa `&:has(svg)` para esconder o `::after`.
 - Media queries dentro do bloco: **1220px → 800px** (menores aninhadas nas maiores). Não usar breakpoint 760px; 800px cobre mobile.
 
@@ -317,6 +317,7 @@ Ao adicionar novo slider ou funcionalidade: manter o mesmo padrão (DOMContentLo
 
 - **.pageHero** — Mini-hero genérico para títulos de páginas (Termos, Política, etc.). Fundo escuro (#1a1a1a), gradientes leves primary, linhas no topo e base; `__label` com contraste WCAG (`color: var(--color-txt-light)` + `filter: var(--hat-filter-dark)`); `__title` (h1). Variável `$pageHeroMinHeight: 180px`. Exemplo em `termos.html`; snippet em `pageHero-snippet.html`.
 - **.contato** — Seção consultoria + form HubSpot: `__grid` (0.6fr 1fr; 1 col em 1220), `__features` (grid 2 col em 800, 3º item em linha própria), `__form` (background #ffffff10). Wrapper sem max-width próprio; `overflow-x: hidden` no bloco.
+- **.you-center** — “Como funciona o nosso atendimento”: grid 2 colunas (1fr 1.2fr), coluna esquerda `__intro` (hat, título, textos, pills com ícone check em `::before`, CTA), coluna direita `__models` com `position: sticky; top: 128px` em ≥1221px. Cards (`__card`) com hover (fundo primary, ícone branco); ícones dos cards em CSS (modificadores `--target`, `--penTool`). Pills: gap 8px / font 14px → 5px / 13px em 800px. Cards com `cursor: default`. Overflow-x apenas em ≤1220px para o sticky funcionar.
 
 ---
 
@@ -327,6 +328,7 @@ Use esta seção para anotar o que mudou quando você pedir para “atualizar o 
 - **Criação** — CONTEXTO-PROJETO.md com estrutura, main/common-elements, SVGs, sliders, BEM, media queries, variables/mixin/animations, acessibilidade e CWV.
 - **Atualização** — Inclusão das seções **12. Imagens** (estrutura `img/`, onde cada imagem é usada, convenções) e **13. JavaScript** (blocos do script.js, animação de números do hero, sliders, convenções JS).
 - **30/01/2025** — Footer: branding sem spans (resumo); ver entrada anterior completa.
-- **30/01/2025** — **Media queries:** padrão **1220px e 800px** apenas (sem 760px). Mixin `endOfModule`: mobile em ≤800px. **Seção 8 (Swiper):** conteúdo de SLIDER-SWIPER-ANALISE.md incorporado e resumido. **Seção 15:** blocos pageHero e contato. Imports: contato, pageHero, hide. Tabela SCSS atualizada. “Ver mais consultores”---
+- **30/01/2025** — **Media queries:** padrão **1220px e 800px** apenas (sem 760px). Mixin `endOfModule`: mobile em ≤800px. **Seção 8 (Swiper):** conteúdo de SLIDER-SWIPER-ANALISE.md incorporado e resumido. **Seção 15:** blocos pageHero e contato. Imports: contato, pageHero, hide. Tabela SCSS atualizada. “Ver mais consultores”.
+- **25/02/2025** — Bloco **you-center** documentado na seção 15: layout 2 colunas, sticky em `__models`, overflow-x só em ≤1220px. **Seção 6:** padrão “coluna sticky” estendido a method e you-center (overflow-x apenas em max-width: 1220px).
 
 *Fim do documento. Atualize este arquivo sempre que fechar uma etapa ou quando algo relevante mudar no projeto.*

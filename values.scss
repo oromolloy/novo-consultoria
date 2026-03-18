@@ -11,12 +11,8 @@
   padding-top: 64px;
   padding-bottom: 128px;
   @media screen and (max-width: 800px) {
-   padding-top: 56px;
-   padding-bottom: 112px;
-   @media screen and (max-width: 800px) {
-    padding-top: 48px;
-    padding-bottom: 80px;
-   }
+   padding-top: 48px;
+   padding-bottom: 80px;
   }
  }
  .wrapper {
@@ -31,11 +27,8 @@
    grid-template-columns: repeat(2, 1fr);
    gap: 20px;
    @media screen and (max-width: 800px) {
-    gap: 18px;
-    @media screen and (max-width: 800px) {
-     grid-template-columns: 1fr;
-     gap: 16px;
-    }
+    grid-template-columns: 1fr;
+    gap: 16px;
    }
   }
  }
@@ -50,10 +43,7 @@
   @media screen and (max-width: 1220px) {
    padding: 22px;
    @media screen and (max-width: 800px) {
-    padding: 20px;
-    @media screen and (max-width: 800px) {
-     padding: 18px;
-    }
+    padding: 18px;
    }
   }
   &:hover {
@@ -76,14 +66,9 @@
   margin-bottom: 24px;
   flex-shrink: 0;
   @media screen and (max-width: 800px) {
-   width: 52px;
-   height: 52px;
-   margin-bottom: 20px;
-   @media screen and (max-width: 800px) {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 18px;
-   }
+   width: 48px;
+   height: 48px;
+   margin-bottom: 18px;
   }
   &--shield {
    &::before {
@@ -157,12 +142,8 @@
    font-size: 19px;
    margin-bottom: 20px;
    @media screen and (max-width: 800px) {
-    font-size: 18px;
-    margin-bottom: 18px;
-    @media screen and (max-width: 800px) {
-     font-size: 17px;
-     margin-bottom: 16px;
-    }
+    font-size: 17px;
+    margin-bottom: 16px;
    }
   }
  }
@@ -173,10 +154,7 @@
   list-style: none;
   @include list-style-none();
   @media screen and (max-width: 800px) {
-   gap: 10px;
-   @media screen and (max-width: 800px) {
-    gap: 8px;
-   }
+   gap: 8px;
   }
  }
  &__cardItem {
@@ -223,9 +201,6 @@
   line-height: 1.6;
   @media screen and (max-width: 800px) {
    font-size: 13px;
-   @media screen and (max-width: 800px) {
-    font-size: 13px;
-   }
   }
   &--bold {
    font-weight: 600;
