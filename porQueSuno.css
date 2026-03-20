@@ -211,8 +211,12 @@
     gap: 8px;
   }
 }
+.porQueSuno .swiper-button-prev--porQueSuno svg {
+  transform: scaleX(-1);
+}
 .porQueSuno .swiper-button-prev--porQueSuno,
 .porQueSuno .swiper-button-next--porQueSuno {
+  color: var(--color-primary) !important;
   position: relative !important;
   width: 40px !important;
   height: 40px !important;
@@ -244,16 +248,14 @@
 }
 .porQueSuno .swiper-button-prev--porQueSuno svg,
 .porQueSuno .swiper-button-next--porQueSuno svg {
-  width: 14px !important;
-  height: 14px !important;
-  fill: var(--color-primary) !important;
-  stroke: var(--color-primary) !important;
+  width: 11px !important;
+  height: 20px !important;
 }
 @media screen and (max-width: 800px) {
   .porQueSuno .swiper-button-prev--porQueSuno svg,
   .porQueSuno .swiper-button-next--porQueSuno svg {
-    width: 12px !important;
-    height: 12px !important;
+    width: 9px !important;
+    height: 16px !important;
   }
 }
 .porQueSuno .swiper-button-prev--porQueSuno:hover,

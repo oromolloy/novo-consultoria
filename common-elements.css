@@ -259,6 +259,17 @@
   position: relative;
   width: 100%;
   order: 2;
+  margin-top: 71px;
+}
+@media screen and (max-width: 1220px) {
+  .sectionHeader--withStickySidebar .sectionHeader__sidebar {
+    margin-top: 48px;
+  }
+}
+@media screen and (max-width: 1220px) and (max-width: 800px) {
+  .sectionHeader--withStickySidebar .sectionHeader__sidebar {
+    margin-top: 0;
+  }
 }
 @media screen and (min-width: 1221px) {
   .sectionHeader--withStickySidebar .sectionHeader__sidebar {

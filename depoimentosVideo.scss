@@ -176,7 +176,7 @@
   }
 
   &__statNumber {
-    font-family: $titleFont;
+    font-family: inherit;
     font-size: 24px;
     font-weight: 700;
     line-height: 1.2;
@@ -197,64 +197,112 @@
     }
   }
 
-  // Grid: vídeo destacado 778×500px + 2 laterais (50% da altura cada, com gap)
-  &__grid {
-    display: grid;
-    grid-template-columns: 778px 1fr;
-    grid-template-rows: calc((500px - 54px) / 2) calc((500px - 54px) / 2);
-    gap: 54px;
-    width: 100%;
-    min-height: 0;
-    @media screen and (max-width: 1220px) {
-      grid-template-columns: minmax(320px, 778px) minmax(260px, 1fr);
-      grid-template-rows: calc((500px - 20px) / 2) calc((500px - 20px) / 2);
-      gap: 20px;
-      @media screen and (max-width: 800px) {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        gap: 16px;
-      }
-    }
-  }
-
-  // Um wrap por card para a decoração (deco em cada vídeo)
-  &__cardWrap {
+  // Slider wrapper
+  &__sliderWrap {
     position: relative;
-    min-height: 0;
+    width: 100%;
+  }
+
+  // Navegação do slider
+  &__navigation {
     display: flex;
-    &--featured {
-      grid-row: span 2;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+    @media screen and (max-width: 1220px) {
+      margin-top: 28px;
       @media screen and (max-width: 800px) {
-        grid-row: span 1;
+        gap: 10px;
+        margin-top: 24px;
       }
     }
   }
 
-  &__deco {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 16px;
-    pointer-events: none;
-    &--top {
-      top: -16px;
-      right: -16px;
-      background-color: rgb(from var(--color-primary) r g b / 0.1);
-      transform: rotate(2deg);
+  .swiper-button-prev--depoimentosVideo {
+    svg {
+      transform: scaleX(-1);
+    }
+  }
+
+  .swiper-button-prev--depoimentosVideo,
+  .swiper-button-next--depoimentosVideo {
+    position: relative !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin: 0 !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    background-color: var(--background-color) !important;
+    border: 1px solid rgb(from var(--color-primary) r g b / 0.2) !important;
+    border-radius: 50% !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    @media screen and (max-width: 800px) {
+      width: 36px !important;
+      height: 36px !important;
+    }
+    &::after,
+    &::before {
+      display: none !important;
+    }
+    color: var(--color-primary) !important;
+    svg {
+      width: 11px !important;
+      height: 20px !important;
       @media screen and (max-width: 800px) {
-        top: -12px;
-        right: -12px;
-        border-radius: 12px;
+        width: 9px !important;
+        height: 16px !important;
       }
     }
-    &--border {
-      bottom: -16px;
-      left: -16px;
-      border: 2px solid rgb(from var(--color-primary) r g b / 0.2);
+    &:hover {
+      background-color: rgb(from var(--color-primary) r g b / 0.1) !important;
+      border-color: var(--color-primary) !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 4px 12px rgb(from var(--color-primary) r g b / 0.15) !important;
+    }
+    &:active {
+      transform: translateY(0) !important;
+    }
+    &.swiper-button-disabled {
+      opacity: 0.25 !important;
+      cursor: not-allowed !important;
+      pointer-events: none !important;
+    }
+  }
+
+  .swiper-pagination--depoimentosVideo {
+    position: relative !important;
+    margin: 0 !important;
+    width: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    .swiper-pagination-bullet {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: rgb(from var(--color-dark) r g b / 0.2);
+      opacity: 1;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      margin: 0 4px;
       @media screen and (max-width: 800px) {
-        bottom: -12px;
-        left: -12px;
-        border-radius: 12px;
+        width: 6px;
+        height: 6px;
+        margin: 0 3px;
+      }
+      &-active {
+        background-color: var(--color-primary);
+        width: 24px;
+        border-radius: 4px;
+        @media screen and (max-width: 800px) {
+          width: 20px;
+        }
       }
     }
   }
@@ -262,14 +310,11 @@
   &__card {
     position: relative;
     z-index: 1;
-    flex: 1;
-    min-height: 0;
-    display: block;
     border-radius: 16px;
     border: 1px solid rgb(from var(--color-primary) r g b / 0.1);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
     overflow: hidden;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition: box-shadow 0.3s ease;
     cursor: pointer;
   }
 
@@ -278,10 +323,6 @@
     position: relative;
     text-decoration: none;
     color: inherit;
-    &:hover {
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-      transform: translateY(-2px);
-    }
     &:hover .depoimentosVideo__cardThumb {
       transform: scale(1.08);
     }
@@ -293,67 +334,11 @@
     }
   }
 
-  &__card--featured {
-    min-height: 0;
-    display: flex;
-    @media screen and (max-width: 800px) {
-      display: block;
-    }
-  }
-
-  &__card--featured &__cardLink {
-    flex: 1;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    @media screen and (max-width: 800px) {
-      display: block;
-    }
-  }
-
-  &__card--featured &__cardThumbWrap {
-    flex: 1;
-    min-height: 0;
-    aspect-ratio: unset;
-    height: 100%;
-    @media screen and (max-width: 800px) {
-      height: auto;
-      aspect-ratio: 16 / 10;
-    }
-  }
-
   &__cardThumbWrap {
     position: relative;
     width: 100%;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
-  }
-
-  &__card:not(&__card--featured) &__cardThumbWrap {
-    height: 100%;
-    min-height: 0;
-    aspect-ratio: unset;
-    @media screen and (max-width: 800px) {
-      height: auto;
-      aspect-ratio: 16 / 9;
-    }
-  }
-
-  &__card:not(&__card--featured) {
-    min-height: 0;
-    display: flex;
-    @media screen and (max-width: 800px) {
-      display: block;
-    }
-  }
-
-  &__card:not(&__card--featured) &__cardLink {
-    flex: 1;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    @media screen and (max-width: 800px) {
-      display: block;
-    }
   }
 
   &__cardThumb {
@@ -394,24 +379,24 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 80px;
-    height: 80px;
+    width: 68px;
+    height: 68px;
     transform: translate(-50%, -50%);
     border-radius: 50%;
     background-color: var(--color-primary);
     box-shadow: 0 8px 32px rgba(220, 38, 38, 0.4);
     transition: transform 0.3s ease;
     @media screen and (max-width: 800px) {
-      width: 64px;
-      height: 64px;
+      width: 56px;
+      height: 56px;
     }
     &::before {
       content: "";
       position: absolute;
       top: 50%;
       left: 52%;
-      width: 28px;
-      height: 28px;
+      width: 24px;
+      height: 24px;
       transform: translate(-50%, -50%);
       background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23fafafa" stroke="%23fafafa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolygon points="6 3 20 12 6 21 6 3"/%3E%3C/svg%3E');
       background-repeat: no-repeat;
@@ -424,16 +409,16 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 80px;
-      height: 80px;
+      width: 68px;
+      height: 68px;
       transform: translate(-50%, -50%);
       border: 3px solid rgb(from var(--color-primary) r g b / 0.85);
       border-radius: 50%;
       z-index: -1;
       animation: depoimentosVideoCardPlayWave 2s ease-out infinite;
       @media screen and (max-width: 800px) {
-        width: 64px;
-        height: 64px;
+        width: 56px;
+        height: 56px;
       }
     }
   }
@@ -443,11 +428,18 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 20px 24px;
+    padding: 12px 14px 14px;
+    background: linear-gradient(
+      to top,
+      rgb(0 0 0 / 0.82) 0%,
+      rgb(0 0 0 / 0.45) 55%,
+      transparent 100%
+    );
+    pointer-events: none;
     @media screen and (max-width: 1220px) {
-      padding: 18px 20px;
+      padding: 12px 14px 14px;
       @media screen and (max-width: 800px) {
-        padding: 16px 18px;
+        padding: 10px 12px 12px;
       }
     }
   }
@@ -455,30 +447,37 @@
   &__cardCaptionInner {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
+  }
+
+  &__cardCaptionText {
+    flex: 1;
+    min-width: 0;
   }
 
   &__cardQuoteIcon {
     position: relative;
     flex-shrink: 0;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: rgb(from var(--color-primary) r g b / 0.2);
-    backdrop-filter: blur(4px);
+    width: 22px;
+    height: 22px;
+    margin-top: 2px;
+    border-radius: 6px;
+    background-color: rgb(from var(--color-primary) r g b / 0.35);
+    border: 1px solid rgb(from var(--color-primary) r g b / 0.45);
     @media screen and (max-width: 800px) {
-      width: 28px;
-      height: 28px;
+      width: 20px;
+      height: 20px;
+      margin-top: 1px;
     }
     &::before {
       content: "";
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 14px;
-      height: 14px;
+      width: 10px;
+      height: 10px;
       transform: translate(-50%, -50%);
-      background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%23dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/%3E%3Cpath d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/%3E%3C/svg%3E');
+      background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23fafafa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/%3E%3Cpath d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/%3E%3C/svg%3E');
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
@@ -486,32 +485,34 @@
   }
 
   &__cardTitle {
-    font-family: $titleFont;
-    font-size: 16px;
+    font-family: inherit;
+    font-size: 14px;
     font-weight: 700;
+    line-height: 1.3;
     color: var(--color-txt-light);
     text-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.8),
-      0 2px 8px rgba(0, 0, 0, 0.5),
-      0 0 20px rgba(0, 0, 0, 0.4);
-    letter-spacing: 0.02em;
+      0 1px 2px rgba(0, 0, 0, 0.9),
+      0 2px 6px rgba(0, 0, 0, 0.55);
+    margin: 0;
     @media screen and (max-width: 800px) {
-      font-size: 14px;
+      font-size: 13px;
     }
   }
 
   &__cardDesc {
-    font-size: 13px;
-    color: var(--color-txt-light);
-    margin-top: 4px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.45;
+    color: rgb(from var(--color-txt-light) r g b / 0.9);
+    margin: 4px 0 0;
     text-shadow:
       0 1px 2px rgba(0, 0, 0, 0.85),
-      0 2px 6px rgba(0, 0, 0, 0.5),
-      0 0 16px rgba(0, 0, 0, 0.35);
-    line-height: 1.4;
+      0 1px 4px rgba(0, 0, 0, 0.45);
     @media screen and (max-width: 800px) {
-      font-size: 12px;
-      margin-top: 2px;
+      font-size: 11px;
+      margin-top: 3px;
     }
   }
 

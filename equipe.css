@@ -100,8 +100,12 @@
     gap: 8px;
   }
 }
+.equipe__list .swiper-button-prev--equipe svg {
+  transform: scaleX(-1);
+}
 .equipe__list .swiper-button-prev--equipe,
 .equipe__list .swiper-button-next--equipe {
+  color: var(--color-primary) !important;
   position: relative !important;
   width: 40px !important;
   height: 40px !important;
@@ -133,16 +137,14 @@
 }
 .equipe__list .swiper-button-prev--equipe svg,
 .equipe__list .swiper-button-next--equipe svg {
-  width: 14px !important;
-  height: 14px !important;
-  fill: var(--color-primary) !important;
-  stroke: var(--color-primary) !important;
+  width: 11px !important;
+  height: 20px !important;
 }
 @media screen and (max-width: 800px) {
   .equipe__list .swiper-button-prev--equipe svg,
   .equipe__list .swiper-button-next--equipe svg {
-    width: 12px !important;
-    height: 12px !important;
+    width: 9px !important;
+    height: 16px !important;
   }
 }
 .equipe__list .swiper-button-prev--equipe:hover,

@@ -388,6 +388,51 @@ document.addEventListener('DOMContentLoaded', function() {
 // ============================================
 
 // ============================================
+// DEPOIMENTOS EM VÍDEO SLIDER - INÍCIO
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof Swiper !== 'undefined') {
+        const depoimentosVideoEl = document.querySelector(".mySwiper.mySwiper--depoimentosVideo");
+        if (depoimentosVideoEl) {
+            new Swiper(".mySwiper.mySwiper--depoimentosVideo", {
+                loop: true,
+                slidesPerView: 1.2,
+                slidesPerGroup: 1,
+                spaceBetween: 20,
+                speed: 600,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: true,
+                },
+                breakpoints: {
+                    801: {
+                        slidesPerView: 2,
+                        spaceBetween: 24,
+                    },
+                    1220: {
+                        slidesPerView: 3,
+                        spaceBetween: 28,
+                    },
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next--depoimentosVideo",
+                    prevEl: ".swiper-button-prev--depoimentosVideo",
+                },
+                pagination: {
+                    el: ".swiper-pagination.swiper-pagination--depoimentosVideo",
+                    clickable: true,
+                    dynamicBullets: false,
+                    type: 'bullets',
+                },
+            });
+        }
+    }
+});
+// ============================================
+// DEPOIMENTOS EM VÍDEO SLIDER - FIM
+// ============================================
+
+// ============================================
 // DEPOIMENTOS EM VÍDEO - MODAL (abre vídeo em tela, para ao fechar)
 // ============================================
 document.addEventListener("DOMContentLoaded", function () {

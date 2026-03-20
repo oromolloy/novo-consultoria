@@ -240,8 +240,12 @@
     margin-top: 24px;
   }
 }
+.estrutura .swiper-button-prev--estrutura svg {
+  transform: scaleX(-1);
+}
 .estrutura .swiper-button-prev--estrutura,
 .estrutura .swiper-button-next--estrutura {
+  color: var(--color-primary) !important;
   position: relative !important;
   width: 40px !important;
   height: 40px !important;
@@ -273,16 +277,14 @@
 }
 .estrutura .swiper-button-prev--estrutura svg,
 .estrutura .swiper-button-next--estrutura svg {
-  width: 14px !important;
-  height: 14px !important;
-  fill: var(--color-primary) !important;
-  stroke: var(--color-primary) !important;
+  width: 11px !important;
+  height: 20px !important;
 }
 @media screen and (max-width: 800px) {
   .estrutura .swiper-button-prev--estrutura svg,
   .estrutura .swiper-button-next--estrutura svg {
-    width: 12px !important;
-    height: 12px !important;
+    width: 9px !important;
+    height: 16px !important;
   }
 }
 .estrutura .swiper-button-prev--estrutura:hover,

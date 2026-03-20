@@ -217,6 +217,13 @@
    position: relative;
    width: 100%;
    order: 2;
+   margin-top: 71px;
+   @media screen and (max-width: 1220px) {
+    margin-top: 48px;
+    @media screen and (max-width: 800px) {
+     margin-top: 0;
+    }
+   }
    @media screen and (min-width: 1221px) {
     position: sticky;
     top: 120px;
