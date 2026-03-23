@@ -104,15 +104,12 @@
     line-height: 1;
     font-weight: 700;
     margin-bottom: 29px;
-    @media screen and (max-width: 1599px) {
+    @media screen and (max-width: 1220px) {
      font-size: 56px;
-     @media screen and (max-width: 1220px) {
-      font-size: 56px;
-      margin-bottom: 26px;
-      @media screen and (max-width: 800px) {
-       font-size: 32px;
-       margin-bottom: 22px;
-      }
+     margin-bottom: 26px;
+     @media screen and (max-width: 800px) {
+      font-size: 32px;
+      margin-bottom: 22px;
      }
     }
 
@@ -267,13 +264,10 @@
     font-size: 36px;
     font-weight: 700;
     white-space: nowrap;
-    @media screen and (max-width: 1599px) {
+    @media screen and (max-width: 1220px) {
      font-size: 30px;
-     @media screen and (max-width: 1220px) {
-      font-size: 28px;
-      @media screen and (max-width: 800px) {
-       font-size: 24px;
-      }
+     @media screen and (max-width: 800px) {
+      font-size: 24px;
      }
     }
    }

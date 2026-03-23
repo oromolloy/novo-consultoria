@@ -10,6 +10,7 @@ Documento único de convenções: estrutura, nomenclatura, comportamento, Slider
 
 - **HTML:** página única ou templates por rota; semântico (section, article, nav, address).
 - **CSS:** SCSS compilado para um `main.css`. **Um arquivo SCSS por seção/bloco.**
+- **Nome dos arquivos `.scss`:** **kebab-case em inglês**, alinhado ao **bloco BEM em camelCase (inglês)** no HTML/CSS (ex.: `who-we-are.scss` → `.whoWeAre`, `video-testimonials.scss` → `.videoTestimonials`). **Não** usar camelCase no nome do ficheiro (~~`quemSomos.scss`~~). Um ficheiro = um bloco principal; estilos extra do mesmo bloco ficam no mesmo `.scss` (ex.: passos da timeline em `you-center.scss` com `.you-center__steps*`).
 - **JS:** um arquivo principal (ex.: `script.js`), vanilla; dependências (ex.: Swiper) via CDN quando possível.
 
 ### Ordem de imports no `main.scss`
@@ -19,7 +20,7 @@ Documento único de convenções: estrutura, nomenclatura, comportamento, Slider
 @use "mixin" as *;
 @use "animations" as *;
 @use "common-elements" as *;
-// ... sectionHeaderWithSidebar (se existir)
+// ... section-header-with-sidebar (se existir)
 // ... um @use por bloco/seção (header, hero, services, etc.)
 // Por último no main: reset, :root, tipografia, .wrapper
 ```
@@ -75,7 +76,7 @@ $titleFont: "Montserrat", "Arial", sans-serif;
 
 ### Regras
 
-- **Blocos:** camelCase (ex.: `.sectionHeader`, `.you-center`, `.equipe`).
+- **Blocos:** camelCase (ex.: `.sectionHeader`, `.you-center`, `.team`).
 - **Elementos:** `&__elemento` (ex.: `sectionHeader__title`, `equipe__card`).
 - **Modificadores:** `&--modificador` (ex.: `sectionHeader--dark`, `equipe__consultor--more`).
 - **Estados:** apenas pseudo-classes no CSS (`:hover`, `:focus`, `:active`); **não** criar classes de estado no HTML.
@@ -91,8 +92,9 @@ $titleFont: "Montserrat", "Arial", sans-serif;
 
 ### Breakpoints
 
-- **Únicos usados:** **1220px** e **800px** (não usar 760px; 800px cobre mobile).
-- **Ordem:** maior → menor: **1220px** → **800px**.
+- **Usados:** **1220px**, **800px** e **760px** apenas como **nível aninhado** dentro de **800px** (nunca repetir `800px` dentro de `800px` — o aninhamento errado era cópia/colagem; o interior correto é **760px**).
+- **Não** confundir com dois `@media 800` em **seletores irmãos** (ex.: `&__x { @media 800 {…} }` e depois `&__y { @media 800 {…} }`) — isso é válido.
+- **Ordem:** maior → menor: **1220px** → **800px** → **760px** (só aninhado dentro de 800px, quando precisar de um passo extra).
 - **Posição:** sempre **dentro do elemento/bloco** a que se referem (aninhadas no SCSS).
 - **Abordagem:** max-width do maior para o menor (não mobile-first).
 
@@ -104,7 +106,10 @@ $titleFont: "Montserrat", "Arial", sans-serif;
   @media screen and (max-width: 1220px) {
     padding: 64px 0;
     @media screen and (max-width: 800px) {
-      padding: 48px 0;
+      padding: 52px 0;
+      @media screen and (max-width: 760px) {
+        padding: 48px 0;
+      }
     }
   }
 }
@@ -254,7 +259,7 @@ Ordem obrigatória: Swiper → depois o `script.js` do projeto.
 **Opções típicas**
 
 - Testimonials: `slidesPerView: 1`, `spaceBetween: 24`, navigation/pagination com `--testimonials`.
-- Equipe (só ≤800px): `slidesPerView: 1.2`, `spaceBetween: 16`, `--equipe`.
+- Team (só ≤800px): `slidesPerView: 1.2`, `spaceBetween: 16`, `--team`.
 - Estrutura: `effect: 'coverflow'`, `coverflowEffect: { depth: 120, modifier: 2.2 }`, `--estrutura`.
 
 ---
@@ -329,8 +334,8 @@ Ordem obrigatória: Swiper → depois o `script.js` do projeto.
 
 ## 14. Resumo rápido (checklist)
 
-- [ ] Blocos em **camelCase**; elementos `__elemento`; modificadores `--modificador`.
-- [ ] **Media queries** só 1220px e 800px; menores aninhadas nas maiores; dentro do elemento.
+- [ ] Arquivos **`.scss`** em **kebab-case inglês** alinhados ao bloco **camelCase inglês**; elementos `__elemento`; modificadores `--modificador`.
+- [ ] **Media queries** 1220 → 800 → (760 só aninhado em 800); nunca dois `800` seguidos no mesmo ramo; dentro do elemento.
 - [ ] **SVG:** ícones em CSS (data-URI em `::before`/`::after`); `%23` no lugar de `#`.
 - [ ] **Sticky:** sem `overflow-x: hidden` no bloco em desktop; overflow só em ≤1220px quando layout for 1 coluna.
 - [ ] **Swiper:** HTML com `mySwiper--[modificador]`, navegação com mesmo modificador; JS com checagem de lib e debounce no resize; SCSS com botões circulares e bullet ativo alongado.

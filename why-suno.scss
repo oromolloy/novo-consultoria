@@ -1,9 +1,9 @@
 @use "variables" as *;
 @use "mixin" as *;
 // ============================================
-// POR QUE A SUNO? — Slider 2 cards por vez (4 total)
+// WHY SUNO (bloco .whySuno — ficheiro why-suno.scss) — Slider 2 cards por vez
 // ============================================
-.porQueSuno {
+.whySuno {
  display: block;
  width: 100%;
  padding-top: 80px;
@@ -16,7 +16,7 @@
   @media screen and (max-width: 800px) {
    padding-top: 56px;
    padding-bottom: 56px;
-   @media screen and (max-width: 800px) {
+   @media screen and (max-width: 760px) {
     padding-top: 48px;
     padding-bottom: 48px;
    }
@@ -36,7 +36,7 @@
    margin-top: 40px;
    @media screen and (max-width: 800px) {
     margin-top: 36px;
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 760px) {
      margin-top: 32px;
     }
    }
@@ -48,7 +48,7 @@
    overflow: hidden;
    @media screen and (max-width: 800px) {
     padding-bottom: 40px;
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 760px) {
      padding-bottom: 36px;
     }
    }
@@ -191,14 +191,9 @@
   }
  }
 
- .swiper-button-prev--porQueSuno {
-  svg {
-   transform: scaleX(-1);
-  }
- }
-
- .swiper-button-prev--porQueSuno,
- .swiper-button-next--porQueSuno {
+ .swiper-button-prev--whySuno,
+ .swiper-button-next--whySuno {
+  @include swiperNavChevron;
   color: var(--color-primary) !important;
   position: relative !important;
   width: 40px !important;
@@ -220,18 +215,6 @@
    width: 36px !important;
    height: 36px !important;
   }
-  &::after,
-  &::before {
-   display: none !important;
-  }
-  svg {
-   width: 11px !important;
-   height: 20px !important;
-   @media screen and (max-width: 800px) {
-    width: 9px !important;
-    height: 16px !important;
-   }
-  }
   &:hover {
    background-color: var(--color-primary-light) !important;
    border-color: var(--color-primary) !important;
@@ -245,7 +228,12 @@
   }
  }
 
- .swiper-pagination--porQueSuno {
+ .swiper-button-prev--whySuno::before {
+  transform: scaleX(-1);
+  transform-origin: center center;
+ }
+
+ .swiper-pagination--whySuno {
   position: relative !important;
   margin: 0 !important;
   width: auto !important;
@@ -269,7 +257,7 @@
     background-color: var(--color-primary);
     width: 24px;
     border-radius: 4px;
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 760px) {
      width: 20px;
     }
    }

@@ -5,7 +5,7 @@
   padding-bottom: 96px;
   background-color: var(--color-dark);
 }
-@media screen and (min-width: 801px) {
+@media screen and (min-width: 800px) {
   .method {
     margin-bottom: 64px;
   }

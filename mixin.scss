@@ -1,10 +1,59 @@
 @use "variables" as *;
 @mixin endOfModule {
- @media screen and (min-width: 801px) {
+ @media screen and (min-width: 800px) {
   margin-bottom: $marginDesk;
  }
  @media screen and (max-width: 800px) {
   margin-bottom: $marginMobi;
+ }
+}
+
+// Seta única nos botões Swiper (CSS ::before). Swiper 12 espera <svg> interno e/ou
+// pseudo-elementos herdados — esconder tudo exceto o nosso ::before para não duplicar.
+@mixin swiperNavChevron {
+ svg,
+ .swiper-navigation-icon {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  position: absolute !important;
+ }
+
+ &::after {
+  content: none !important;
+  display: none !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  overflow: hidden !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+ }
+
+ &::before {
+  content: "" !important;
+  display: block !important;
+  flex-shrink: 0;
+  width: 11px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  transform-origin: center center;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='20' viewBox='0 0 11 20'%3E%3Cpath d='M0.38296 20.0762C0.111788 19.805 0.111788 19.3654 0.38296 19.0942L9.19758 10.2796L0.38296 1.46497C0.111788 1.19379 0.111788 0.754138 0.38296 0.482966C0.654131 0.211794 1.09379 0.211794 1.36496 0.482966L10.4341 9.55214C10.8359 9.9539 10.8359 10.6053 10.4341 11.007L1.36496 20.0762C1.09379 20.3474 0.654131 20.3474 0.38296 20.0762Z' fill='%23dc2626'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  @media screen and (max-width: 800px) {
+   width: 9px;
+   height: 16px;
+  }
  }
 }
 

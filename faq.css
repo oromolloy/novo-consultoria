@@ -5,7 +5,7 @@
   padding-bottom: 80px;
   background-color: #f3f3f3;
 }
-@media screen and (min-width: 801px) {
+@media screen and (min-width: 800px) {
   .faq {
     margin-bottom: 64px;
   }

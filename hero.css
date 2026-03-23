@@ -90,18 +90,13 @@
   font-weight: 700;
   margin-bottom: 29px;
 }
-@media screen and (max-width: 1599px) {
-  .hero100 .hero__content__title {
-    font-size: 56px;
-  }
-}
-@media screen and (max-width: 1599px) and (max-width: 1220px) {
+@media screen and (max-width: 1220px) {
   .hero100 .hero__content__title {
     font-size: 56px;
     margin-bottom: 26px;
   }
 }
-@media screen and (max-width: 1599px) and (max-width: 1220px) and (max-width: 800px) {
+@media screen and (max-width: 1220px) and (max-width: 800px) {
   .hero100 .hero__content__title {
     font-size: 32px;
     margin-bottom: 22px;
@@ -279,17 +274,12 @@
   font-weight: 700;
   white-space: nowrap;
 }
-@media screen and (max-width: 1599px) {
+@media screen and (max-width: 1220px) {
   .hero100 .hero__content__statNumber {
     font-size: 30px;
   }
 }
-@media screen and (max-width: 1599px) and (max-width: 1220px) {
-  .hero100 .hero__content__statNumber {
-    font-size: 28px;
-  }
-}
-@media screen and (max-width: 1599px) and (max-width: 1220px) and (max-width: 800px) {
+@media screen and (max-width: 1220px) and (max-width: 800px) {
   .hero100 .hero__content__statNumber {
     font-size: 24px;
   }

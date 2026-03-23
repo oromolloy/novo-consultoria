@@ -1,9 +1,9 @@
 @use "variables" as *;
 @use "mixin" as *;
 // ============================================
-// CONTATO — Consultoria Personalizada + form HubSpot
+// CONTACT — Consultoria Personalizada + form HubSpot
 // ============================================
-.contato {
+.contact {
  display: block;
  width: 100%;
  box-sizing: border-box;
@@ -78,6 +78,12 @@
   width: 19px;
   height: 19px;
   margin: auto 0;
+
+  @media screen and (max-width: 800px) {
+   width: 14px;
+   height: 14px;
+  }
+
   &::before {
    content: "";
    display: block;
@@ -89,10 +95,6 @@
    background-repeat: no-repeat;
    background-position: center;
    background-size: contain;
-  }
-  @media screen and (max-width: 800px) {
-   width: 14px;
-   height: 14px;
   }
  }
 

@@ -2,9 +2,9 @@
 @use "mixin" as *;
 
 // ============================================
-// DEPOIMENTOS EM VÍDEO
+// VIDEO TESTIMONIALS (bloco .videoTestimonials — ficheiro video-testimonials.scss)
 // ============================================
-.depoimentosVideo {
+.videoTestimonials {
   display: block;
   width: 100%;
   padding-top: 80px;
@@ -69,7 +69,7 @@
       @media screen and (max-width: 800px) {
         font-size: 36px;
         margin-bottom: 18px;
-        @media screen and (max-width: 800px) {
+        @media screen and (max-width: 760px) {
           font-size: 28px;
           margin-bottom: 16px;
         }
@@ -219,14 +219,9 @@
     }
   }
 
-  .swiper-button-prev--depoimentosVideo {
-    svg {
-      transform: scaleX(-1);
-    }
-  }
-
-  .swiper-button-prev--depoimentosVideo,
-  .swiper-button-next--depoimentosVideo {
+  .swiper-button-prev--videoTestimonials,
+  .swiper-button-next--videoTestimonials {
+    @include swiperNavChevron;
     position: relative !important;
     width: 40px !important;
     height: 40px !important;
@@ -247,19 +242,7 @@
       width: 36px !important;
       height: 36px !important;
     }
-    &::after,
-    &::before {
-      display: none !important;
-    }
     color: var(--color-primary) !important;
-    svg {
-      width: 11px !important;
-      height: 20px !important;
-      @media screen and (max-width: 800px) {
-        width: 9px !important;
-        height: 16px !important;
-      }
-    }
     &:hover {
       background-color: rgb(from var(--color-primary) r g b / 0.1) !important;
       border-color: var(--color-primary) !important;
@@ -276,7 +259,12 @@
     }
   }
 
-  .swiper-pagination--depoimentosVideo {
+  .swiper-button-prev--videoTestimonials::before {
+    transform: scaleX(-1);
+    transform-origin: center center;
+  }
+
+  .swiper-pagination--videoTestimonials {
     position: relative !important;
     margin: 0 !important;
     width: auto !important;
@@ -300,7 +288,7 @@
         background-color: var(--color-primary);
         width: 24px;
         border-radius: 4px;
-        @media screen and (max-width: 800px) {
+        @media screen and (max-width: 760px) {
           width: 20px;
         }
       }
@@ -323,13 +311,13 @@
     position: relative;
     text-decoration: none;
     color: inherit;
-    &:hover .depoimentosVideo__cardThumb {
+    &:hover .videoTestimonials__cardThumb {
       transform: scale(1.08);
     }
-    &:hover .depoimentosVideo__cardOverlay {
+    &:hover .videoTestimonials__cardOverlay {
       opacity: 0.5;
     }
-    &:hover .depoimentosVideo__cardPlay {
+    &:hover .videoTestimonials__cardPlay {
       transform: translate(-50%, -50%) scale(1.1);
     }
   }
@@ -415,7 +403,7 @@
       border: 3px solid rgb(from var(--color-primary) r g b / 0.85);
       border-radius: 50%;
       z-index: -1;
-      animation: depoimentosVideoCardPlayWave 2s ease-out infinite;
+      animation: videoTestimonialsCardPlayWave 2s ease-out infinite;
       @media screen and (max-width: 800px) {
         width: 56px;
         height: 56px;
@@ -529,7 +517,7 @@
     opacity: 0;
     transition: visibility 0.3s ease, opacity 0.3s ease;
     pointer-events: none;
-    &.depoimentosVideo__modal--open {
+    &.videoTestimonials__modal--open {
       visibility: visible;
       opacity: 1;
       pointer-events: auto;
@@ -620,7 +608,12 @@
   }
 }
 
-@keyframes depoimentosVideoCardPlayWave {
+body.videoTestimonials__body--modalOpen {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+
+@keyframes videoTestimonialsCardPlayWave {
   0% {
     transform: translate(-50%, -50%) scale(1);
     border-width: 3px;

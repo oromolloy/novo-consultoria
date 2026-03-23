@@ -23,6 +23,7 @@ Arquivo de memória para manter contexto entre sessões. O usuário pode pedir a
 
 - **HTML:** `index.html` (página única).
 - **CSS:** SCSS compilado para `main.css`. Um arquivo SCSS por seção/bloco.
+- **Nomes dos ficheiros `.scss`:** **kebab-case em inglês**, espelhando o **bloco** em **camelCase inglês** (ex.: `who-we-are.scss` / `.whoWeAre`). Detalhes em `PADRONIZACAO.md` §1.
 - **JS:** `script.js` (vanilla); Swiper carregado via CDN.
 - **Imagens:** `img/` (logo SVG, equipe em AVIF, etc.).
 
@@ -35,8 +36,8 @@ Arquivo de memória para manter contexto entre sessões. O usuário pode pedir a
 | `animations.scss` | Apenas `@keyframes`. |
 | `main.scss` | Ponto único: importa variables → mixin → animations → common-elements → depois todos os módulos por seção. |
 | `common-elements.scss` | Componentes globais: `.sectionHeader`, `.btn-primary`, `.btn-secondary`. |
-| `sectionHeaderWithSidebar.scss` | Estilos da mídia (vídeo) e botão da sidebar quando `sectionHeader--withStickySidebar`. |
-| Demais | Um arquivo por seção: `header.scss`, `hero.scss`, `quemSomos.scss`, `services.scss`, `passoAPasso.scss`, `process.scss`, `values.scss`, `method.scss`, `testimonials.scss`, `you-center.scss`, `porQueSuno.scss`, `equipe.scss`, `estrutura.scss`, `faq.scss`, `contato.scss`, `pageHero.scss`, `footer.scss`, `hide.scss`. |
+| `section-header-with-sidebar.scss` | Estilos da mídia (vídeo) e botão da sidebar quando `sectionHeader--withStickySidebar`. |
+| Demais | Um arquivo por seção (`.scss` em **kebab-case inglês** = bloco camelCase inglês): `header.scss`, `hero.scss`, `who-we-are.scss`, `services.scss`, `values.scss`, `method.scss`, `testimonials.scss`, `video-testimonials.scss`, `you-center.scss`, `why-suno.scss`, `equipe.scss`, `estrutura.scss`, `faq.scss`, `contato.scss`, `page-hero.scss`, `legal-documents.scss`, `footer.scss`, `hide.scss`. |
 
 ---
 
@@ -47,22 +48,23 @@ Arquivo de memória para manter contexto entre sessões. O usuário pode pedir a
 @use "mixin" as *;
 @use "animations" as *;
 @use "common-elements" as *;
-@use "sectionHeaderWithSidebar" as *;
+@use "section-header-with-sidebar" as *;
 @use "header" as *;
 @use "hero" as *;
-@use "quemSomos" as *;
+@use "who-we-are" as *;
 @use "services" as *;
-@use "passoAPasso" as *;
-@use "process" as *;
 @use "values" as *;
 @use "method" as *;
 @use "testimonials" as *;
+@use "video-testimonials" as *;
 @use "you-center" as *;
+@use "why-suno" as *;
 @use "equipe" as *;
 @use "estrutura" as *;
 @use "faq" as *;
 @use "contato" as *;
-@use "pageHero" as *;
+@use "page-hero" as *;
+@use "legal-documents" as *;
 @use "footer" as *;
 @use "hide" as *;
 // Depois: reset, :root, tipografia, .wrapper
@@ -115,7 +117,7 @@ Não há mixins de animação; os keyframes são usados diretamente nos módulos
 ## 6. Common-elements
 
 - **.sectionHeader** — cabeçalho de seção: `__img`, `__hat`, `__title`, `__desc`. Modificadores: `--noImg`, `--dark`, `--withStickySidebar` (grid 2 colunas, header em 1/-1, body + sidebar; sidebar com `position: sticky; top: 120px` em ≥1221px). O hat usa filtros de contraste (ver variáveis).
-- **Seções com coluna sticky:** não usar `overflow-x: hidden` no bloco em viewports grandes, senão o sticky quebra. Aplicar `overflow-x: hidden` apenas em `max-width: 1220px` (quando o layout vira 1 coluna). Blocos que usam esse padrão: **quemSomos** (sidebar sticky), **method** (`method__content` com `position: sticky; top: 128px` em ≥1221px), **you-center** (`you-center__models` com `position: sticky; top: 128px` em ≥1221px).
+- **Seções com coluna sticky:** não usar `overflow-x: hidden` no bloco em viewports grandes, senão o sticky quebra. Aplicar `overflow-x: hidden` apenas em `max-width: 1220px` (quando o layout vira 1 coluna). Blocos que usam esse padrão: **whoWeAre** (sidebar sticky), **method** (`method__content` com `position: sticky; top: 128px` em ≥1221px), **you-center** (`you-center__models` com `position: sticky; top: 128px` em ≥1221px).
 - **.btn-primary** / **.btn-secondary** — botões globais. O `.btn-primary` tem seta em `::after` (SVG em data-URI); se o botão tiver `<svg>` filho, usa `&:has(svg)` para esconder o `::after`.
 - Media queries dentro do bloco: **1220px → 800px** (menores aninhadas nas maiores). Não usar breakpoint 760px; 800px cobre mobile.
 
@@ -221,7 +223,7 @@ Não usar mobile-first; preferir max-width do maior para o menor.
 - Main: `role="main"`. Footer: `role="contentinfo"`.
 - Seções: `aria-label` descritivo.
 - **Footer:** endereço em `<address>`; link do endereço para Google Maps. “Links Úteis” e “Redes Sociais” dentro de `<nav class="footer__nav" aria-label="Links úteis">` e `<nav aria-label="Redes sociais">`.
-- **Passo a passo:** cada item da lista é `<article class="passoAPasso__item">` (consistência com process/values).
+- **Passo a passo (you-center):** cada passo é `<article class="you-center__step">` dentro de `.you-center__steps` (estilos em `you-center.scss`).
 - **Equipe “Ver mais consultores”:** dois links `<a>` (“Ver mais” → `#equipe-consultores-expand`, “Ver menos” → `#equipe`); expansão via `:target` em CSS (sem checkbox). Span `#equipe-consultores-expand` como alvo.
 - Checkboxes escondidos para interação (ex.: FAQ): `aria-hidden="true"` quando for apenas controle visual.
 - Imagens: `alt` preenchido; logo com texto equivalente.
@@ -263,7 +265,7 @@ img/
 | Logo footer | `img/suno-consultoria.svg` | `.footer__logoImg`, `width="290"` |
 | Badge CVM | `img/footer/cvm-logo.svg` | `.footer__cvmLogo` |
 | Ícones redes (footer) | `img/footer/social-icons.svg` + `#id` | `<svg><use href="img/footer/social-icons.svg#instagram"/>` etc. |
-| Cards Por que a Suno | `img/carteiras/carteira-div.png` etc. | `.porQueSuno__cardVisual`; **legenda:** ordem e cor dos itens (`.porQueSuno__cardLegendDot--blue`, `--orange`, `--green`, `--red`, `--purple`, `--yellow`, `--cyan`, `--gray`, `--custom`) devem coincidir com as linhas do gráfico na imagem. |
+| Cards Por que a Suno | `img/carteiras/carteira-div.png` etc. | `.whySuno__cardVisual`; **legenda:** ordem e cor dos itens (`.whySuno__cardLegendDot--blue`, `--orange`, `--green`, `--red`, `--purple`, `--yellow`, `--cyan`, `--gray`, `--custom`) devem coincidir com as linhas do gráfico na imagem. |
 
 ### Convenções
 
@@ -330,5 +332,7 @@ Use esta seção para anotar o que mudou quando você pedir para “atualizar o 
 - **30/01/2025** — Footer: branding sem spans (resumo); ver entrada anterior completa.
 - **30/01/2025** — **Media queries:** padrão **1220px e 800px** apenas (sem 760px). Mixin `endOfModule`: mobile em ≤800px. **Seção 8 (Swiper):** conteúdo de SLIDER-SWIPER-ANALISE.md incorporado e resumido. **Seção 15:** blocos pageHero e contato. Imports: contato, pageHero, hide. Tabela SCSS atualizada. “Ver mais consultores”.
 - **25/02/2025** — Bloco **you-center** documentado na seção 15: layout 2 colunas, sticky em `__models`, overflow-x só em ≤1220px. **Seção 6:** padrão “coluna sticky” estendido a method e you-center (overflow-x apenas em max-width: 1220px).
+- **25/02/2025** — **Nomes de arquivos `.scss`:** padrão **kebab-case**; ver entrada seguinte para alinhamento **inglês** com blocos BEM.
+- **25/02/2025** — **Blocos + ficheiros em inglês:** `.whoWeAre` / `who-we-are.scss`, `.whySuno` / `why-suno.scss`, `.videoTestimonials` / `video-testimonials.scss`; timeline `.you-center__steps*` fundida em `you-center.scss` (removido `passo-a-passo.scss`). Âncoras: `#who-we-are`, `#why-suno`, `#step-by-step`. `main.scss`, HTML, `script.js`, `hide.scss` e docs atualizados.
 
 *Fim do documento. Atualize este arquivo sempre que fechar uma etapa ou quando algo relevante mudar no projeto.*

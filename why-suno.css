@@ -1,82 +1,82 @@
-.porQueSuno {
+.whySuno {
   display: block;
   width: 100%;
   padding-top: 80px;
   padding-bottom: 80px;
   background-color: #f3f3f3;
 }
-@media screen and (min-width: 801px) {
-  .porQueSuno {
+@media screen and (min-width: 800px) {
+  .whySuno {
     margin-bottom: 64px;
   }
 }
 @media screen and (max-width: 800px) {
-  .porQueSuno {
+  .whySuno {
     margin-bottom: 32px;
   }
 }
 @media screen and (max-width: 1220px) {
-  .porQueSuno {
+  .whySuno {
     padding-top: 64px;
     padding-bottom: 64px;
   }
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) {
-  .porQueSuno {
+  .whySuno {
     padding-top: 56px;
     padding-bottom: 56px;
   }
 }
-@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 800px) {
-  .porQueSuno {
+@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 760px) {
+  .whySuno {
     padding-top: 48px;
     padding-bottom: 48px;
   }
 }
-.porQueSuno .wrapper {
+.whySuno .wrapper {
   display: flex;
   flex-direction: column;
 }
-.porQueSuno__list {
+.whySuno__list {
   position: relative;
   width: 100%;
   margin-top: 48px;
 }
 @media screen and (max-width: 1220px) {
-  .porQueSuno__list {
+  .whySuno__list {
     margin-top: 40px;
   }
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) {
-  .porQueSuno__list {
+  .whySuno__list {
     margin-top: 36px;
   }
 }
-@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 800px) {
-  .porQueSuno__list {
+@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 760px) {
+  .whySuno__list {
     margin-top: 32px;
   }
 }
-.porQueSuno__list .swiper {
+.whySuno__list .swiper {
   width: 100%;
   padding-bottom: 48px;
   overflow: hidden;
 }
 @media screen and (max-width: 800px) {
-  .porQueSuno__list .swiper {
+  .whySuno__list .swiper {
     padding-bottom: 40px;
   }
 }
-@media screen and (max-width: 800px) and (max-width: 800px) {
-  .porQueSuno__list .swiper {
+@media screen and (max-width: 800px) and (max-width: 760px) {
+  .whySuno__list .swiper {
     padding-bottom: 36px;
   }
 }
-.porQueSuno__list .swiper-slide {
+.whySuno__list .swiper-slide {
   height: auto;
   display: flex;
 }
-.porQueSuno__card {
+.whySuno__card {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -89,15 +89,15 @@
   transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
 }
 @media screen and (max-width: 800px) {
-  .porQueSuno__card {
+  .whySuno__card {
     border-radius: 12px;
   }
 }
-.porQueSuno__card:hover {
+.whySuno__card:hover {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
   border-color: rgb(from var(--color-primary) r g b/0.15);
 }
-.porQueSuno__cardTitle {
+.whySuno__cardTitle {
   display: block;
   padding: 12px 20px;
   background-color: rgb(from var(--color-dark) r g b/0.06);
@@ -108,16 +108,16 @@
   border-radius: 12px 12px 0 0;
 }
 @media screen and (max-width: 800px) {
-  .porQueSuno__cardTitle {
+  .whySuno__cardTitle {
     padding: 10px 16px;
     font-size: 15px;
   }
 }
-.porQueSuno__cardTitleAccent {
+.whySuno__cardTitleAccent {
   color: var(--color-primary);
   font-family: "Montserrat", "Arial", sans-serif;
 }
-.porQueSuno__cardLegend {
+.whySuno__cardLegend {
   display: flex;
   flex-wrap: wrap;
   gap: 12px 20px;
@@ -126,12 +126,12 @@
   margin: 0;
 }
 @media screen and (max-width: 800px) {
-  .porQueSuno__cardLegend {
+  .whySuno__cardLegend {
     padding: 10px 16px 0;
     gap: 10px 16px;
   }
 }
-.porQueSuno__cardLegend li {
+.whySuno__cardLegend li {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -139,29 +139,29 @@
   font-size: 13px;
 }
 @media screen and (max-width: 800px) {
-  .porQueSuno__cardLegend li {
+  .whySuno__cardLegend li {
     font-size: 12px;
   }
 }
-.porQueSuno__cardLegendDot {
+.whySuno__cardLegendDot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
 }
-.porQueSuno__cardLegendDot--red {
+.whySuno__cardLegendDot--red {
   background-color: #d32025;
 }
-.porQueSuno__cardLegendDot--blue {
+.whySuno__cardLegendDot--blue {
   background-color: #4f81bd;
 }
-.porQueSuno__cardLegendDot--orange {
+.whySuno__cardLegendDot--orange {
   background-color: #ffa238;
 }
-.porQueSuno__cardLegendDot--cyan {
+.whySuno__cardLegendDot--cyan {
   background-color: #4f81bd;
 }
-.porQueSuno__cardVisual {
+.whySuno__cardVisual {
   position: relative;
   width: 100%;
   aspect-ratio: 16/10;
@@ -173,19 +173,19 @@
   margin-top: 12px;
 }
 @media screen and (max-width: 800px) {
-  .porQueSuno__cardVisual {
+  .whySuno__cardVisual {
     aspect-ratio: 16/9;
     margin-top: 10px;
   }
 }
-.porQueSuno__cardVisual img {
+.whySuno__cardVisual img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
 }
-.porQueSuno__cardCaption {
+.whySuno__cardCaption {
   padding: 14px 20px 20px;
   margin-top: auto;
   color: rgb(from var(--color-txt) r g b/0.75);
@@ -194,12 +194,12 @@
   border-top: 1px solid rgb(from var(--color-dark) r g b/0.06);
 }
 @media screen and (max-width: 800px) {
-  .porQueSuno__cardCaption {
+  .whySuno__cardCaption {
     padding: 12px 16px 16px;
     font-size: 11px;
   }
 }
-.porQueSuno__navigation {
+.whySuno__navigation {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -207,15 +207,61 @@
   margin-top: 0;
 }
 @media screen and (max-width: 800px) {
-  .porQueSuno__navigation {
+  .whySuno__navigation {
     gap: 8px;
   }
 }
-.porQueSuno .swiper-button-prev--porQueSuno svg {
-  transform: scaleX(-1);
+.whySuno .swiper-button-prev--whySuno svg,
+.whySuno .swiper-button-prev--whySuno .swiper-navigation-icon,
+.whySuno .swiper-button-next--whySuno svg,
+.whySuno .swiper-button-next--whySuno .swiper-navigation-icon {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  position: absolute !important;
 }
-.porQueSuno .swiper-button-prev--porQueSuno,
-.porQueSuno .swiper-button-next--porQueSuno {
+.whySuno .swiper-button-prev--whySuno::after,
+.whySuno .swiper-button-next--whySuno::after {
+  content: none !important;
+  display: none !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  overflow: hidden !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+.whySuno .swiper-button-prev--whySuno::before,
+.whySuno .swiper-button-next--whySuno::before {
+  content: "" !important;
+  display: block !important;
+  flex-shrink: 0;
+  width: 11px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  transform-origin: center center;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='20' viewBox='0 0 11 20'%3E%3Cpath d='M0.38296 20.0762C0.111788 19.805 0.111788 19.3654 0.38296 19.0942L9.19758 10.2796L0.38296 1.46497C0.111788 1.19379 0.111788 0.754138 0.38296 0.482966C0.654131 0.211794 1.09379 0.211794 1.36496 0.482966L10.4341 9.55214C10.8359 9.9539 10.8359 10.6053 10.4341 11.007L1.36496 20.0762C1.09379 20.3474 0.654131 20.3474 0.38296 20.0762Z' fill='%23dc2626'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+@media screen and (max-width: 800px) {
+  .whySuno .swiper-button-prev--whySuno::before,
+  .whySuno .swiper-button-next--whySuno::before {
+    width: 9px;
+    height: 16px;
+  }
+}
+.whySuno .swiper-button-prev--whySuno,
+.whySuno .swiper-button-next--whySuno {
   color: var(--color-primary) !important;
   position: relative !important;
   width: 40px !important;
@@ -235,50 +281,37 @@
   justify-content: center !important;
 }
 @media screen and (max-width: 800px) {
-  .porQueSuno .swiper-button-prev--porQueSuno,
-  .porQueSuno .swiper-button-next--porQueSuno {
+  .whySuno .swiper-button-prev--whySuno,
+  .whySuno .swiper-button-next--whySuno {
     width: 36px !important;
     height: 36px !important;
   }
 }
-.porQueSuno .swiper-button-prev--porQueSuno::after, .porQueSuno .swiper-button-prev--porQueSuno::before,
-.porQueSuno .swiper-button-next--porQueSuno::after,
-.porQueSuno .swiper-button-next--porQueSuno::before {
-  display: none !important;
-}
-.porQueSuno .swiper-button-prev--porQueSuno svg,
-.porQueSuno .swiper-button-next--porQueSuno svg {
-  width: 11px !important;
-  height: 20px !important;
-}
-@media screen and (max-width: 800px) {
-  .porQueSuno .swiper-button-prev--porQueSuno svg,
-  .porQueSuno .swiper-button-next--porQueSuno svg {
-    width: 9px !important;
-    height: 16px !important;
-  }
-}
-.porQueSuno .swiper-button-prev--porQueSuno:hover,
-.porQueSuno .swiper-button-next--porQueSuno:hover {
+.whySuno .swiper-button-prev--whySuno:hover,
+.whySuno .swiper-button-next--whySuno:hover {
   background-color: var(--color-primary-light) !important;
   border-color: var(--color-primary) !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 4px 12px rgb(from var(--color-primary) r g b/0.15) !important;
 }
-.porQueSuno .swiper-button-prev--porQueSuno.swiper-button-disabled,
-.porQueSuno .swiper-button-next--porQueSuno.swiper-button-disabled {
+.whySuno .swiper-button-prev--whySuno.swiper-button-disabled,
+.whySuno .swiper-button-next--whySuno.swiper-button-disabled {
   opacity: 0.25 !important;
   cursor: not-allowed !important;
   pointer-events: none !important;
 }
-.porQueSuno .swiper-pagination--porQueSuno {
+.whySuno .swiper-button-prev--whySuno::before {
+  transform: scaleX(-1);
+  transform-origin: center center;
+}
+.whySuno .swiper-pagination--whySuno {
   position: relative !important;
   margin: 0 !important;
   width: auto !important;
   bottom: auto !important;
   left: auto !important;
 }
-.porQueSuno .swiper-pagination--porQueSuno .swiper-pagination-bullet {
+.whySuno .swiper-pagination--whySuno .swiper-pagination-bullet {
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -289,19 +322,19 @@
   margin: 0 4px;
 }
 @media screen and (max-width: 800px) {
-  .porQueSuno .swiper-pagination--porQueSuno .swiper-pagination-bullet {
+  .whySuno .swiper-pagination--whySuno .swiper-pagination-bullet {
     width: 6px;
     height: 6px;
     margin: 0 3px;
   }
 }
-.porQueSuno .swiper-pagination--porQueSuno .swiper-pagination-bullet-active {
+.whySuno .swiper-pagination--whySuno .swiper-pagination-bullet-active {
   background-color: var(--color-primary);
   width: 24px;
   border-radius: 4px;
 }
-@media screen and (max-width: 800px) {
-  .porQueSuno .swiper-pagination--porQueSuno .swiper-pagination-bullet-active {
+@media screen and (max-width: 760px) {
+  .whySuno .swiper-pagination--whySuno .swiper-pagination-bullet-active {
     width: 20px;
   }
-}/*# sourceMappingURL=porQueSuno.css.map */
+}/*# sourceMappingURL=why-suno.css.map */

@@ -1,4 +1,4 @@
-.contato {
+.contact {
   display: block;
   width: 100%;
   box-sizing: border-box;
@@ -7,54 +7,54 @@
   background-color: #1f1f1f;
   overflow-x: hidden;
 }
-@media screen and (min-width: 801px) {
-  .contato {
+@media screen and (min-width: 800px) {
+  .contact {
     margin-bottom: 64px;
   }
 }
 @media screen and (max-width: 800px) {
-  .contato {
+  .contact {
     margin-bottom: 32px;
   }
 }
 @media screen and (max-width: 1220px) {
-  .contato {
+  .contact {
     padding-top: 64px;
     padding-bottom: 64px;
   }
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) {
-  .contato {
+  .contact {
     padding-top: 48px;
     padding-bottom: 48px;
   }
 }
-.contato .wrapper {
+.contact .wrapper {
   display: flex;
   flex-direction: column;
 }
-.contato__grid {
+.contact__grid {
   display: grid;
   grid-template-columns: 0.6fr 1fr;
   gap: 48px;
   align-items: start;
 }
 @media screen and (max-width: 1220px) {
-  .contato__grid {
+  .contact__grid {
     grid-template-columns: 1fr;
     gap: 40px;
   }
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) {
-  .contato__grid {
+  .contact__grid {
     gap: 28px;
   }
 }
-.contato__content {
+.contact__content {
   display: flex;
   flex-direction: column;
 }
-.contato .contato__hat {
+.contact .contact__hat {
   position: relative;
   display: flex;
   width: -moz-min-content;
@@ -73,14 +73,14 @@
   margin-bottom: 16px;
 }
 @media screen and (max-width: 800px) {
-  .contato .contato__hat {
+  .contact .contact__hat {
     font-size: 12px;
     padding: 6px 12px;
     text-indent: 22px;
     margin-bottom: 12px;
   }
 }
-.contato__hatIcon {
+.contact__hatIcon {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -89,7 +89,13 @@
   height: 19px;
   margin: auto 0;
 }
-.contato__hatIcon::before {
+@media screen and (max-width: 800px) {
+  .contact__hatIcon {
+    width: 14px;
+    height: 14px;
+  }
+}
+.contact__hatIcon::before {
   content: "";
   display: block;
   position: relative;
@@ -101,13 +107,7 @@
   background-position: center;
   background-size: contain;
 }
-@media screen and (max-width: 800px) {
-  .contato__hatIcon {
-    width: 14px;
-    height: 14px;
-  }
-}
-.contato__title {
+.contact__title {
   color: var(--color-txt-light);
   font-family: "Montserrat", "Arial", sans-serif;
   font-size: 40px;
@@ -116,24 +116,24 @@
   margin-bottom: 24px;
 }
 @media screen and (max-width: 1220px) {
-  .contato__title {
+  .contact__title {
     font-size: 34px;
     margin-bottom: 20px;
   }
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) {
-  .contato__title {
+  .contact__title {
     font-size: 26px;
     margin-bottom: 16px;
   }
 }
-.contato__titleAccent {
+.contact__titleAccent {
   position: relative;
   display: inline-block;
   color: var(--color-primary);
   font-family: "Montserrat", "Arial", sans-serif;
 }
-.contato__titleAccent::after {
+.contact__titleAccent::after {
   content: "";
   position: absolute;
   bottom: -4px;
@@ -144,12 +144,12 @@
   border-radius: 2px;
 }
 @media screen and (max-width: 800px) {
-  .contato__titleAccent::after {
+  .contact__titleAccent::after {
     height: 3px;
     bottom: -3px;
   }
 }
-.contato__features {
+.contact__features {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 16px;
@@ -158,7 +158,7 @@
   margin-bottom: 32px;
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) {
-  .contato__features {
+  .contact__features {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px 12px;
@@ -166,15 +166,15 @@
     margin-bottom: 24px;
   }
 }
-.contato__featuresItem {
+.contact__featuresItem {
   white-space: nowrap;
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) {
-  .contato__featuresItem:nth-child(3) {
+  .contact__featuresItem:nth-child(3) {
     grid-column: 1/-1;
   }
 }
-.contato__list {
+.contact__list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -183,11 +183,11 @@
   gap: 16px;
 }
 @media screen and (max-width: 800px) {
-  .contato__list {
+  .contact__list {
     gap: 14px;
   }
 }
-.contato__listItem {
+.contact__listItem {
   position: relative;
   display: flex;
   align-items: flex-start;
@@ -199,13 +199,13 @@
   line-height: 1.45;
 }
 @media screen and (max-width: 800px) {
-  .contato__listItem {
+  .contact__listItem {
     padding-left: 28px;
     gap: 10px;
     font-size: 14px;
   }
 }
-.contato__listItem::before {
+.contact__listItem::before {
   content: "";
   position: absolute;
   top: 2px;
@@ -219,12 +219,12 @@
   background-size: contain;
 }
 @media screen and (max-width: 800px) {
-  .contato__listItem::before {
+  .contact__listItem::before {
     width: 18px;
     height: 18px;
   }
 }
-.contato__form {
+.contact__form {
   position: relative;
   width: 100%;
   min-height: 420px;
@@ -236,13 +236,13 @@
   border: 1px solid rgb(from var(--color-dark) r g b/0.08);
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) {
-  .contato__form {
+  .contact__form {
     padding: 24px;
     min-height: 360px;
     border-radius: 12px;
   }
 }
-.contato__formInner {
+.contact__formInner {
   width: 100%;
   min-height: 320px;
-}/*# sourceMappingURL=contato.css.map */
+}/*# sourceMappingURL=contact.css.map */

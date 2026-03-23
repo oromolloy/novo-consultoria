@@ -1,9 +1,9 @@
 @use "variables" as *;
 @use "mixin" as *;
 // ============================================
-// EQUIPE (Nossa Equipe) - INÍCIO
+// TEAM (Nossa Equipe) - INÍCIO
 // ============================================
-.equipe {
+.team {
  display: block;
  width: 100%;
  padding-top: 80px;
@@ -33,21 +33,21 @@
    width: 100%;
    padding-bottom: 56px;
    overflow: hidden;
-   @media screen and (min-width: 801px) {
+   @media screen and (min-width: 800px) {
     overflow: visible;
     padding-bottom: 0;
    }
    @media screen and (max-width: 800px) {
     padding-bottom: 56px;
     width: calc(100% + 16px);
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 760px) {
      padding-bottom: 48px;
     }
    }
   }
 
   // Acima de 800px: Swiper destruído pelo JS → grid 2x2 (até 1220) ou 4 em linha (1221+). Setas escondidas.
-  @media screen and (min-width: 801px) {
+  @media screen and (min-width: 800px) {
    .swiper-wrapper {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr);
@@ -71,7 +71,7 @@
    height: auto;
   }
 
-  .equipe__navigation {
+  .team__navigation {
    display: none;
    position: absolute;
    bottom: 0;
@@ -84,20 +84,15 @@
    /* Só aparece do 800px pra baixo (slider 1 em 1) */
    @media screen and (max-width: 800px) {
     display: flex;
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 760px) {
      gap: 8px;
     }
    }
   }
 
-  .swiper-button-prev--equipe {
-   svg {
-    transform: scaleX(-1);
-   }
-  }
-
-  .swiper-button-prev--equipe,
-  .swiper-button-next--equipe {
+  .swiper-button-prev--team,
+  .swiper-button-next--team {
+   @include swiperNavChevron;
    color: var(--color-primary) !important;
    position: relative !important;
    width: 40px !important;
@@ -119,18 +114,6 @@
     width: 36px !important;
     height: 36px !important;
    }
-   &::after,
-   &::before {
-    display: none !important;
-   }
-   svg {
-    width: 11px !important;
-    height: 20px !important;
-    @media screen and (max-width: 800px) {
-     width: 9px !important;
-     height: 16px !important;
-    }
-   }
    &:hover {
     background-color: var(--color-primary-light) !important;
     border-color: var(--color-primary) !important;
@@ -147,7 +130,12 @@
    }
   }
 
-  .swiper-pagination--equipe {
+  .swiper-button-prev--team::before {
+   transform: scaleX(-1);
+   transform-origin: center center;
+  }
+
+  .swiper-pagination--team {
    position: relative !important;
    margin: 0 !important;
    width: auto !important;
@@ -171,7 +159,7 @@
      background-color: var(--color-primary);
      width: 24px;
      border-radius: 4px;
-     @media screen and (max-width: 800px) {
+     @media screen and (max-width: 760px) {
       width: 20px;
      }
     }
@@ -216,7 +204,7 @@
    z-index: 1;
   }
 
-  .equipe__card:hover &::before {
+  .team__card:hover &::before {
    background: linear-gradient(to top, rgb(from var(--color-primary) r g b / 0.65) 0%, rgb(from var(--color-primary) r g b / 0.2) 50%, transparent 100%);
   }
 
@@ -264,7 +252,7 @@
    }
   }
 
-  .equipe__card:hover & {
+  .team__card:hover & {
    opacity: 1;
    color: var(--color-txt-light);
    transform: scale(1.05);
@@ -370,7 +358,7 @@
   display: none;
  }
 
- #equipe-consultores-expand:target ~ &__consultoresGrid &__consultor--more {
+ #team-consultores-expand:target ~ &__consultoresGrid &__consultor--more {
   display: block;
  }
 
@@ -406,10 +394,10 @@
    font-size: 13px;
   }
  }
- #equipe-consultores-expand:target ~ &__consultoresMoreBtn--show {
+ #team-consultores-expand:target ~ &__consultoresMoreBtn--show {
   display: none;
  }
- #equipe-consultores-expand:target ~ &__consultoresMoreBtn--hide {
+ #team-consultores-expand:target ~ &__consultoresMoreBtn--hide {
   display: inline-block;
  }
 
@@ -425,6 +413,10 @@
   box-sizing: border-box;
   overflow: hidden;
 
+  @media screen and (max-width: 800px) {
+   padding: 16px 18px;
+  }
+
   &::before {
    content: "";
    position: absolute;
@@ -439,9 +431,6 @@
   &:hover {
    border-color: rgb(from var(--color-primary) r g b / 0.25);
    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.08);
-  }
-  @media screen and (max-width: 800px) {
-   padding: 16px 18px;
   }
  }
 
@@ -465,5 +454,5 @@
  }
 }
 // ============================================
-// EQUIPE - FIM
+// TEAM - FIM
 // ============================================

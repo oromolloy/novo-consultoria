@@ -17,7 +17,7 @@
     margin-bottom: 32px;
   }
 }
-@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 800px) {
+@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 760px) {
   .sectionHeader {
     margin-bottom: 28px;
   }
@@ -51,7 +51,7 @@
     margin-bottom: 12px;
   }
 }
-@media screen and (max-width: 800px) and (max-width: 800px) {
+@media screen and (max-width: 800px) and (max-width: 760px) {
   .sectionHeader__hat {
     font-size: 12px;
     margin-bottom: 10px;
@@ -77,7 +77,7 @@
     margin-bottom: 18px;
   }
 }
-@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 800px) {
+@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 760px) {
   .sectionHeader__title {
     font-size: 28px;
     margin-bottom: 16px;
@@ -104,7 +104,7 @@
     font-size: 16px;
   }
 }
-@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 800px) {
+@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 760px) {
   .sectionHeader__desc {
     font-size: 15px;
   }
@@ -336,16 +336,17 @@
   background-color: var(--color-primary);
   color: var(--color-txt-light);
 }
-.btn-primary:hover {
-  transform: translateY(-2px);
-  background-color: #b91c1c;
-  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.4);
+@media screen and (max-width: 800px) {
+  .btn-primary {
+    padding-left: 32px;
+    padding-right: 50px;
+  }
 }
-.btn-primary:hover svg {
-  transform: translateX(4px);
-}
-.btn-primary:hover::after {
-  transform: translateX(2px);
+@media screen and (max-width: 800px) and (max-width: 760px) {
+  .btn-primary {
+    padding-left: 28px;
+    padding-right: 48px;
+  }
 }
 .btn-primary::after {
   content: "";
@@ -363,10 +364,6 @@
   transition: all 0.3s;
 }
 @media screen and (max-width: 800px) {
-  .btn-primary {
-    padding-left: 32px;
-    padding-right: 50px;
-  }
   .btn-primary::after {
     right: 12px;
     width: 15px;
@@ -375,16 +372,23 @@
   }
 }
 @media screen and (max-width: 800px) and (max-width: 760px) {
-  .btn-primary {
-    padding-left: 28px;
-    padding-right: 48px;
-  }
   .btn-primary::after {
     right: 10px;
     width: 14px;
     height: 14px;
     background-size: 14px;
   }
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background-color: #b91c1c;
+  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.4);
+}
+.btn-primary:hover svg {
+  transform: translateX(4px);
+}
+.btn-primary:hover::after {
+  transform: translateX(2px);
 }
 .btn-primary:has(svg)::after {
   display: none;

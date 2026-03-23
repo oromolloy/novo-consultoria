@@ -20,6 +20,15 @@ $pageHeroMinHeight: 180px;
  overflow-x: hidden;
  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 
+ @media screen and (max-width: 1220px) {
+  padding-top: 52px;
+  padding-bottom: 44px;
+  @media screen and (max-width: 800px) {
+   padding-top: 48px;
+   padding-bottom: 40px;
+  }
+ }
+
  &::before {
   content: "";
   position: absolute;
@@ -28,6 +37,11 @@ $pageHeroMinHeight: 180px;
   right: 0;
   height: 4px;
   background-color: var(--color-primary);
+  @media screen and (max-width: 1220px) {
+   @media screen and (max-width: 800px) {
+    height: 3px;
+   }
+  }
  }
 
  &::after {
@@ -38,16 +52,8 @@ $pageHeroMinHeight: 180px;
   right: 0;
   height: 4px;
   background-color: var(--color-primary);
- }
-
- @media screen and (max-width: 1220px) {
-  padding-top: 52px;
-  padding-bottom: 44px;
-  @media screen and (max-width: 800px) {
-   padding-top: 48px;
-   padding-bottom: 40px;
-   &::before,
-   &::after {
+  @media screen and (max-width: 1220px) {
+   @media screen and (max-width: 800px) {
     height: 3px;
    }
   }

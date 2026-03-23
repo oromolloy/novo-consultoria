@@ -2,11 +2,11 @@
 @use "mixin" as *;
 
 // ============================================
-// QUEM SOMOS - INÍCIO
+// WHO WE ARE (bloco .whoWeAre — ficheiro who-we-are.scss)
 // Usa o bloco reutilizável .contentStickySidebar (common-elements).
 // Estilos específicos: fundo pontilhado, deco da sidebar, overlay do vídeo.
 // ============================================
-.quemSomos {
+.whoWeAre {
   position: relative;
   width: 100%;
   padding-top: 80px;
@@ -85,4 +85,4 @@
   }
 }
 
-// QUEM SOMOS - FIM
+// WHO WE ARE - FIM

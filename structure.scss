@@ -3,7 +3,7 @@
 // ============================================
 // ESTRUTURA (Nossa Estrutura) - INÍCIO
 // ============================================
-.estrutura {
+.structure {
  display: block;
  width: 100%;
  padding-top: 80px;
@@ -66,7 +66,7 @@
   position: relative;
   transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-  .estrutura__item:hover & {
+  .structure__item:hover & {
    background-color: rgb(from var(--color-primary) r g b / 0.25);
   }
   @media screen and (max-width: 800px) {
@@ -140,7 +140,7 @@
    width: 85%;
    max-width: 520px;
    height: auto;
-   @media screen and (min-width: 801px) {
+   @media screen and (min-width: 800px) {
     width: 70%;
     max-width: 600px;
    }
@@ -191,7 +191,7 @@
   justify-content: flex-end;
   padding: 24px;
 
-  .estrutura__slideCard:hover & {
+  .structure__slideCard:hover & {
    opacity: 1;
   }
   @media screen and (max-width: 800px) {
@@ -231,14 +231,9 @@
   }
  }
 
- .swiper-button-prev--estrutura {
-  svg {
-   transform: scaleX(-1);
-  }
- }
-
- .swiper-button-prev--estrutura,
- .swiper-button-next--estrutura {
+ .swiper-button-prev--structure,
+ .swiper-button-next--structure {
+  @include swiperNavChevron;
   color: var(--color-primary) !important;
   position: relative !important;
   width: 40px !important;
@@ -260,18 +255,6 @@
    width: 36px !important;
    height: 36px !important;
   }
-  &::after,
-  &::before {
-   display: none !important;
-  }
-  svg {
-   width: 11px !important;
-   height: 20px !important;
-   @media screen and (max-width: 800px) {
-    width: 9px !important;
-    height: 16px !important;
-   }
-  }
   &:hover {
    background-color: var(--color-primary-light) !important;
    border-color: var(--color-primary) !important;
@@ -285,7 +268,12 @@
   }
  }
 
- .swiper-pagination--estrutura {
+ .swiper-button-prev--structure::before {
+  transform: scaleX(-1);
+  transform-origin: center center;
+ }
+
+ .swiper-pagination--structure {
   position: relative !important;
   margin: 0 !important;
   width: auto !important;
@@ -309,7 +297,7 @@
     background-color: var(--color-primary);
     width: 24px;
     border-radius: 4px;
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 760px) {
      width: 20px;
     }
    }

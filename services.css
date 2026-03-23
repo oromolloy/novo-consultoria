@@ -5,7 +5,7 @@
   padding-top: 80px;
   padding-bottom: 144px;
 }
-@media screen and (min-width: 801px) {
+@media screen and (min-width: 800px) {
   .services {
     margin-bottom: 64px;
   }
@@ -27,7 +27,7 @@
     padding-bottom: 112px;
   }
 }
-@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 800px) {
+@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 760px) {
   .services {
     padding-top: 48px;
     padding-bottom: 80px;
@@ -52,7 +52,7 @@
     gap: 18px;
   }
 }
-@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 800px) {
+@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 760px) {
   .services__grid {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -79,7 +79,7 @@
     padding: 24px;
   }
 }
-@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 800px) {
+@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 760px) {
   .services__card {
     padding: 20px;
   }
@@ -128,7 +128,7 @@
     gap: 16px;
   }
 }
-@media screen and (max-width: 800px) and (max-width: 800px) {
+@media screen and (max-width: 800px) and (max-width: 760px) {
   .services__cardHeader {
     gap: 14px;
   }
@@ -151,7 +151,7 @@
     height: 48px;
   }
 }
-@media screen and (max-width: 800px) and (max-width: 800px) {
+@media screen and (max-width: 800px) and (max-width: 760px) {
   .services__cardIcon {
     width: 44px;
     height: 44px;
@@ -251,7 +251,7 @@
     margin-bottom: 8px;
   }
 }
-@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 800px) {
+@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 760px) {
   .services__cardTitle {
     font-size: 18px;
     margin-bottom: 8px;
@@ -272,7 +272,7 @@
     font-size: 14px;
   }
 }
-@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 800px) {
+@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 760px) {
   .services__cardDesc {
     font-size: 14px;
   }

@@ -13,7 +13,7 @@
   margin-bottom: 40px;
   @media screen and (max-width: 800px) {
    margin-bottom: 32px;
-   @media screen and (max-width: 800px) {
+   @media screen and (max-width: 760px) {
     margin-bottom: 28px;
    }
   }
@@ -40,7 +40,7 @@
   @media screen and (max-width: 800px) {
    font-size: 13px;
    margin-bottom: 12px;
-   @media screen and (max-width: 800px) {
+   @media screen and (max-width: 760px) {
     font-size: 12px;
     margin-bottom: 10px;
    }
@@ -59,7 +59,7 @@
    @media screen and (max-width: 800px) {
     font-size: 36px;
     margin-bottom: 18px;
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 760px) {
      font-size: 28px;
      margin-bottom: 16px;
     }
@@ -81,7 +81,7 @@
    font-size: 17px;
    @media screen and (max-width: 800px) {
     font-size: 16px;
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 760px) {
      font-size: 15px;
     }
    }
@@ -110,7 +110,7 @@
   }
  }
 
- // Especialização: título em 2 colunas + corpo + sidebar sticky (estrutura e responsividade; mídia/btn no módulo sectionHeaderWithSidebar)
+ // Especialização: título em 2 colunas + corpo + sidebar sticky (estrutura e responsividade; mídia/btn no módulo section-header-with-sidebar.scss)
  &--withStickySidebar {
   display: block;
   margin-bottom: 0;
@@ -284,17 +284,16 @@
  border-color: var(--color-primary);
  background-color: var(--color-primary);
  color: var(--color-txt-light);
- &:hover {
-  transform: translateY(-2px);
-  background-color: #b91c1c;
-  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.4);
-  svg {
-   transform: translateX(4px);
-  }
-  &::after {
-   transform: translateX(2px);
+
+ @media screen and (max-width: 800px) {
+  padding-left: 32px;
+  padding-right: 50px;
+  @media screen and (max-width: 760px) {
+   padding-left: 28px;
+   padding-right: 48px;
   }
  }
+
  &::after {
   content: "";
   position: absolute;
@@ -309,25 +308,29 @@
   background-size: 16px;
   margin: auto;
   transition: all 0.3s;
- }
- @media screen and (max-width: 800px) {
-  padding-left: 32px;
-  padding-right: 50px;
-  &::after {
+  @media screen and (max-width: 800px) {
    right: 12px;
    width: 15px;
    height: 15px;
    background-size: 15px;
-  }
-  @media screen and (max-width: 760px) {
-   padding-left: 28px;
-   padding-right: 48px;
-   &::after {
+   @media screen and (max-width: 760px) {
     right: 10px;
     width: 14px;
     height: 14px;
     background-size: 14px;
    }
+  }
+ }
+
+ &:hover {
+  transform: translateY(-2px);
+  background-color: #b91c1c;
+  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.4);
+  svg {
+   transform: translateX(4px);
+  }
+  &::after {
+   transform: translateX(2px);
   }
  }
  // Se tiver SVG inline, esconde o ::after
