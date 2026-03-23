@@ -1,47 +1,49 @@
 # Contexto do Projeto — Novo Consultoria
 
+**Documento único:** contexto do repositório e padronização (antes dispersos em outros `.md`). Swiper: resumo na **§8**; detalhe de código em `script.js` e nos SCSS dos blocos.
+
 ---
 
 ## Instrução para o assistente (IA)
 
-**Quando o usuário pedir para "atualizar o arquivo de contexto" (ou "atualize seu arquivo de contexto", "atualiza o md de contexto", etc.):**
+**Quando o usuário pedir para "atualizar o arquivo de contexto" (ou equivalente):**
 
 1. **Ler** o `CONTEXTO-PROJETO.md` atual.
-2. **Incorporar** no documento tudo que mudou ou foi combinado na conversa: novas seções, convenções alteradas, novos arquivos, padrões novos, mudanças em estrutura, imagens, JS, sliders, etc.
-3. **Atualizar** a seção **"Histórico de atualizações (contexto)"** no final do arquivo: adicionar uma linha com a data (ou "hoje") e um resumo do que foi atualizado (ex.: "Inclusão do padrão de lazy-load; atualização da seção Imagens").
-4. **Manter** a numeração das seções e a estrutura geral do documento.
+2. **Incorporar** no documento tudo que mudou ou foi combinado na conversa: novas seções, convenções, ficheiros, padrões, estrutura, imagens, JS, sliders, etc.
+3. **Atualizar** a seção **"Histórico de atualizações (contexto)"** no final: data e resumo breve.
+4. **Manter** a estrutura geral e a numeração coerente.
 
-Objetivo: que o contexto do projeto fique sempre atual e não se perca entre sessões.
+Objetivo: contexto sempre atual entre sessões.
 
 ---
 
-Arquivo de memória para manter contexto entre sessões. O usuário pode pedir a atualização deste documento ao fechar uma parte do trabalho.
+Arquivo de memória para manter contexto entre sessões.
 
 ---
 
 ## 1. Estrutura do projeto
 
 - **HTML:** `index.html` (página única).
-- **CSS:** SCSS compilado para `main.css`. Um arquivo SCSS por seção/bloco.
-- **Nomes dos ficheiros `.scss`:** **kebab-case em inglês**, espelhando o **bloco** em **camelCase inglês** (ex.: `who-we-are.scss` / `.whoWeAre`). Detalhes em `PADRONIZACAO.md` §1.
-- **JS:** `script.js` (vanilla); Swiper carregado via CDN.
-- **Imagens:** `img/` (logo SVG, equipe em AVIF, etc.).
+- **CSS:** SCSS compilado para `main.css`. Um ficheiro SCSS por seção/bloco.
+- **Nomes dos ficheiros `.scss`:** **kebab-case em inglês**, espelhando o **bloco BEM em camelCase inglês** (ex.: `who-we-are.scss` → `.whoWeAre`, `video-testimonials.scss` → `.videoTestimonials`). Não usar camelCase no nome do ficheiro.
+- **JS:** `script.js` (vanilla); Swiper 12 via CDN.
+- **Imagens:** `img/` (logo SVG, pasta `img/equipe/` para fotos da secção team, etc.).
 
-### Arquivos SCSS principais
+### Ficheiros SCSS principais
 
-| Arquivo | Conteúdo |
-|---------|----------|
+| Ficheiro | Conteúdo |
+|----------|----------|
 | `variables.scss` | Variáveis globais (margens, fontes). |
-| `mixin.scss` | Mixins reutilizáveis (usa variables). |
+| `mixin.scss` | Mixins reutilizáveis (`endOfModule`, `swiperNavChevron`, etc.). |
 | `animations.scss` | Apenas `@keyframes`. |
-| `main.scss` | Ponto único: importa variables → mixin → animations → common-elements → depois todos os módulos por seção. |
-| `common-elements.scss` | Componentes globais: `.sectionHeader`, `.btn-primary`, `.btn-secondary`. |
-| `section-header-with-sidebar.scss` | Estilos da mídia (vídeo) e botão da sidebar quando `sectionHeader--withStickySidebar`. |
-| Demais | Um arquivo por seção (`.scss` em **kebab-case inglês** = bloco camelCase inglês): `header.scss`, `hero.scss`, `who-we-are.scss`, `services.scss`, `values.scss`, `method.scss`, `testimonials.scss`, `video-testimonials.scss`, `you-center.scss`, `why-suno.scss`, `equipe.scss`, `estrutura.scss`, `faq.scss`, `contato.scss`, `page-hero.scss`, `legal-documents.scss`, `footer.scss`, `hide.scss`. |
+| `main.scss` | Ponto único: `@use` variables → mixin → animations → common-elements → módulos por secção → reset, `:root`, tipografia, `.wrapper`. |
+| `common-elements.scss` | `.sectionHeader`, `.btn-primary`, `.btn-secondary`. |
+| `section-header-with-sidebar.scss` | Mídia e sidebar em `sectionHeader--withStickySidebar`. |
+| Demais módulos | `header`, `hero`, `who-we-are`, `services`, `values`, `method`, `testimonials`, `video-testimonials`, `you-center`, `why-suno`, `team`, `structure`, `faq`, `contact`, `page-hero`, `legal-documents`, `footer`, `hide`. |
 
 ---
 
-## 2. Ordem de imports no main.scss
+## 2. Ordem de imports no `main.scss`
 
 ```scss
 @use "variables" as *;
@@ -59,10 +61,10 @@ Arquivo de memória para manter contexto entre sessões. O usuário pode pedir a
 @use "video-testimonials" as *;
 @use "you-center" as *;
 @use "why-suno" as *;
-@use "equipe" as *;
-@use "estrutura" as *;
+@use "team" as *;
+@use "structure" as *;
 @use "faq" as *;
-@use "contato" as *;
+@use "contact" as *;
 @use "page-hero" as *;
 @use "legal-documents" as *;
 @use "footer" as *;
@@ -74,7 +76,7 @@ Manter essa ordem ao adicionar novos módulos.
 
 ---
 
-## 3. Variáveis (variables.scss)
+## 3. Variáveis (`variables.scss`)
 
 ```scss
 $marginDesk: 64px;
@@ -83,123 +85,90 @@ $usedFont: Arial, Helvetica, sans-serif;
 $titleFont: "Montserrat", "Arial", sans-serif;
 ```
 
-- **Variáveis CSS** também em `main.scss` (`:root`): `--color-txt`, `--color-primary`, `--color-dark`, etc.
-- **Hat (sectionHeader__hat) — contraste WCAG:** em `:root`: `--hat-filter-light` (fundo claro: base `#000` → vermelho próximo de `--color-primary`); `--hat-filter-dark` (fundo escuro: base `#fff` → vermelho). No common-elements: hat em fundo claro usa `color: #000; filter: var(--hat-filter-light)`; em `.sectionHeader--dark` usa `color: #fff; filter: var(--hat-filter-dark)`.
+- **Variáveis CSS** em `main.scss` (`:root`): `--color-txt`, `--color-primary`, `--color-dark`, `--hat-filter-light`, `--hat-filter-dark`, etc.
+- **Hat (`sectionHeader__hat`) — contraste WCAG:** base `#000` (fundo claro) ou `#fff` (`.sectionHeader--dark`) + `filter: var(--hat-filter-*)` definidos em `:root`.
 
 ---
 
-## 4. Mixins (mixin.scss)
+## 4. Mixins (`mixin.scss`)
 
 | Mixin | Uso |
 |-------|-----|
-| `@include endOfModule` | Margem inferior do bloco: 64px desktop, 32px em ≤800px. Usado em quase todas as seções. |
-| `resume($lineToResume: 3)` | Limita texto em N linhas com reticências (-webkit-line-clamp). |
+| `@include endOfModule` | Margem inferior: `$marginDesk` em `min-width: 801px`, `$marginMobi` em `max-width: 800px`. |
+| `swiperNavChevron` | Botões prev/next do Swiper: esconde SVG interno do Swiper 12 e o `::after` padrão; seta única em `::before` (data-URI). Incluir com `@include swiperNavChevron` nos seletores `--team`, `--whySuno`, etc. |
+| `resume($lineToResume: 3)` | `-webkit-line-clamp` + reticências. |
 | `grid($numberGrid)` | `grid-template-columns: repeat(N, 1fr)`. |
-| `gridGap($numberGap)` | gap de grid. |
-| `border($numberRadius)` | border-radius. |
-| `list-style-none` | Remove marcador de lista e do details. |
-| `center` | Flex justify/align center. |
-| `debug()` | Apenas desenvolvimento (contorno vermelho em filhos). |
+| `gridGap($numberGap)` | Gaps de grid. |
+| `border($numberRadius)` | `border-radius`. |
+| `list-style-none` | Remove marcador de lista / `details`. |
+| `center` | Flex centralizado. |
+| `debug()` | Apenas desenvolvimento. |
 
 ---
 
-## 5. Animações (animations.scss)
+## 5. Animações (`animations.scss`)
 
-- **radarPulse** — pulso no centro (scale + opacity).
-- **radarWave** — onda expandindo (usado no hero).
-- **cardFloatLeft** / **cardFloatRight** — cards flutuando no hero.
-- **cardSlideInLeft** / **cardSlideInRight** — entrada dos cards (esquerda/direita).
+- **radarPulse**, **radarWave** (hero).
+- **cardFloatLeft** / **cardFloatRight**, **cardSlideInLeft** / **cardSlideInRight**.
 
-Não há mixins de animação; os keyframes são usados diretamente nos módulos (ex.: hero).
+Sem mixins de animação; uso direto nos módulos.
 
 ---
 
 ## 6. Common-elements
 
-- **.sectionHeader** — cabeçalho de seção: `__img`, `__hat`, `__title`, `__desc`. Modificadores: `--noImg`, `--dark`, `--withStickySidebar` (grid 2 colunas, header em 1/-1, body + sidebar; sidebar com `position: sticky; top: 120px` em ≥1221px). O hat usa filtros de contraste (ver variáveis).
-- **Seções com coluna sticky:** não usar `overflow-x: hidden` no bloco em viewports grandes, senão o sticky quebra. Aplicar `overflow-x: hidden` apenas em `max-width: 1220px` (quando o layout vira 1 coluna). Blocos que usam esse padrão: **whoWeAre** (sidebar sticky), **method** (`method__content` com `position: sticky; top: 128px` em ≥1221px), **you-center** (`you-center__models` com `position: sticky; top: 128px` em ≥1221px).
-- **.btn-primary** / **.btn-secondary** — botões globais. O `.btn-primary` tem seta em `::after` (SVG em data-URI); se o botão tiver `<svg>` filho, usa `&:has(svg)` para esconder o `::after`.
-- Media queries dentro do bloco: **1220px → 800px** (menores aninhadas nas maiores). Não usar breakpoint 760px; 800px cobre mobile.
+- **`.sectionHeader`** — `__img`, `__hat`, `__title`, `__desc`. Modificadores: `--noImg`, `--dark`, `--withStickySidebar` (grid 2 colunas; sticky da sidebar em ≥1221px quando aplicável).
+- **Coluna sticky:** não usar `overflow-x: hidden` no bloco em viewports grandes (quebra o sticky). Usar `overflow-x: hidden` só em `max-width: 1220px` (layout 1 coluna). Blocos com esse padrão: **whoWeAre**, **method** (`method__content`), **you-center** (`you-center__models`).
+- **`.btn-primary` / `.btn-secondary`** — seta do primário em `::after`; `&:has(svg)` esconde o `::after` se existir `<svg>` no botão.
 
 ---
 
-## 7. Padrão de SVG no projeto
+## 7. Padrão de SVG (ícones)
 
-- **Não usamos SVG inline no HTML para ícones.** Apenas exceção: logo (`<img src="img/suno-consultoria.svg">`).
-- **Ícones = elemento vazio no HTML** (div/span com classe) + **SVG em CSS** via:
-  - `background-image: url('data:image/svg+xml,...');`
-  - Em pseudo-elemento `::before` ou `::after` (geralmente `::before`).
-- **Cores no data-URI:** usar `%23` no lugar de `#` (ex.: `stroke="%23dc2626"`).
-- Onde isso é usado: common-elements (seta do botão), services, process, values, you-center, estrutura, faq, method, testimonials (ícones, citações, estrelas).
-
-Ao adicionar novo ícone: criar classe no bloco (ex.: `bloco__icon bloco__icon--nome`) e definir o SVG no SCSS em `::before`/`::after`. **Exceção (footer):** ícones sociais usam sprite externo `img/footer/social-icons.svg` com `<svg><use href=".../#id"></svg>` no HTML.
+- **Sem SVG inline no HTML** para ícones (exceto logo: `<img src="img/suno-consultoria.svg">`).
+- **Ícones:** elemento vazio + **SVG em CSS** (`background-image: data-uri` em `::before`/`::after`). Cores: `%23` em vez de `#`.
+- **Footer:** sprite `img/footer/social-icons.svg` com `<svg><use href="...#id"></use></svg>`.
 
 ---
 
-## 8. Padrão dos sliders (Swiper)
+## 8. Sliders (Swiper 12) — resumo
 
-- **Biblioteca:** Swiper 12 — CSS e JS via CDN (head: `swiper-bundle.min.css`; antes do `script.js`: `swiper-bundle.min.js`). Sempre `if (typeof Swiper !== 'undefined')` antes de instanciar; inicialização em `DOMContentLoaded`; resize com debounce 250 ms quando o slider depende da largura.
-- **Um único padrão** para testimonials, equipe e estrutura.
+Biblioteca **Swiper 12** via CDN: CSS no `<head>`, JS **antes** de `script.js`. Implementação completa (opções, destroy/init, breakpoints) em **`script.js`**. Markup e classes por bloco em **`index.html`**.
 
-### Estrutura HTML comum
+| Bloco | Secção | `mySwiper--*` | Nota |
+|-------|--------|---------------|------|
+| Depoimentos (texto) | `.testimonials` | `--testimonials` | Sempre ativo; ≤800px reorganiza 1 card/slide. |
+| Nossa equipe | `.team` | `--team` | Só ≤800px; acima = grid CSS; nav oculta >800px. |
+| Por que a Suno | `.whySuno` | `--whySuno` | Sempre; 2 slides a partir do breakpoint 760px (Swiper). |
+| Estrutura | `.structure` | `--structure` | Coverflow, `slidesPerView: 'auto'`. |
+| Depoimentos em vídeo | `.videoTestimonials` | `--videoTestimonials` | Loop, autoplay; nav em `__navigation`. |
 
-```html
-<section class="[bloco]" aria-label="...">
-  <div class="wrapper">
-    <div class="[bloco]__list">
-      <div class="swiper mySwiper mySwiper--[modificador]">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">...</div>
-          ...
-        </div>
-      </div>
-      <div class="[bloco]__navigation">
-        <div class="swiper-button-prev swiper-button-prev--[modificador]"></div>
-        <div class="swiper-pagination swiper-pagination--[modificador]"></div>
-        <div class="swiper-button-next swiper-button-next--[modificador]"></div>
-      </div>
-    </div>
-  </div>
-</section>
-```
+**SCSS:** botões prev/next com **`@include swiperNavChevron`** (ver **§4**). Restantes regras (flex, bullets, tamanhos) nos `.scss` de cada bloco.
 
-Classes obrigatórias: `swiper mySwiper mySwiper--[modificador]`, `swiper-wrapper`, `swiper-slide`; navegação com classes `--[modificador]`. Em **testimonials** a navegação fica **dentro** do `.swiper`; em equipe e estrutura é **irmã** do `.swiper`. Modificadores: `--testimonials`, `--equipe`, `--estrutura`.
+**Bleed mobile** (`width: calc(100% + 16px)` em ≤800px): só **`.team__list .swiper`** e **`.videoTestimonials__sliderWrap .swiper`**.
 
-### Comportamento e opções (resumo)
-
-| Slider | Ativo | JS / opções |
-|--------|--------|--------------|
-| **Testimonials** | Sempre | ≤800px: 1 card por slide (JS reorganiza wrapper); desktop: 2 cards. `slidesPerView: 1`, `spaceBetween: 24`, navigation/pagination `--testimonials`. |
-| **Equipe** | Só ≤800px | Acima de 800px: destroy Swiper, CSS vira grid (2 col até 1220px, 4 col 1221+). Navegação `display: none` em 801+. `slidesPerView: 1.2`, `spaceBetween: 16`, `--equipe`. |
-| **Estrutura** | Sempre | `effect: 'coverflow'`, `slidesPerView: 'auto'`, `centeredSlides: true`, `coverflowEffect`: depth 120, modifier 2.2. Largura dos slides no SCSS. |
-
-### Estilo (SCSS)
-
-- Navegação: container flex, centralizado, gap. Botões prev/next: reset position/margin do Swiper, `::after`/`::before` em `display: none`; botão circular (40px, 36px em 800px), borda, hover com primary; `.swiper-button-disabled`: opacity 0.25.
-- Pagination: `.swiper-pagination-bullet` (8px, 6px em 800px); `.swiper-pagination-bullet-active`: cor primary, width alongado (24px/20px), border-radius 4px (pill).
-- Media queries: 1220 → 800 dentro dos elementos.
-
-**Novo slider:** mesmo HTML + novo modificador (ex.: `--novo`), novo bloco no `script.js` (navigation/pagination com classes `--novo`), estender navegação/pagination no SCSS.
+**Novo slider:** seguir o padrão dos blocos existentes + linha do checklist em **§16**.
 
 ---
 
 ## 9. BEM e nomenclatura
 
-- **Blocos:** camelCase (ex.: `.sectionHeader`, `.hero100`, `.you-center`).
-- **Elementos:** `&__elemento` (ex.: `sectionHeader__title`, `equipe__card`).
-- **Modificadores:** `&--modificador` (ex.: `sectionHeader--dark`, `equipe__consultor--more`).
-- **Estados:** pseudo-classes no CSS (`:hover`, `:focus`, `:active`); não criar classes de estado no HTML.
+- **Blocos:** camelCase (ex.: `.sectionHeader`, `.videoTestimonials`, `.team`).
+- **Elementos:** `__elemento` (ex.: `team__card`, `structure__slideImg`).
+- **Modificadores:** `--modificador` (ex.: `team__consultor--more`).
+- **Estados:** pseudo-classes no CSS; evitar classes de estado no HTML.
 
-Se no futuro houver PHP/WordPress: as mesmas classes devem ser usadas nos templates (sincronização CSS/PHP).
+Sincronizar classes entre HTML/SCSS (e PHP/WordPress no futuro).
 
 ---
 
 ## 10. Media queries
 
-- **Breakpoints:** apenas **1220px** e **800px** (não usar 760px; 800px cobre mobile).
-- **Ordem:** maior → menor: **1220px** → **800px** (menores aninhadas nas maiores).
-- **Posição:** sempre **dentro do elemento/bloco** a que se referem (aninhadas no SCSS).
-- Exemplo:
+- **Breakpoints principais:** **1220px** e **800px**.
+- **760px:** usar **apenas aninhado dentro do ramo de 800px** quando for preciso um passo extra fino (tipografia, padding, bullets, etc.) — **não** duplicar `@media 800` incorretamente dentro do mesmo ramo.
+- **Ordem:** maior → menor (**1220 → 800 → 760** quando 760 existir).
+- **Posição:** sempre **dentro** do seletor/bloco a que se referem.
+- Abordagem: **max-width** em cascata (não mobile-first).
 
 ```scss
 .bloco {
@@ -207,132 +176,100 @@ Se no futuro houver PHP/WordPress: as mesmas classes devem ser usadas nos templa
   @media screen and (max-width: 1220px) {
     padding: 64px 0;
     @media screen and (max-width: 800px) {
-      padding: 48px 0;
+      padding: 52px 0;
+      @media screen and (max-width: 760px) {
+        padding: 48px 0;
+      }
     }
   }
 }
 ```
 
-Não usar mobile-first; preferir max-width do maior para o menor.
-
 ---
 
 ## 11. Acessibilidade e semântica
 
-- Header: `role="banner"`, nav com `aria-label="Navegação principal"`.
+- Header: `role="banner"`; nav `aria-label="Navegação principal"`.
 - Main: `role="main"`. Footer: `role="contentinfo"`.
-- Seções: `aria-label` descritivo.
-- **Footer:** endereço em `<address>`; link do endereço para Google Maps. “Links Úteis” e “Redes Sociais” dentro de `<nav class="footer__nav" aria-label="Links úteis">` e `<nav aria-label="Redes sociais">`.
-- **Passo a passo (you-center):** cada passo é `<article class="you-center__step">` dentro de `.you-center__steps` (estilos em `you-center.scss`).
-- **Equipe “Ver mais consultores”:** dois links `<a>` (“Ver mais” → `#equipe-consultores-expand`, “Ver menos” → `#equipe`); expansão via `:target` em CSS (sem checkbox). Span `#equipe-consultores-expand` como alvo.
-- Checkboxes escondidos para interação (ex.: FAQ): `aria-hidden="true"` quando for apenas controle visual.
-- Imagens: `alt` preenchido; logo com texto equivalente.
-- Foco e contraste mantidos nos botões e links. **sectionHeader__hat:** contraste WCAG via filtros em `:root` (não mudar a cor; usar base #000 no claro e #fff no escuro + filtros).
+- Secções: `aria-label` descritivo.
+- Footer: `<address>`; `<nav aria-label="Links úteis">` / redes.
+- **You-center:** passos em `<article class="you-center__step">`.
+- **Team “Ver mais consultores”:** links para `#team-consultores-expand` e âncora de retorno; expansão com `:target` em CSS.
+- Imagens: `alt` adequado; foco e contraste em controlos.
 
 ---
 
 ## 12. Imagens
 
-### Estrutura da pasta `img/`
+### Pasta `img/` (trecho)
 
 ```
 img/
-├── suno-consultoria.svg          # Logo do header e do footer (footer: 290px)
-├── nossos-servicos.avif          # Imagem do sectionHeader (Serviços)
-├── nossos-servicos.png
-├── nossos-servicos.webp
-├── carteiras/
-│   ├── carteira-div.png         # Gráfico Carteira Dividendos (bloco Por que a Suno)
-│   ├── carteira-fiis.png
-│   ├── carteira-inter.png
-│   ├── carteira-small-caps.png
-│   └── RENOMEAR.txt             # Instruções de padronização de nomes
-├── equipe/
-│   ├── 01.avif … 04.avif         # Fotos dos cards da equipe
+├── suno-consultoria.svg
+├── nossos-servicos.avif / .png / .webp
+├── carteiras/          # gráficos Por que a Suno
+├── equipe/             # fotos .avif (classes BEM: team__cardImg)
 └── footer/
-    ├── cvm-logo.svg              # Logo CVM no badge do footer
-    └── social-icons.svg         # Sprite SVG: #instagram, #youtube, #facebook, #twitter (uso: <use href="img/footer/social-icons.svg#id">)
+    ├── cvm-logo.svg
+    └── social-icons.svg  # #instagram, #youtube, ...
 ```
-
-### Onde cada imagem é usada
-
-| Uso | Caminho / classe | Observação |
-|-----|------------------|------------|
-| Logo header | `img/suno-consultoria.svg` | `.header__logoImg`, `width="300"`, `alt` descritivo |
-| Cabeçalho Serviços | `img/nossos-servicos.avif` | `.sectionHeader__img`, `width="420"` |
-| Cards equipe | `img/equipe/01.avif` … `04.avif` | `.equipe__cardImg`, alt com nome + titulação |
-| Slider estrutura | URLs externas (ex.: Unsplash) | `.estrutura__slideImg` |
-| Logo footer | `img/suno-consultoria.svg` | `.footer__logoImg`, `width="290"` |
-| Badge CVM | `img/footer/cvm-logo.svg` | `.footer__cvmLogo` |
-| Ícones redes (footer) | `img/footer/social-icons.svg` + `#id` | `<svg><use href="img/footer/social-icons.svg#instagram"/>` etc. |
-| Cards Por que a Suno | `img/carteiras/carteira-div.png` etc. | `.whySuno__cardVisual`; **legenda:** ordem e cor dos itens (`.whySuno__cardLegendDot--blue`, `--orange`, `--green`, `--red`, `--purple`, `--yellow`, `--cyan`, `--gray`, `--custom`) devem coincidir com as linhas do gráfico na imagem. |
 
 ### Convenções
 
-- **Formatos:** preferir AVIF; ter PNG/WebP como fallback quando fizer sentido (ex.: nossos-servicos).
-- **Atributos:** sempre `width` e `height` (ou pelo menos um) para evitar CLS; sempre `alt` descritivo.
-- **Classes:** BEM do bloco (ex.: `header__logoImg`, `sectionHeader__img`, `equipe__cardImg`, `estrutura__slideImg`).
-- **Ícones decorativos:** não são `<img>`; são elementos vazios + SVG em CSS (ver seção 7).
-
-Para imagens abaixo da dobra, considerar `loading="lazy"` (exceto LCP, ex.: hero/sectionHeader).
+- Preferir **AVIF**; `width`/`height` para **CLS**; `loading="lazy"` abaixo da dobra (exceto LCP).
+- **Structure:** slides podem usar URLs externas em `.structure__slideImg`.
+- **Why Suno:** legendas (dots) alinhadas às cores das linhas nos PNGs (`whySuno__cardLegendDot--*`).
 
 ---
 
-## 13. JavaScript (script.js)
+## 13. JavaScript (`script.js`)
 
-- **Um único arquivo:** `script.js`, vanilla (sem jQuery).
-- **Dependência:** Swiper 12 — carregado no HTML antes do `script.js`:
-  - `https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js`
-  - `script.js`
+| Bloco | Função |
+|-------|--------|
+| **Hero — números** | `IntersectionObserver` + animação de contadores em `.hero__content__statNumber`. |
+| **Testimonials** | `reorganizeSlides()` + Swiper; resize com debounce 250 ms. |
+| **Team** | `initTeamSwiper()` só ≤800px; destroy + reinit no resize (debounce). |
+| **Why Suno** | Swiper sempre; `update()` no resize (debounce). |
+| **Structure** | Coverflow; `update()` no resize (debounce). |
+| **Video testimonials** | Swiper + autoplay/loop; `update()` no resize; modal de vídeo (se ativo no HTML). |
 
-### Blocos no script.js
-
-| Bloco | Função | Seletores / elementos |
-|-------|--------|------------------------|
-| **Animação de números (hero)** | Quando o bloco de stats entra na tela, anima os números (ex.: 0 → 3.500, 0.0 → 6.5 Bi+). | `animateNumber()`, `extractNumber()`, `shouldAnimate()`; `IntersectionObserver` (threshold 0.5); `.hero__content__statNumber`. Evita animar texto sem número (ex.: "CVM"). |
-| **Testimonials slider** | Swiper sempre ativo; em ≤800px reorganiza: 1 card por slide; em desktop mantém 2 cards por slide. | `.mySwiper.mySwiper--testimonials`, `.swiper-wrapper`, `.testimonials__card`. Resize com debounce 250ms; guarda `originalHTML` para restaurar ao redimensionar. |
-| **Equipe slider** | Swiper só ≤800px; acima disso destroy + CSS vira grid. | `.mySwiper.mySwiper--equipe`. `initEquipeSwiper()`; no resize, destroy e chama de novo (debounce 250ms). |
-| **Estrutura slider** | Swiper coverflow, sempre ativo. | `.mySwiper.mySwiper--estrutura`; effect `coverflow`, `slidesPerView: 'auto'`. |
-
-### Convenções JS
-
-- Inicialização em `DOMContentLoaded`.
-- Antes de usar Swiper: `if (typeof Swiper !== 'undefined')`.
-- Resize: sempre `setTimeout(..., 250)` (debounce) para sliders que dependem da largura.
-- Seletores por classes BEM (ex.: `.mySwiper--testimonials`, `.hero__content__statNumber`).
-- Comentários de bloco: `// ========== NOME - INÍCIO / FIM ==========`.
-
-Ao adicionar novo slider ou funcionalidade: manter o mesmo padrão (DOMContentLoaded, checagem de lib, debounce no resize quando fizer sentido).
+Convenções: comentários `// ========== NOME - INÍCIO / FIM ==========`; seletores por classes BEM.
 
 ---
 
-## 14. Performance e CWV
+## 14. Performance e Core Web Vitals
 
-- Objetivo: boa nota em LCP, CLS, FID/INP.
-- Imagens: uso de AVIF/WebP onde aplicável; `width`/`height` para evitar CLS.
-- Swiper carregado via CDN; inicialização só quando necessário (equipe só ≤800px).
-- Evitar JS desnecessário; preferir CSS para animações e estados.
+- LCP, CLS, FID/INP: imagens dimensionadas, menos JS desnecessário, animações em CSS quando possível.
+- Swiper só onde faz sentido (team só mobile).
 
 ---
 
-## 15. Blocos adicionais (páginas internas)
+## 15. Blocos adicionais
 
-- **.pageHero** — Mini-hero genérico para títulos de páginas (Termos, Política, etc.). Fundo escuro (#1a1a1a), gradientes leves primary, linhas no topo e base; `__label` com contraste WCAG (`color: var(--color-txt-light)` + `filter: var(--hat-filter-dark)`); `__title` (h1). Variável `$pageHeroMinHeight: 180px`. Exemplo em `termos.html`; snippet em `pageHero-snippet.html`.
-- **.contato** — Seção consultoria + form HubSpot: `__grid` (0.6fr 1fr; 1 col em 1220), `__features` (grid 2 col em 800, 3º item em linha própria), `__form` (background #ffffff10). Wrapper sem max-width próprio; `overflow-x: hidden` no bloco.
-- **.you-center** — “Como funciona o nosso atendimento”: grid 2 colunas (1fr 1.2fr), coluna esquerda `__intro` (hat, título, textos, pills com ícone check em `::before`, CTA), coluna direita `__models` com `position: sticky; top: 128px` em ≥1221px. Cards (`__card`) com hover (fundo primary, ícone branco); ícones dos cards em CSS (modificadores `--target`, `--penTool`). Pills: gap 8px / font 14px → 5px / 13px em 800px. Cards com `cursor: default`. Overflow-x apenas em ≤1220px para o sticky funcionar.
+- **`.pageHero`** — páginas internas (termos, etc.): `page-hero.scss`, snippet `pageHero-snippet.html`.
+- **`.contact`** — formulário HubSpot, grid responsivo, `contact.scss`; âncora `#contact`, `#contact-form`.
+- **`.you-center`** — atendimento: grid 2 colunas, sticky em `__models` (≥1221px), pills e cards com ícones em CSS.
 
 ---
 
-## 16. Histórico de atualizações (contexto)
+## 16. Checklist rápido (reutilizável)
 
-Use esta seção para anotar o que mudou quando você pedir para “atualizar o md de contexto” ao fechar uma parte.
+- [ ] Ficheiros `.scss` em **kebab-case inglês** alinhados ao bloco **camelCase inglês**; elementos `__elemento`; modificadores `--modificador`.
+- [ ] Media queries **1220 → 800 → (760 aninhado)** dentro do elemento.
+- [ ] SVG: ícones em CSS (data-URI); `%23` no lugar de `#`.
+- [ ] Sticky: sem `overflow-x: hidden` no bloco em desktop largo; overflow só ≤1220px se necessário.
+- [ ] Swiper: `mySwiper--[mod]` + navegação com mesmo sufixo; `@include swiperNavChevron`; checagem `typeof Swiper` e debounce no resize quando aplicável.
+- [ ] Imagens: `width`/`height`, `alt`, lazy quando adequado.
+- [ ] HTML semântico; roles/`aria-label` onde couber.
 
-- **Criação** — CONTEXTO-PROJETO.md com estrutura, main/common-elements, SVGs, sliders, BEM, media queries, variables/mixin/animations, acessibilidade e CWV.
-- **Atualização** — Inclusão das seções **12. Imagens** (estrutura `img/`, onde cada imagem é usada, convenções) e **13. JavaScript** (blocos do script.js, animação de números do hero, sliders, convenções JS).
-- **30/01/2025** — Footer: branding sem spans (resumo); ver entrada anterior completa.
-- **30/01/2025** — **Media queries:** padrão **1220px e 800px** apenas (sem 760px). Mixin `endOfModule`: mobile em ≤800px. **Seção 8 (Swiper):** conteúdo de SLIDER-SWIPER-ANALISE.md incorporado e resumido. **Seção 15:** blocos pageHero e contato. Imports: contato, pageHero, hide. Tabela SCSS atualizada. “Ver mais consultores”.
-- **25/02/2025** — Bloco **you-center** documentado na seção 15: layout 2 colunas, sticky em `__models`, overflow-x só em ≤1220px. **Seção 6:** padrão “coluna sticky” estendido a method e you-center (overflow-x apenas em max-width: 1220px).
-- **25/02/2025** — **Nomes de arquivos `.scss`:** padrão **kebab-case**; ver entrada seguinte para alinhamento **inglês** com blocos BEM.
-- **25/02/2025** — **Blocos + ficheiros em inglês:** `.whoWeAre` / `who-we-are.scss`, `.whySuno` / `why-suno.scss`, `.videoTestimonials` / `video-testimonials.scss`; timeline `.you-center__steps*` fundida em `you-center.scss` (removido `passo-a-passo.scss`). Âncoras: `#who-we-are`, `#why-suno`, `#step-by-step`. `main.scss`, HTML, `script.js`, `hide.scss` e docs atualizados.
+---
 
-*Fim do documento. Atualize este arquivo sempre que fechar uma etapa ou quando algo relevante mudar no projeto.*
+## 17. Histórico de atualizações (contexto)
+
+- **Criação** — Estrutura inicial: main, common-elements, SVG, sliders, BEM, media queries, CWV.
+- **Evolução** — Secções Imagens e JavaScript; footer; pageHero e contact; padrão sticky; ficheiros e blocos em inglês (`whoWeAre`, `whySuno`, `videoTestimonials`, `team`, `structure`, `contact`); timeline em `you-center.scss`.
+- **25/02/2026** — Fusão `PADRONIZACAO.md` + `SLIDER-SWIPER-ANALISE.md` neste ficheiro (ficheiros antigos removidos). Código: cinco sliders, `swiperNavChevron`, bleed só team/video, módulos em inglês. **§8 Swiper** enxuta: só tabela-resumo e remissões a `script.js` / HTML / **§4** / **§16** (sem bloco analítico duplicado).
+
+---
+
+*Atualize este ficheiro ao fechar etapas relevantes ou quando pedido explicitamente.*

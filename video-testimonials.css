@@ -225,6 +225,14 @@
   position: relative;
   width: 100%;
 }
+.videoTestimonials__sliderWrap .swiper {
+  width: 100%;
+}
+@media screen and (max-width: 800px) {
+  .videoTestimonials__sliderWrap .swiper {
+    width: calc(100% + 16px);
+  }
+}
 .videoTestimonials__navigation {
   display: flex;
   align-items: center;

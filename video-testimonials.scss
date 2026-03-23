@@ -201,6 +201,13 @@
   &__sliderWrap {
     position: relative;
     width: 100%;
+
+    .swiper {
+      width: 100%;
+      @media screen and (max-width: 800px) {
+        width: calc(100% + 16px);
+      }
+    }
   }
 
   // Navegação do slider
