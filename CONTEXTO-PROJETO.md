@@ -29,6 +29,51 @@ Arquivo de memória para manter contexto entre sessões.
 - **JS:** `script.js` (vanilla); Swiper 12 via CDN.
 - **Imagens:** `img/` (logo SVG, pasta `img/equipe/` para fotos da secção team, etc.).
 
+### npm — build e hot reload
+
+**Ficheiros na raiz (tooling):** `package.json`, `package-lock.json` (manter no Git para installs reprodutíveis), **`bs-config.js`** (Browser-sync), **`.gitignore`** (inclui `node_modules/`).
+
+**Primeira vez (ou após clonar o repositório):**
+
+```bash
+npm install
+```
+
+**Scripts (`package.json`):**
+
+| Comando | Descrição |
+|---------|-----------|
+| `npm run build` | Compila uma vez: `main.scss` → `main.css` (sem source map). |
+| `npm run build:prod` | CSS **comprimido** (`compressed`), sem source map. |
+| `npm run watch` | Só **Sass em watch** (`main.scss` → `main.css`). |
+| `npm run hot` | Em paralelo: `watch` + **Browser-sync 3** com **`bs-config.js`**. |
+| `npm run dev` | Alias de `npm run hot`. |
+
+**Fluxo típico de desenvolvimento:**
+
+```bash
+npm run hot
+```
+
+Abre o browser na URL indicada no terminal (porta **5173** por defeito; se estiver ocupada, o Browser-sync usa a seguinte livre, ex. 5174).
+
+**`bs-config.js` (Browser-sync):**
+
+| Opção | Função |
+|-------|--------|
+| `server.baseDir` / `index` | Serve a raiz do projeto; entrada `index.html`. |
+| `files` | Só vigia **`main.css`**, **`index.html`**, **`script.js`** — evita reload em cascata por ficheiros irrelevantes. |
+| `watchOptions` | `ignoreInitial: true`; `ignored: node_modules`. |
+| `injectChanges` | **Injeção de CSS** quando `main.css` muda (sem reload completo → menos “piscar” ao editar SCSS). |
+| `reloadDelay` / `reloadDebounce` | Atraso e debounce nos reloads (útil quando HTML/JS mudam). |
+| `notify` | `false` — sem toast no canto do browser. |
+
+Alterações em **HTML** ou **`script.js`** continuam a provocar **reload normal** da página.
+
+**Dependências de desenvolvimento:** `sass`, `browser-sync` (^3.x), `concurrently`.
+
+**Dica:** para reload automático ao trocar imagens, podes acrescentar `"img/**/*"` ao array `files` em `bs-config.js`. Antes de commit/deploy sem usar `hot`, corre **`npm run build`** (ou `build:prod`) para garantir `main.css` atualizado.
+
 ### Ficheiros SCSS principais
 
 | Ficheiro | Conteúdo |
@@ -261,6 +306,7 @@ Convenções: comentários `// ========== NOME - INÍCIO / FIM ==========`; sele
 - [ ] Swiper: `mySwiper--[mod]` + navegação com mesmo sufixo; `@include swiperNavChevron`; checagem `typeof Swiper` e debounce no resize quando aplicável.
 - [ ] Imagens: `width`/`height`, `alt`, lazy quando adequado.
 - [ ] HTML semântico; roles/`aria-label` onde couber.
+- [ ] Antes de commit/entrega: **`npm run build`** (ou `build:prod`) se o CSS tiver sido editado só em `.scss`.
 
 ---
 
@@ -269,6 +315,7 @@ Convenções: comentários `// ========== NOME - INÍCIO / FIM ==========`; sele
 - **Criação** — Estrutura inicial: main, common-elements, SVG, sliders, BEM, media queries, CWV.
 - **Evolução** — Secções Imagens e JavaScript; footer; pageHero e contact; padrão sticky; ficheiros e blocos em inglês (`whoWeAre`, `whySuno`, `videoTestimonials`, `team`, `structure`, `contact`); timeline em `you-center.scss`.
 - **25/02/2026** — Fusão `PADRONIZACAO.md` + `SLIDER-SWIPER-ANALISE.md` neste ficheiro (ficheiros antigos removidos). Código: cinco sliders, `swiperNavChevron`, bleed só team/video, módulos em inglês. **§8 Swiper** enxuta: só tabela-resumo e remissões a `script.js` / HTML / **§4** / **§16** (sem bloco analítico duplicado).
+- **25/02/2026** — **Tooling npm:** `package.json` + `package-lock.json`, **`.gitignore`** (`node_modules/`). **`npm run hot`:** Browser-sync 3 + **`bs-config.js`** (vigia só `main.css` / `index.html` / `script.js`; `injectChanges`, `reloadDelay`, `reloadDebounce`; substituiu `live-server` para evitar ecrã a piscar). **§1** e **§16** atualizados com referência completa.
 
 ---
 
