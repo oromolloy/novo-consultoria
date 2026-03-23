@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .structure {
   display: block;
   width: 100%;
@@ -189,18 +190,28 @@
 .structure__slideOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
+  /* Base mais escura sob o texto + transição suave (fotos claras no topo) */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.75) 28%, rgba(0, 0, 0, 0.35) 55%, rgba(0, 0, 0, 0.08) 78%, transparent 100%);
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding: 24px;
+  /* Desktop largo: título/descrição só no hover (pointer fine) */
 }
 .structure__slideCard:hover .structure__slideOverlay {
   opacity: 1;
 }
-@media screen and (max-width: 800px) {
+.structure__slideOverlay {
+  /* ≤1220px: sem hover confiável no mobile — texto sempre visível */
+}
+@media screen and (max-width: 1220px) {
+  .structure__slideOverlay {
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 1220px) and (max-width: 800px) {
   .structure__slideOverlay {
     padding: 18px;
   }
@@ -211,6 +222,8 @@
   font-weight: 700;
   color: var(--color-txt-light);
   margin-bottom: 4px;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9), 0 2px 14px rgba(0, 0, 0, 0.75), 0 0 24px rgba(0, 0, 0, 0.5);
 }
 @media screen and (max-width: 800px) {
   .structure__slideTitle {
@@ -219,8 +232,10 @@
 }
 .structure__slideDesc {
   font-size: 14px;
-  color: rgb(from var(--color-txt-light) r g b/0.8);
-  line-height: 1.4;
+  color: rgb(from var(--color-txt-light) r g b/0.92);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.9), 0 1px 2px rgba(0, 0, 0, 0.85), 0 2px 10px rgba(0, 0, 0, 0.65);
 }
 @media screen and (max-width: 800px) {
   .structure__slideDesc {
