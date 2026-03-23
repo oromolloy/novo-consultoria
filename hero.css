@@ -202,7 +202,17 @@
   }
 }
 .hero100 .hero__content__btns .btn-primary {
-  padding-right: 44px;
+  padding-right: 56px;
+}
+@media screen and (max-width: 800px) {
+  .hero100 .hero__content__btns .btn-primary {
+    padding-right: 52px;
+  }
+}
+@media screen and (max-width: 800px) and (max-width: 760px) {
+  .hero100 .hero__content__btns .btn-primary {
+    padding-right: 50px;
+  }
 }
 .hero100 .hero__content__stats {
   position: static;

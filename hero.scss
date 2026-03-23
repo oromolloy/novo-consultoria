@@ -195,7 +195,14 @@
      }
     }
     & .btn-primary {
-     padding-right: 44px;
+     // Alinha com .btn-primary global: reserva para seta (::after)
+     padding-right: 56px;
+     @media screen and (max-width: 800px) {
+      padding-right: 52px;
+      @media screen and (max-width: 760px) {
+       padding-right: 50px;
+      }
+     }
     }
    }
    &__stats {

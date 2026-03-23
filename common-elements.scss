@@ -260,7 +260,7 @@
  @media screen and (max-width: 800px) {
   padding: 14px 32px;
   font-size: 15px;
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 760px) {
    padding: 12px 28px;
    font-size: 14px;
   }
@@ -278,6 +278,9 @@
 
 .btn-primary {
  position: relative;
+ // Texto com justify-content:center invade a zona da seta sem padding direito extra
+ padding-left: 40px;
+ padding-right: 52px;
  border-color: var(--color-primary);
  background-color: var(--color-primary);
  color: var(--color-txt-light);
@@ -296,7 +299,7 @@
   content: "";
   position: absolute;
   top: 0;
-  right: 16px;
+  right: 17px;
   bottom: 0;
   width: 16px;
   height: 16px;
@@ -306,6 +309,26 @@
   background-size: 16px;
   margin: auto;
   transition: all 0.3s;
+ }
+ @media screen and (max-width: 800px) {
+  padding-left: 32px;
+  padding-right: 50px;
+  &::after {
+   right: 12px;
+   width: 15px;
+   height: 15px;
+   background-size: 15px;
+  }
+  @media screen and (max-width: 760px) {
+   padding-left: 28px;
+   padding-right: 48px;
+   &::after {
+    right: 10px;
+    width: 14px;
+    height: 14px;
+    background-size: 14px;
+   }
+  }
  }
  // Se tiver SVG inline, esconde o ::after
  &:has(svg) {

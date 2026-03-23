@@ -307,7 +307,7 @@
     font-size: 15px;
   }
 }
-@media screen and (max-width: 800px) and (max-width: 800px) {
+@media screen and (max-width: 800px) and (max-width: 760px) {
   .btn-primary,
   .btn-secondary {
     padding: 12px 28px;
@@ -330,6 +330,8 @@
 
 .btn-primary {
   position: relative;
+  padding-left: 40px;
+  padding-right: 52px;
   border-color: var(--color-primary);
   background-color: var(--color-primary);
   color: var(--color-txt-light);
@@ -349,7 +351,7 @@
   content: "";
   position: absolute;
   top: 0;
-  right: 16px;
+  right: 17px;
   bottom: 0;
   width: 16px;
   height: 16px;
@@ -359,6 +361,30 @@
   background-size: 16px;
   margin: auto;
   transition: all 0.3s;
+}
+@media screen and (max-width: 800px) {
+  .btn-primary {
+    padding-left: 32px;
+    padding-right: 50px;
+  }
+  .btn-primary::after {
+    right: 12px;
+    width: 15px;
+    height: 15px;
+    background-size: 15px;
+  }
+}
+@media screen and (max-width: 800px) and (max-width: 760px) {
+  .btn-primary {
+    padding-left: 28px;
+    padding-right: 48px;
+  }
+  .btn-primary::after {
+    right: 10px;
+    width: 14px;
+    height: 14px;
+    background-size: 14px;
+  }
 }
 .btn-primary:has(svg)::after {
   display: none;
