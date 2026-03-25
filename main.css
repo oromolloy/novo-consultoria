@@ -136,6 +136,26 @@
     box-shadow: 0 0 24px 2px rgba(220, 38, 38, 0.12);
   }
 }
+@-webkit-keyframes whatsappFloatPulse {
+  0% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes whatsappFloatPulse {
+  0% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
 .sectionHeader {
   display: flex;
   flex-direction: row;
@@ -1541,12 +1561,12 @@
 }
 @media screen and (min-width: 800px) {
   .whoWeAre {
-    margin-bottom: 64px;
+    margin-bottom: 0;
   }
 }
 @media screen and (max-width: 800px) {
   .whoWeAre {
-    margin-bottom: 32px;
+    margin-bottom: 0;
   }
 }
 .whoWeAre__bg {
@@ -1614,12 +1634,12 @@
 }
 @media screen and (min-width: 800px) {
   .services {
-    margin-bottom: 64px;
+    margin-bottom: 0;
   }
 }
 @media screen and (max-width: 800px) {
   .services {
-    margin-bottom: 32px;
+    margin-bottom: 0;
   }
 }
 @media screen and (max-width: 1220px) {
@@ -1889,19 +1909,17 @@
   display: block;
   width: 100%;
   padding-top: 80px;
-  padding-bottom: 144px;
+  padding-bottom: 80px;
   background-color: #f3f3f3;
 }
 @media screen and (max-width: 1220px) {
   .values {
     padding-top: 64px;
-    padding-bottom: 128px;
   }
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) {
   .values {
     padding-top: 48px;
-    padding-bottom: 80px;
   }
 }
 .values .wrapper {
@@ -2191,12 +2209,12 @@
 }
 @media screen and (min-width: 800px) {
   .method {
-    margin-bottom: 64px;
+    margin-bottom: 0;
   }
 }
 @media screen and (max-width: 800px) {
   .method {
-    margin-bottom: 32px;
+    margin-bottom: 0;
   }
 }
 .method__background {
@@ -2502,35 +2520,32 @@
   display: block;
   width: 100%;
   padding-top: 80px;
-  padding-bottom: 144px;
-  background-color: #1f1f1f;
+  padding-bottom: 80px;
+  background-color: #f3f3f3;
 }
 @media screen and (min-width: 800px) {
   .testimonials {
-    margin-bottom: 64px;
+    margin-bottom: 0;
   }
 }
 @media screen and (max-width: 800px) {
   .testimonials {
-    margin-bottom: 32px;
+    margin-bottom: 0;
   }
 }
 @media screen and (max-width: 1220px) {
   .testimonials {
     padding-top: 64px;
-    padding-bottom: 128px;
   }
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) {
   .testimonials {
     padding-top: 56px;
-    padding-bottom: 112px;
   }
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 760px) {
   .testimonials {
     padding-top: 48px;
-    padding-bottom: 80px;
   }
 }
 .testimonials .wrapper {
@@ -2703,7 +2718,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: rgb(from var(--color-txt-light) r g b/0.3);
+  background-color: rgb(from var(--color-primary) r g b/0.3);
   opacity: 1;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
@@ -2915,12 +2930,12 @@
 }
 @media screen and (min-width: 800px) {
   .videoTestimonials {
-    margin-bottom: 64px;
+    margin-bottom: 0;
   }
 }
 @media screen and (max-width: 800px) {
   .videoTestimonials {
-    margin-bottom: 32px;
+    margin-bottom: 0;
   }
 }
 @media screen and (max-width: 1220px) {
@@ -3620,12 +3635,12 @@ body.videoTestimonials__body--modalOpen {
 }
 @media screen and (min-width: 800px) {
   .you-center {
-    margin-bottom: 64px;
+    margin-bottom: 0;
   }
 }
 @media screen and (max-width: 800px) {
   .you-center {
-    margin-bottom: 32px;
+    margin-bottom: 0;
   }
 }
 @media screen and (max-width: 1220px) {
@@ -3647,7 +3662,7 @@ body.videoTestimonials__body--modalOpen {
 .you-center__grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: 64px;
+  gap: 0;
   align-items: start;
 }
 @media screen and (max-width: 1220px) {
@@ -3658,7 +3673,7 @@ body.videoTestimonials__body--modalOpen {
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) {
   .you-center__grid {
-    gap: 32px;
+    gap: 0;
   }
 }
 @media screen and (min-width: 1221px) {
@@ -4258,12 +4273,12 @@ body.videoTestimonials__body--modalOpen {
 }
 @media screen and (min-width: 800px) {
   .whySuno {
-    margin-bottom: 64px;
+    margin-bottom: 0;
   }
 }
 @media screen and (max-width: 800px) {
   .whySuno {
-    margin-bottom: 32px;
+    margin-bottom: 0;
   }
 }
 @media screen and (max-width: 1220px) {
@@ -4598,12 +4613,12 @@ body.videoTestimonials__body--modalOpen {
 }
 @media screen and (min-width: 800px) {
   .team {
-    margin-bottom: 64px;
+    margin-bottom: 0;
   }
 }
 @media screen and (max-width: 800px) {
   .team {
-    margin-bottom: 32px;
+    margin-bottom: 0;
   }
 }
 .team .wrapper {
@@ -5115,12 +5130,12 @@ body.videoTestimonials__body--modalOpen {
 }
 @media screen and (min-width: 800px) {
   .structure {
-    margin-bottom: 64px;
+    margin-bottom: 0;
   }
 }
 @media screen and (max-width: 800px) {
   .structure {
-    margin-bottom: 32px;
+    margin-bottom: 0;
   }
 }
 .structure .wrapper {
@@ -5517,12 +5532,12 @@ body.videoTestimonials__body--modalOpen {
 }
 @media screen and (min-width: 800px) {
   .faq {
-    margin-bottom: 64px;
+    margin-bottom: 0;
   }
 }
 @media screen and (max-width: 800px) {
   .faq {
-    margin-bottom: 32px;
+    margin-bottom: 0;
   }
 }
 .faq .wrapper {
@@ -5698,12 +5713,12 @@ body.videoTestimonials__body--modalOpen {
 }
 @media screen and (min-width: 800px) {
   .contact {
-    margin-bottom: 64px;
+    margin-bottom: 0;
   }
 }
 @media screen and (max-width: 800px) {
   .contact {
-    margin-bottom: 32px;
+    margin-bottom: 0;
   }
 }
 @media screen and (max-width: 1220px) {
@@ -6530,6 +6545,34 @@ body.videoTestimonials__body--modalOpen {
   width: 134px;
   height: 80px;
   object-fit: contain;
+}
+
+#consultoriaWhatsapp {
+  bottom: 16px;
+  display: flex;
+  height: auto;
+  position: fixed;
+  right: 16px;
+  width: auto;
+  z-index: 9999;
+}
+#consultoriaWhatsapp a {
+  display: flex;
+  line-height: 0;
+  border-radius: 50%;
+}
+#consultoriaWhatsapp a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+#consultoriaWhatsapp img {
+  display: block;
+  width: 60px;
+  height: 60px;
+  transform-origin: center center;
+  -webkit-animation: whatsappFloatPulse 2s ease-out infinite alternate;
+  animation: whatsappFloatPulse 2s ease-out infinite alternate;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.4));
 }
 
 * {

@@ -8,7 +8,7 @@ module.exports = {
     baseDir: ".",
     index: "index.html",
   },
-  files: ["main.css", "index.html", "nossa-equipe.html", "termos.html", "script.js"],
+  files: ["main.css", "index.html", "nossa-equipe.html", "termos-e-condicoes.html", "script.js"],
   watchOptions: {
     ignoreInitial: true,
     ignored: ["node_modules"],

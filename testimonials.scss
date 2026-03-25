@@ -5,18 +5,15 @@
     display: block;
     width: 100%;
     padding-top: 80px;
-    padding-bottom: 144px;
-    background-color: #1f1f1f;
+    padding-bottom: 80px;
+    background-color: #f3f3f3;
     @include endOfModule;
     @media screen and (max-width: 1220px) {
         padding-top: 64px;
-        padding-bottom: 128px;
         @media screen and (max-width: 800px) {
             padding-top: 56px;
-            padding-bottom: 112px;
             @media screen and (max-width: 760px) {
                 padding-top: 48px;
-                padding-bottom: 80px;
             }
         }
     }
@@ -121,7 +118,7 @@
                 width: 8px;
                 height: 8px;
                 border-radius: 50%;
-                background-color: rgb(from var(--color-txt-light) r g b / 0.3);
+                background-color: rgb(from var(--color-primary) r g b / 0.3);
                 opacity: 1;
                 transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                 cursor: pointer;

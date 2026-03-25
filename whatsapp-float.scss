@@ -1,0 +1,30 @@
+// Botão flutuante WhatsApp — layout; keyframes em animations.scss (whatsappFloatPulse)
+#consultoriaWhatsapp {
+ bottom: 16px;
+ display: flex;
+ height: auto;
+ position: fixed;
+ right: 16px;
+ width: auto;
+ z-index: 9999;
+
+ a {
+  display: flex;
+  line-height: 0;
+  border-radius: 50%;
+  &:focus-visible {
+   outline: 2px solid var(--color-primary);
+   outline-offset: 4px;
+  }
+ }
+
+ img {
+  display: block;
+  width: 60px;
+  height: 60px;
+  transform-origin: center center;
+  -webkit-animation: whatsappFloatPulse 2s ease-out infinite alternate;
+  animation: whatsappFloatPulse 2s ease-out infinite alternate;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.4));
+ }
+}

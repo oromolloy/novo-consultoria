@@ -188,6 +188,21 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(element);
     });
 
+    (function closeMobileMenuOnNavLink() {
+        const menu = document.querySelector(".header__menu");
+        const menuToggle = document.getElementById("header__menuToggle");
+        const submenuToggle = document.getElementById("header__submenuToggle");
+        if (!menu || !menuToggle) return;
+
+        menu.addEventListener("click", function (e) {
+            const link = e.target.closest && e.target.closest("a[href]");
+            if (!link) return;
+            if (link.classList.contains("header__menuLink--noLink")) return;
+            menuToggle.checked = false;
+            if (submenuToggle) submenuToggle.checked = false;
+        });
+    })();
+
     if (typeof Swiper !== "undefined") {
     // TESTIMONIALS SLIDER
     const swiperContainer = document.querySelector(".mySwiper.mySwiper--testimonials");
