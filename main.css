@@ -6540,6 +6540,12 @@ body.videoTestimonials__body--modalOpen {
 
 html {
   color: var(--color-txt);
+  scroll-padding-top: 100px;
+}
+@media screen and (max-width: 1220px) {
+  html {
+    scroll-padding-top: 88px;
+  }
 }
 
 body {

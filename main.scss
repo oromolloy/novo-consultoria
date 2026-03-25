@@ -21,7 +21,6 @@
 @use "page-hero" as *;
 @use "legal-documents" as *;
 @use "footer" as *;
-@use "hide" as *;
 // Reset
 * {
  padding: 0;
@@ -50,6 +49,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
 html {
  color: var(--color-txt);
+ scroll-padding-top: 100px;
+ @media screen and (max-width: 1220px) {
+  scroll-padding-top: 88px;
+ }
 }
 
 body {

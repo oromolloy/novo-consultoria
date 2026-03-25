@@ -135,6 +135,53 @@ function debounceResize(fn, ms) {
     };
 }
 
+// Scroll suave em âncoras da mesma página
+(function () {
+    function smoothScrollTo(targetY, duration) {
+        var scrollEl = document.scrollingElement || document.documentElement;
+        var startY = scrollEl.scrollTop;
+        var distance = targetY - startY;
+        if (distance === 0) return;
+        var startTime = null;
+
+        function ease(t) {
+            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        }
+
+        function tick(now) {
+            if (!startTime) startTime = now;
+            var p = Math.min((now - startTime) / duration, 1);
+            scrollEl.scrollTop = startY + distance * ease(p);
+            if (p < 1) requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+    }
+
+    document.addEventListener("click", function (e) {
+        var link = e.target.closest && e.target.closest('a[href^="#"]');
+        if (!link) return;
+
+        var hash = link.getAttribute("href");
+        if (!hash || hash === "#") return;
+
+        var target;
+        try { target = document.querySelector(hash); } catch (_) { return; }
+        if (!target) return;
+
+        e.preventDefault();
+
+        var scrollEl = document.scrollingElement || document.documentElement;
+        var headerEl = document.querySelector(".header");
+        var offset = headerEl ? headerEl.getBoundingClientRect().height : 0;
+        var targetY = target.getBoundingClientRect().top + scrollEl.scrollTop - offset;
+
+        smoothScrollTo(targetY, 700);
+
+        if (history.pushState) history.pushState(null, "", hash);
+    });
+})();
+
 document.addEventListener("DOMContentLoaded", function () {
     const statNumbers = document.querySelectorAll(".hero__content__statNumber");
     statNumbers.forEach((element) => {
