@@ -6473,6 +6473,7 @@ body.videoTestimonials__body--modalOpen {
 .footer__socialIcon {
   width: 18px;
   height: 18px;
+  flex-shrink: 0;
 }
 .footer__bottom {
   border-top: 1px solid rgb(from var(--color-txt-light) r g b/0.1);

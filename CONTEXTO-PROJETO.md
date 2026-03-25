@@ -256,7 +256,7 @@ img/
 ├── equipe/             # fotos .avif (classes BEM: team__cardImg)
 └── footer/
     ├── cvm-logo.svg
-    └── social-icons.svg  # #instagram, #youtube, ...
+    └── social-icons.svg  # #instagram, #youtube, #facebook, #x, #linkedin
 ```
 
 ### Convenções
