@@ -947,6 +947,13 @@
   box-sizing: border-box;
   flex-grow: 0;
 }
+@media screen and (max-width: 800px) {
+  .hero100 .hero__content {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+}
 .hero100 .hero__content__hat {
   position: relative;
   display: flex;
@@ -1089,9 +1096,13 @@
 @media screen and (max-width: 1220px) and (max-width: 800px) {
   .hero100 .hero__content__btns {
     flex-direction: column;
+    align-items: stretch;
     padding-bottom: 28px;
     margin-bottom: 20px;
     gap: 12px;
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
 .hero100 .hero__content__btns .btn-primary, .hero100 .hero__content__btns .btn-secondary {
@@ -1101,7 +1112,12 @@
 }
 @media screen and (max-width: 800px) {
   .hero100 .hero__content__btns .btn-primary, .hero100 .hero__content__btns .btn-secondary {
-    padding: 12px;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    white-space: normal;
+    padding: 12px 14px;
   }
 }
 .hero100 .hero__content__btns .btn-primary {
@@ -1109,12 +1125,12 @@
 }
 @media screen and (max-width: 800px) {
   .hero100 .hero__content__btns .btn-primary {
-    padding-right: 52px;
+    padding-right: 44px;
   }
 }
 @media screen and (max-width: 800px) and (max-width: 760px) {
   .hero100 .hero__content__btns .btn-primary {
-    padding-right: 50px;
+    padding-right: 40px;
   }
 }
 .hero100 .hero__content__stats {

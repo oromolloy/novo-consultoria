@@ -57,6 +57,11 @@
    padding: 64px 0;
    box-sizing: border-box;
    flex-grow: 0;
+   @media screen and (max-width: 800px) {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+   }
    &__hat {
     position: relative;
     display: flex;
@@ -177,9 +182,13 @@
      gap: 14px;
      @media screen and (max-width: 800px) {
       flex-direction: column;
+      align-items: stretch;
       padding-bottom: 28px;
       margin-bottom: 20px;
       gap: 12px;
+      min-width: 0;
+      width: 100%;
+      box-sizing: border-box;
      }
     }
     & .btn-primary,
@@ -188,16 +197,21 @@
      padding: 16px;
      letter-spacing: 0.32px;
      @media screen and (max-width: 800px) {
-      padding: 12px;
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      white-space: normal;
+      padding: 12px 14px;
      }
     }
     & .btn-primary {
      // Alinha com .btn-primary global: reserva para seta (::after)
      padding-right: 56px;
      @media screen and (max-width: 800px) {
-      padding-right: 52px;
+      padding-right: 44px;
       @media screen and (max-width: 760px) {
-       padding-right: 50px;
+       padding-right: 40px;
       }
      }
     }
