@@ -34,9 +34,12 @@
   align-items: start;
   @media screen and (max-width: 1220px) {
    grid-template-columns: 1fr;
-   gap: 48px;
+   gap: 56px;
    @media screen and (max-width: 800px) {
-    gap: $marginMobi;
+    gap: 48px;
+    @media screen and (max-width: 760px) {
+     gap: 40px;
+    }
    }
   }
  }
@@ -173,16 +176,16 @@
   font-weight: 700;
   line-height: 1.3;
   color: var(--color-dark);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   @media screen and (max-width: 1220px) {
    font-size: 22px;
-   margin-bottom: 20px;
+   margin-bottom: 18px;
    @media screen and (max-width: 800px) {
     font-size: 20px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
     @media screen and (max-width: 760px) {
      font-size: 18px;
-     margin-bottom: 16px;
+     margin-bottom: 14px;
     }
    }
   }
@@ -570,11 +573,14 @@
  }
 
  &__stepsCta {
-  margin-top: 32px;
+  margin-top: 48px;
   @media screen and (max-width: 1220px) {
-   margin-top: 28px;
+   margin-top: 44px;
    @media screen and (max-width: 800px) {
-    margin-top: 24px;
+    margin-top: 40px;
+    @media screen and (max-width: 760px) {
+     margin-top: 36px;
+    }
    }
   }
  }

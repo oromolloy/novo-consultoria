@@ -3668,12 +3668,17 @@ body.videoTestimonials__body--modalOpen {
 @media screen and (max-width: 1220px) {
   .you-center__grid {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 56px;
   }
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) {
   .you-center__grid {
-    gap: 0;
+    gap: 48px;
+  }
+}
+@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 760px) {
+  .you-center__grid {
+    gap: 40px;
   }
 }
 @media screen and (min-width: 1221px) {
@@ -3817,24 +3822,24 @@ body.videoTestimonials__body--modalOpen {
   font-weight: 700;
   line-height: 1.3;
   color: var(--color-dark);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 @media screen and (max-width: 1220px) {
   .you-center__modelsTitle {
     font-size: 22px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) {
   .you-center__modelsTitle {
     font-size: 20px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 760px) {
   .you-center__modelsTitle {
     font-size: 18px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 }
 .you-center__modelsDesc {
@@ -4251,16 +4256,21 @@ body.videoTestimonials__body--modalOpen {
   }
 }
 .you-center__stepsCta {
-  margin-top: 32px;
+  margin-top: 48px;
 }
 @media screen and (max-width: 1220px) {
   .you-center__stepsCta {
-    margin-top: 28px;
+    margin-top: 44px;
   }
 }
 @media screen and (max-width: 1220px) and (max-width: 800px) {
   .you-center__stepsCta {
-    margin-top: 24px;
+    margin-top: 40px;
+  }
+}
+@media screen and (max-width: 1220px) and (max-width: 800px) and (max-width: 760px) {
+  .you-center__stepsCta {
+    margin-top: 36px;
   }
 }
 
