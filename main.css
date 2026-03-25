@@ -6539,7 +6539,6 @@ body.videoTestimonials__body--modalOpen {
 
 html {
   color: var(--color-txt);
-  scroll-behavior: smooth;
 }
 
 body {

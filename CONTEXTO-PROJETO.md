@@ -23,7 +23,7 @@ Arquivo de memória para manter contexto entre sessões.
 
 ## 1. Estrutura do projeto
 
-- **HTML:** `index.html` (página única).
+- **HTML:** `index.html` (home), `nossa-equipe.html`, `termos.html`.
 - **CSS:** SCSS compilado para `main.css`. Um ficheiro SCSS por seção/bloco.
 - **Nomes dos ficheiros `.scss`:** **kebab-case em inglês**, espelhando o **bloco BEM em camelCase inglês** (ex.: `who-we-are.scss` → `.whoWeAre`, `video-testimonials.scss` → `.videoTestimonials`). Não usar camelCase no nome do ficheiro.
 - **JS:** `script.js` (vanilla); Swiper 12 via CDN.
@@ -62,7 +62,7 @@ Abre o browser na URL indicada no terminal (porta **5173** por defeito; se estiv
 | Opção | Função |
 |-------|--------|
 | `server.baseDir` / `index` | Serve a raiz do projeto; entrada `index.html`. |
-| `files` | Só vigia **`main.css`**, **`index.html`**, **`script.js`** — evita reload em cascata por ficheiros irrelevantes. |
+| `files` | **`main.css`**, **`index.html`**, **`nossa-equipe.html`**, **`termos.html`**, **`script.js`**. |
 | `watchOptions` | `ignoreInitial: true`; `ignored: node_modules`. |
 | `injectChanges` | **Injeção de CSS** quando `main.css` muda (sem reload completo → menos “piscar” ao editar SCSS). |
 | `reloadDelay` / `reloadDebounce` | Atraso e debounce nos reloads (útil quando HTML/JS mudam). |
@@ -315,7 +315,8 @@ Convenções: comentários `// ========== NOME - INÍCIO / FIM ==========`; sele
 - **Criação** — Estrutura inicial: main, common-elements, SVG, sliders, BEM, media queries, CWV.
 - **Evolução** — Secções Imagens e JavaScript; footer; pageHero e contact; padrão sticky; ficheiros e blocos em inglês (`whoWeAre`, `whySuno`, `videoTestimonials`, `team`, `structure`, `contact`); timeline em `you-center.scss`.
 - **25/02/2026** — Fusão `PADRONIZACAO.md` + `SLIDER-SWIPER-ANALISE.md` neste ficheiro (ficheiros antigos removidos). Código: cinco sliders, `swiperNavChevron`, bleed só team/video, módulos em inglês. **§8 Swiper** enxuta: só tabela-resumo e remissões a `script.js` / HTML / **§4** / **§16** (sem bloco analítico duplicado).
-- **25/02/2026** — **Tooling npm:** `package.json` + `package-lock.json`, **`.gitignore`** (`node_modules/`). **`npm run hot`:** Browser-sync 3 + **`bs-config.js`** (vigia só `main.css` / `index.html` / `script.js`; `injectChanges`, `reloadDelay`, `reloadDebounce`; substituiu `live-server` para evitar ecrã a piscar). **§1** e **§16** atualizados com referência completa.
+- **25/02/2026** — **Tooling npm:** `package.json`, **`bs-config.js`** (Browser-sync), **`.gitignore`**. **`npm run hot`:** Sass watch + Browser-sync (`injectChanges`, debounce). HTML carrega **`script.js`** direto (sem bundle).
+- **25/02/2026** — Reversão experimental de rolagem suave / esbuild: estado alinhado ao fluxo simples acima.
 
 ---
 
