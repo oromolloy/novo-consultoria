@@ -285,11 +285,15 @@ document.addEventListener("DOMContentLoaded", function () {
     let structureSwiper = null;
     if (structureContainer) {
         structureSwiper = new Swiper(".mySwiper.mySwiper--structure", {
+            // loop + coverflow + slidesPerView:"auto" desalinha o track e a paginação no Swiper 12
+            rewind: true,
             effect: "coverflow",
             grabCursor: true,
             centeredSlides: true,
             slidesPerView: "auto",
+            // Índice 2 = 3.º slide: com coverflow e slides largos, o 1.º fica colado à esquerda sem par na esquerda
             initialSlide: 2,
+            watchSlidesProgress: true,
             coverflowEffect: {
                 rotate: 0,
                 stretch: 0,
