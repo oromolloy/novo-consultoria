@@ -2,8 +2,7 @@
 node_modules/
 
 # CSS gerado (dev) e pasta de deploy
-css/
-dist/
+
 
 # Backup / arquivo local
 novo-consultoria.rar
