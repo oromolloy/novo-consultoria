@@ -4,11 +4,13 @@
   "private": true,
   "description": "Site estático — SCSS + HTML",
   "scripts": {
-    "build": "sass main.scss main.css --no-source-map",
-    "build:prod": "sass main.scss main.css --style=compressed --no-source-map",
-    "watch": "sass --watch main.scss:main.css --no-source-map",
+    "sass:compile": "sass src/scss/main.scss css/main.css --no-source-map",
+    "build": "node scripts/build-dist.mjs",
+    "build:dev": "sass src/scss/main.scss css/main.css --no-source-map",
+    "watch": "sass --watch src/scss/main.scss:css/main.css --no-source-map",
     "hot": "concurrently -n sass,web -c cyan,magenta \"npm run watch\" \"browser-sync start --config bs-config.js\"",
-    "dev": "npm run hot"
+    "dev": "npm run hot",
+    "serve:dist": "browser-sync start --server dist --port 5174"
   },
   "devDependencies": {
     "browser-sync": "^3.0.4",

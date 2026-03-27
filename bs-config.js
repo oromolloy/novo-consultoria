@@ -1,6 +1,6 @@
 /**
  * Browser-sync — evita “piscar” ao editar SCSS:
- * mudanças em main.css são injetadas sem reload completo da página.
+ * mudanças em css/main.css são injetadas sem reload completo da página.
  * HTML/JS continuam com reload normal (com debounce).
  */
 module.exports = {
@@ -8,7 +8,27 @@ module.exports = {
     baseDir: ".",
     index: "index.html",
   },
-  files: ["main.css", "index.html", "nossa-equipe.html", "termos-e-condicoes.html", "script.js"],
+  // Alinhado ao nginx em produção: /docs/ não é servido (403)
+  middleware: [
+    function blockDocs(req, res, next) {
+      const pathOnly = (req.url || "").split("?")[0];
+      if (/^\/docs(\/|$)/i.test(pathOnly)) {
+        res.statusCode = 403;
+        res.setHeader("Content-Type", "text/plain; charset=utf-8");
+        res.end("Forbidden");
+        return;
+      }
+      next();
+    },
+  ],
+  files: [
+    "css/main.css",
+    "index.html",
+    "nossa-equipe.html",
+    "termos-e-condicoes.html",
+    "script.js",
+    "img/**/*",
+  ],
   watchOptions: {
     ignoreInitial: true,
     ignored: ["node_modules"],

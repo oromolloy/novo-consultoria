@@ -26,7 +26,7 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preconnect" href="https://js.hsforms.net" crossorigin>
     <link rel="preconnect" href="https://www.youtube.com" crossorigin>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
     <script type="application/ld+json">
     {"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Suno Consultoria","legalName":"Suno S.A.","url":"https://www.suno.com.br/consultoria/","logo":"https://www.suno.com.br/consultoria/img/suno-consultoria.svg","taxID":"26.228.525/0001-72","address":{"@type":"PostalAddress","streetAddress":"Av. Presidente Juscelino Kubitschek, 2041 Torre D, 23º Andar","addressLocality":"São Paulo","addressRegion":"SP","postalCode":"04543-011","addressCountry":"BR"},"sameAs":["https://www.instagram.com/suno/","https://www.youtube.com/channel/UCWDeEIDAIi_oYKDiqwfGyRg","https://www.facebook.com/sunoresearch/","https://x.com/sunoresearch","https://br.linkedin.com/company/gruposuno"]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"O que é consultoria de investimentos?","acceptedAnswer":{"@type":"Answer","text":"A consultoria de investimentos é um serviço profissional regulamentado pela CVM (Comissão de Valores Mobiliários) que orienta investidores na construção e na gestão de estratégias de investimento personalizadas. O consultor ajuda a definir alocação e opções de ativos com base no perfil de risco, objetivos financeiros e horizonte de tempo."}},{"@type":"Question","name":"Como funciona a consultoria na Suno Consultoria?","acceptedAnswer":{"@type":"Answer","text":"Na Suno Consultoria o atendimento começa com um diagnóstico do patrimônio e dos objetivos do cliente. A partir disso, é elaborado um planejamento patrimonial completo e recomendações personalizadas em investimentos, com acompanhamento contínuo e revisões periódicas."}},{"@type":"Question","name":"O que é o modelo de fee fixo?","acceptedAnswer":{"@type":"Answer","text":"A Suno Consultoria usa o modelo de fee fixo, em que o cliente paga pelo serviço de acompanhamento e planejamento. Isso garante total foco no interesse do cliente e recomendações baseadas em análise técnica, sem remuneração por produto ou comissão."}},{"@type":"Question","name":"O consultor da Suno pode executar operações por mim?","acceptedAnswer":{"@type":"Answer","text":"Na consultoria tradicional, o consultor orienta e aconselha, mas a decisão final e a execução das ordens de compra e venda são do cliente. Quando necessário, a Suno pode apoiar operacionalmente por meio de parceiros especializados conforme o modelo contratado."}},{"@type":"Question","name":"Qual a diferença entre consultoria e assessoria de investimentos?","acceptedAnswer":{"@type":"Answer","text":"A consultoria é regulamentada pela CVM e fornece recomendações independentes, enquanto a assessoria (ligada a corretoras ou bancos) pode recomendar produtos vinculados à instituição. A consultoria foca na estratégia do cliente, sem vínculo com produtos específicos."}},{"@type":"Question","name":"O que inclui o planejamento patrimonial completo?","acceptedAnswer":{"@type":"Answer","text":"O planejamento patrimonial completo considera não apenas a carteira de investimentos, mas também temas como eficiência tributária, planejamento sucessório, gestão de riscos e seguros, aposentadoria e fluxo financeiro, todos integrados em uma estratégia de longo prazo adaptada ao cliente."}},{"@type":"Question","name":"Quanto custa uma consultoria de investimentos?","acceptedAnswer":{"@type":"Answer","text":"O custo varia conforme o modelo de serviço e o nível de personalização. O método mais comum na Suno Consultoria é o fee fixo, que é combinado com o cliente no início do relacionamento."}},{"@type":"Question","name":"Para quem a Suno Consultoria é indicada?","acceptedAnswer":{"@type":"Answer","text":"A consultoria é indicada para investidores que buscam credibilidade, planejamento estratégico e apoio técnico nas decisões de patrimônio, especialmente quem possui um patrimônio relevante ou capacidade de aporte consistente."}},{"@type":"Question","name":"Quais certificações os consultores da Suno possuem?","acceptedAnswer":{"@type":"Answer","text":"Os consultores da Suno Consultoria possuem certificações profissionais reconhecidas, como CEA (Certificação de Especialista em Investimentos) e CFP (Certified Financial Planner)."}}]}]}
@@ -1162,37 +1162,27 @@
                         <ul class="footer__socialList">
                             <li class="footer__socialItem">
                                 <a href="https://www.instagram.com/suno/" class="footer__socialLink" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                                    <svg class="footer__socialIcon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                                        <use href="img/footer/social-icons.svg#instagram" />
-                                    </svg>
+                                    <span class="footer__socialIcon footer__socialIcon--instagram" aria-hidden="true"></span>
                                 </a>
                             </li>
                             <li class="footer__socialItem">
                                 <a href="https://www.youtube.com/channel/UCWDeEIDAIi_oYKDiqwfGyRg" class="footer__socialLink" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
-                                    <svg class="footer__socialIcon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                                        <use href="img/footer/social-icons.svg#youtube" />
-                                    </svg>
+                                    <span class="footer__socialIcon footer__socialIcon--youtube" aria-hidden="true"></span>
                                 </a>
                             </li>
                             <li class="footer__socialItem">
                                 <a href="https://www.facebook.com/sunoresearch/" class="footer__socialLink" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-                                    <svg class="footer__socialIcon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                                        <use href="img/footer/social-icons.svg#facebook" />
-                                    </svg>
+                                    <span class="footer__socialIcon footer__socialIcon--facebook" aria-hidden="true"></span>
                                 </a>
                             </li>
                             <li class="footer__socialItem">
                                 <a href="https://x.com/sunoresearch" class="footer__socialLink" aria-label="X" target="_blank" rel="noopener noreferrer">
-                                    <svg class="footer__socialIcon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                                        <use href="img/footer/social-icons.svg#x" />
-                                    </svg>
+                                    <span class="footer__socialIcon footer__socialIcon--x" aria-hidden="true"></span>
                                 </a>
                             </li>
                             <li class="footer__socialItem">
                                 <a href="https://br.linkedin.com/company/gruposuno" class="footer__socialLink" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-                                    <svg class="footer__socialIcon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                                        <use href="img/footer/social-icons.svg#linkedin" />
-                                    </svg>
+                                    <span class="footer__socialIcon footer__socialIcon--linkedin" aria-hidden="true"></span>
                                 </a>
                             </li>
                         </ul>

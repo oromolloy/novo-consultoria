@@ -1,6 +1,10 @@
 # Dependências
 node_modules/
 
+# CSS gerado (dev) e pasta de deploy
+css/
+dist/
+
 # Logs
 npm-debug.log*
 yarn-debug.log*

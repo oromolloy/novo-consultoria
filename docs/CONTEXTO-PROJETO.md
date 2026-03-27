@@ -172,7 +172,7 @@ Sem mixins de animação; uso direto nos módulos.
 
 - **Sem SVG inline no HTML** para ícones (exceto logo: `<img src="img/suno-consultoria.svg">`).
 - **Ícones:** elemento vazio + **SVG em CSS** (`background-image: data-uri` em `::before`/`::after`). Cores: `%23` em vez de `#`.
-- **Footer:** sprite `img/footer/social-icons.svg` com `<svg><use href="...#id"></use></svg>`.
+- **Footer (redes sociais):** `<span class="footer__socialIcon footer__socialIcon--*">` vazio + **SVG em `background-image` (data-uri)** em `footer.scss` — alinhado ao padrão de ícones; evita `<use href="*.svg#id">` (que falha em `file://`). O ficheiro `img/footer/social-icons.svg` mantém-se só como referência dos paths.
 
 ---
 
@@ -256,7 +256,7 @@ img/
 ├── equipe/             # fotos .avif (classes BEM: team__cardImg)
 └── footer/
     ├── cvm-logo.svg
-    └── social-icons.svg  # #instagram, #youtube, #facebook, #x, #linkedin
+    └── social-icons.svg  # referência (ícones no rodapé vivem em data-uri no footer.scss)
 ```
 
 ### Convenções
