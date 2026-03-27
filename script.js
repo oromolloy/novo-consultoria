@@ -183,6 +183,28 @@ function debounceResize(fn, ms) {
 })();
 
 document.addEventListener("DOMContentLoaded", function () {
+    (function initHeaderMenuA11y() {
+        const toggle = document.getElementById("header__menuToggle");
+        const label = document.querySelector(".header__menuButton");
+        if (!toggle || !label) return;
+        function syncMenuExpanded() {
+            label.setAttribute("aria-expanded", toggle.checked ? "true" : "false");
+        }
+        label.setAttribute("aria-controls", "header-main-menu");
+        label.setAttribute("aria-expanded", "false");
+        label.setAttribute("tabindex", "0");
+        toggle.setAttribute("tabindex", "-1");
+        toggle.addEventListener("change", syncMenuExpanded);
+        label.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                toggle.checked = !toggle.checked;
+                toggle.dispatchEvent(new Event("change"));
+            }
+        });
+        syncMenuExpanded();
+    })();
+
     const statNumbers = document.querySelectorAll(".hero__content__statNumber");
     statNumbers.forEach((element) => {
         observer.observe(element);
@@ -199,6 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!link) return;
             if (link.classList.contains("header__menuLink--noLink")) return;
             menuToggle.checked = false;
+            menuToggle.dispatchEvent(new Event("change"));
             if (submenuToggle) submenuToggle.checked = false;
         });
     })();
@@ -436,6 +459,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalBackdrop = document.querySelector(".videoTestimonials__modalBackdrop");
     const cardLinks = document.querySelectorAll(".videoTestimonials .videoTestimonials__cardLink");
     const bodyModalClass = "videoTestimonials__body--modalOpen";
+    let videoModalLastFocus = null;
+
+    function getModalFocusables() {
+        if (!modal) return [];
+        return Array.prototype.slice
+            .call(
+                modal.querySelectorAll(
+                    'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+                )
+            )
+            .filter(function (el) {
+                return el.offsetWidth > 0 || el.offsetHeight > 0 || el === modalClose;
+            });
+    }
 
     function getYouTubeVideoId(url) {
         if (!url) return null;
@@ -449,6 +486,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function openModal(videoId) {
         if (!modal || !modalIframe || !videoId) return;
+        videoModalLastFocus = document.activeElement;
         modalIframe.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
         modal.classList.add("videoTestimonials__modal--open");
         modal.setAttribute("aria-hidden", "false");
@@ -462,6 +500,10 @@ document.addEventListener("DOMContentLoaded", function () {
         modal.setAttribute("aria-hidden", "true");
         modalIframe.src = "";
         document.body.classList.remove(bodyModalClass);
+        if (videoModalLastFocus && typeof videoModalLastFocus.focus === "function") {
+            videoModalLastFocus.focus();
+        }
+        videoModalLastFocus = null;
     }
 
     cardLinks.forEach(function (link) {
@@ -481,8 +523,94 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && modal && modal.classList.contains("videoTestimonials__modal--open")) {
+        if (!modal || !modal.classList.contains("videoTestimonials__modal--open")) return;
+        if (e.key === "Escape") {
             closeModal();
+            return;
+        }
+        if (e.key !== "Tab") return;
+        const list = getModalFocusables();
+        if (list.length === 0) return;
+        const first = list[0];
+        const last = list[list.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
         }
     });
 });
+
+(function initHubSpotFormLazy() {
+    const targetEl = document.getElementById("contact-form");
+    if (!targetEl) return;
+    const portalId = targetEl.getAttribute("data-hubspot-portal");
+    const formId = targetEl.getAttribute("data-hubspot-form");
+    const region = targetEl.getAttribute("data-hubspot-region") || "na1";
+    if (!portalId || !formId) return;
+
+    let formCreated = false;
+
+    function tryCreateForm() {
+        if (formCreated || typeof hbspt === "undefined" || !hbspt.forms) return false;
+        formCreated = true;
+        hbspt.forms.create({
+            region: region,
+            portalId: portalId,
+            formId: formId,
+            target: "#contact-form",
+        });
+        return true;
+    }
+
+    function loadHubSpotScript(done) {
+        if (document.getElementById("hs-forms-loader")) {
+            done();
+            return;
+        }
+        const s = document.createElement("script");
+        s.id = "hs-forms-loader";
+        s.charset = "utf-8";
+        s.async = true;
+        s.src = "https://js.hsforms.net/forms/v2.js";
+        s.onload = done;
+        document.body.appendChild(s);
+    }
+
+    function startHubSpot() {
+        loadHubSpotScript(function () {
+            let tries = 0;
+            const t = setInterval(function () {
+                tries += 1;
+                if (tryCreateForm() || tries > 80) clearInterval(t);
+            }, 100);
+        });
+    }
+
+    function whenReady() {
+        if ("IntersectionObserver" in window) {
+            const io = new IntersectionObserver(
+                function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            io.disconnect();
+                            startHubSpot();
+                        }
+                    });
+                },
+                { rootMargin: "140px 0px", threshold: 0.01 }
+            );
+            io.observe(targetEl);
+        } else {
+            startHubSpot();
+        }
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", whenReady);
+    } else {
+        whenReady();
+    }
+})();

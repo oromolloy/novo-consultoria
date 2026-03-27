@@ -47,7 +47,26 @@
   }
  }
  &__menuToggle {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+  &:focus {
+   outline: none;
+  }
+  &:focus-visible + .header__menuButton {
+   outline: 2px solid var(--color-primary);
+   outline-offset: 3px;
+   border-radius: 4px;
+  }
   &:checked ~ .header__menu {
    @media screen and (max-width: 1220px) {
     max-height: 100vh;
@@ -79,6 +98,11 @@
   z-index: 1001;
   @media screen and (max-width: 1220px) {
    display: flex;
+  }
+  &:focus-visible {
+   outline: 2px solid var(--color-primary);
+   outline-offset: 3px;
+   border-radius: 4px;
   }
   span {
    width: 100%;
