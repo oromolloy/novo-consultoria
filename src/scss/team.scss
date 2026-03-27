@@ -358,7 +358,8 @@
   display: none;
  }
 
- #team-consultores-expand:target ~ &__consultoresGrid &__consultor--more {
+ // Expandido via JS (.team__consultores--expanded) — sem hash, para não saltar o scroll
+ &__consultores--expanded &__consultoresGrid &__consultor--more {
   display: block;
  }
 
@@ -394,10 +395,10 @@
    font-size: 13px;
   }
  }
- #team-consultores-expand:target ~ &__consultoresMoreBtn--show {
+ &__consultores--expanded &__consultoresMoreBtn--show {
   display: none;
  }
- #team-consultores-expand:target ~ &__consultoresMoreBtn--hide {
+ &__consultores--expanded &__consultoresMoreBtn--hide {
   display: inline-block;
  }
 

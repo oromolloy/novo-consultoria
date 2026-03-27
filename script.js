@@ -135,35 +135,47 @@ function debounceResize(fn, ms) {
     };
 }
 
-// Scroll suave em âncoras da mesma página
-(function () {
-    function smoothScrollTo(targetY, duration) {
-        var scrollEl = document.scrollingElement || document.documentElement;
-        var startY = scrollEl.scrollTop;
-        var distance = targetY - startY;
-        if (distance === 0) return;
-        var startTime = null;
+function smoothScrollTo(targetY, duration) {
+    var scrollEl = document.scrollingElement || document.documentElement;
+    var startY = scrollEl.scrollTop;
+    var distance = targetY - startY;
+    if (distance === 0) return;
+    var startTime = null;
 
-        function ease(t) {
-            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-        }
-
-        function tick(now) {
-            if (!startTime) startTime = now;
-            var p = Math.min((now - startTime) / duration, 1);
-            scrollEl.scrollTop = startY + distance * ease(p);
-            if (p < 1) requestAnimationFrame(tick);
-        }
-
-        requestAnimationFrame(tick);
+    function ease(t) {
+        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
     }
 
+    function tick(now) {
+        if (!startTime) startTime = now;
+        var p = Math.min((now - startTime) / duration, 1);
+        scrollEl.scrollTop = startY + distance * ease(p);
+        if (p < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+}
+
+/** Alinha o topo do elemento abaixo do header fixo (mesma lógica das âncoras internas). */
+function scrollElementUnderHeader(el, duration) {
+    var scrollEl = document.scrollingElement || document.documentElement;
+    var headerEl = document.querySelector(".header");
+    var offset = headerEl ? headerEl.getBoundingClientRect().height : 0;
+    var targetY = el.getBoundingClientRect().top + scrollEl.scrollTop - offset;
+    smoothScrollTo(targetY, duration == null ? 700 : duration);
+}
+
+// Scroll suave em âncoras da mesma página
+(function () {
     document.addEventListener("click", function (e) {
         var link = e.target.closest && e.target.closest('a[href^="#"]');
         if (!link) return;
 
         var hash = link.getAttribute("href");
         if (!hash || hash === "#") return;
+
+        // Nossos consultores: tratado em initTeamConsultoresToggle (stopPropagation no botão)
+        if (link.classList.contains("team__consultoresMoreBtn")) return;
 
         var target;
         try { target = document.querySelector(hash); } catch (_) { return; }
@@ -203,6 +215,48 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
         syncMenuExpanded();
+    })();
+
+    (function initTeamConsultoresToggle() {
+        var wrap = document.querySelector(".team__consultores");
+        if (!wrap) return;
+        var showBtn = wrap.querySelector(".team__consultoresMoreBtn--show");
+        var hideBtn = wrap.querySelector(".team__consultoresMoreBtn--hide");
+        if (!showBtn || !hideBtn) return;
+
+        function setExpanded(expanded) {
+            wrap.classList.toggle("team__consultores--expanded", expanded);
+            showBtn.setAttribute("aria-expanded", expanded ? "true" : "false");
+            hideBtn.setAttribute("aria-expanded", expanded ? "true" : "false");
+        }
+
+        function onActivate(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        showBtn.addEventListener("click", function (e) {
+            onActivate(e);
+            setExpanded(true);
+        });
+        hideBtn.addEventListener("click", function (e) {
+            onActivate(e);
+            setExpanded(false);
+            requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
+                    scrollElementUnderHeader(wrap, 700);
+                });
+            });
+        });
+
+        [showBtn, hideBtn].forEach(function (btn) {
+            btn.addEventListener("keydown", function (e) {
+                if (e.key === " " || e.key === "Spacebar") {
+                    e.preventDefault();
+                    btn.click();
+                }
+            });
+        });
     })();
 
     const statNumbers = document.querySelectorAll(".hero__content__statNumber");

@@ -5,6 +5,9 @@ node_modules/
 css/
 dist/
 
+# Backup / arquivo local
+novo-consultoria.rar
+
 # Logs
 npm-debug.log*
 yarn-debug.log*
