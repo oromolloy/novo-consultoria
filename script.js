@@ -340,47 +340,46 @@ document.addEventListener("DOMContentLoaded", function () {
         window.addEventListener("resize", debounceResize(reorganizeSlides, 250));
     }
 
-    // TEAM SLIDER (≤800px)
+    // TEAM SLIDER (sempre ativo + autoplay)
     const teamContainer = document.querySelector(".mySwiper.mySwiper--team");
     let teamSwiperInstance = null;
 
-    function initTeamSwiper() {
-        if (!teamContainer) return;
-        const isSlider = window.innerWidth <= 800;
-
-        if (isSlider && !teamSwiperInstance) {
-            teamSwiperInstance = new Swiper(".mySwiper.mySwiper--team", {
-                slidesPerView: 1.2,
-                slidesPerGroup: 1,
-                spaceBetween: 16,
-                speed: 600,
-                navigation: {
-                    nextEl: ".swiper-button-next--team",
-                    prevEl: ".swiper-button-prev--team",
-                },
-                pagination: {
-                    el: ".swiper-pagination.swiper-pagination--team",
-                    clickable: true,
-                    dynamicBullets: false,
-                    type: "bullets",
-                },
-            });
-        } else if (!isSlider && teamSwiperInstance) {
-            teamSwiperInstance.destroy(true, true);
-            teamSwiperInstance = null;
-        }
-    }
-
     if (teamContainer) {
-        initTeamSwiper();
+        teamSwiperInstance = new Swiper(".mySwiper.mySwiper--team", {
+            slidesPerView: 1.2,
+            slidesPerGroup: 1,
+            spaceBetween: 16,
+            speed: 600,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: true,
+            },
+            breakpoints: {
+                801: {
+                    slidesPerView: 2,
+                    spaceBetween: 16,
+                },
+                1221: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                },
+            },
+            navigation: {
+                nextEl: ".swiper-button-next--team",
+                prevEl: ".swiper-button-prev--team",
+            },
+            pagination: {
+                el: ".swiper-pagination.swiper-pagination--team",
+                clickable: true,
+                dynamicBullets: false,
+                type: "bullets",
+            },
+        });
         window.addEventListener(
             "resize",
             debounceResize(function () {
-                if (teamSwiperInstance) {
-                    teamSwiperInstance.destroy(true, true);
-                    teamSwiperInstance = null;
-                }
-                initTeamSwiper();
+                if (teamSwiperInstance) teamSwiperInstance.update();
             }, 250)
         );
     }
@@ -394,6 +393,11 @@ document.addEventListener("DOMContentLoaded", function () {
             slidesPerGroup: 1,
             spaceBetween: 24,
             speed: 600,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: true,
+            },
             breakpoints: {
                 760: {
                     slidesPerView: 2,

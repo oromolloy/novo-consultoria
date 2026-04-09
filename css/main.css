@@ -4703,15 +4703,8 @@ body.videoTestimonials__body--modalOpen {
   padding-bottom: 56px;
   overflow: hidden;
 }
-@media screen and (min-width: 800px) {
-  .team__list .swiper {
-    overflow: visible;
-    padding-bottom: 0;
-  }
-}
 @media screen and (max-width: 800px) {
   .team__list .swiper {
-    padding-bottom: 56px;
     width: calc(100% + 16px);
   }
 }
@@ -4720,30 +4713,11 @@ body.videoTestimonials__body--modalOpen {
     padding-bottom: 48px;
   }
 }
-@media screen and (min-width: 800px) {
-  .team__list .swiper-wrapper {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    overflow: visible !important;
-    transform: none !important;
-    width: 100% !important;
-  }
-  .team__list .swiper-slide {
-    width: auto !important;
-    height: auto;
-  }
-}
-@media screen and (min-width: 800px) and (min-width: 1221px) {
-  .team__list .swiper-wrapper {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
 .team__list .swiper-slide {
   height: auto;
 }
 .team__list .team__navigation {
-  display: none;
+  display: flex;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -4752,14 +4726,8 @@ body.videoTestimonials__body--modalOpen {
   justify-content: center;
   gap: 12px;
   margin-top: 0;
-  /* Só aparece do 800px pra baixo (slider 1 em 1) */
 }
-@media screen and (max-width: 800px) {
-  .team__list .team__navigation {
-    display: flex;
-  }
-}
-@media screen and (max-width: 800px) and (max-width: 760px) {
+@media screen and (max-width: 760px) {
   .team__list .team__navigation {
     gap: 8px;
   }

@@ -19,7 +19,7 @@
   max-width: 760px;
  }
 
- // Mesmo HTML sempre: swiper com 4 slides. Acima de 800px = grid (CSS). 800px ou menos = slider (JS).
+ // Swiper sempre ativo (JS) com autoplay; setas e paginação em todos os breakpoints.
  &__list {
   position: relative;
   width: 100%;
@@ -33,36 +33,10 @@
    width: 100%;
    padding-bottom: 56px;
    overflow: hidden;
-   @media screen and (min-width: 800px) {
-    overflow: visible;
-    padding-bottom: 0;
-   }
    @media screen and (max-width: 800px) {
-    padding-bottom: 56px;
     width: calc(100% + 16px);
     @media screen and (max-width: 760px) {
      padding-bottom: 48px;
-    }
-   }
-  }
-
-  // Acima de 800px: Swiper destruído pelo JS → grid 2x2 (até 1220) ou 4 em linha (1221+). Setas escondidas.
-  @media screen and (min-width: 800px) {
-   .swiper-wrapper {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    overflow: visible !important;
-    transform: none !important;
-    width: 100% !important;
-   }
-   .swiper-slide {
-    width: auto !important;
-    height: auto;
-   }
-   @media screen and (min-width: 1221px) {
-    .swiper-wrapper {
-     grid-template-columns: repeat(4, 1fr);
     }
    }
   }
@@ -72,7 +46,7 @@
   }
 
   .team__navigation {
-   display: none;
+   display: flex;
    position: absolute;
    bottom: 0;
    left: 0;
@@ -81,12 +55,8 @@
    justify-content: center;
    gap: 12px;
    margin-top: 0;
-   /* Só aparece do 800px pra baixo (slider 1 em 1) */
-   @media screen and (max-width: 800px) {
-    display: flex;
-    @media screen and (max-width: 760px) {
-     gap: 8px;
-    }
+   @media screen and (max-width: 760px) {
+    gap: 8px;
    }
   }
 
