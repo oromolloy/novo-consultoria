@@ -322,6 +322,11 @@ document.addEventListener("DOMContentLoaded", function () {
             slidesPerGroup: 1,
             spaceBetween: 24,
             speed: 600,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: true,
+            },
             navigation: {
                 nextEl: ".swiper-button-next--testimonials",
                 prevEl: ".swiper-button-prev--testimonials",
