@@ -616,6 +616,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let formCreated = false;
 
+    function pushGenerateLeadToDataLayer(formArg) {
+        window.dataLayer = window.dataLayer || [];
+        var email = "";
+        try {
+            if (formArg && typeof formArg.find === "function") {
+                var v = formArg.find('input[name="email"]').val();
+                email = v !== undefined && v !== null ? String(v) : "";
+            } else {
+                var root =
+                    formArg && typeof formArg.get === "function" && formArg.get(0)
+                        ? formArg.get(0)
+                        : formArg;
+                if (root && root.querySelector) {
+                    var inp = root.querySelector('input[name="email"]');
+                    email = inp && inp.value ? String(inp.value) : "";
+                }
+            }
+            if (!email && targetEl.querySelector) {
+                var fb = targetEl.querySelector('input[name="email"]');
+                email = fb && fb.value ? String(fb.value) : "";
+            }
+        } catch (e) {
+            /* no-op */
+        }
+        window.dataLayer.push({
+            event: "generate_lead",
+            "hs-form-email": email,
+        });
+    }
+
     function tryCreateForm() {
         if (formCreated || typeof hbspt === "undefined" || !hbspt.forms) return false;
         formCreated = true;
@@ -624,6 +654,9 @@ document.addEventListener("DOMContentLoaded", function () {
             portalId: portalId,
             formId: formId,
             target: "#contact-form",
+            onFormSubmitted: function ($form) {
+                pushGenerateLeadToDataLayer($form);
+            },
         });
         return true;
     }
