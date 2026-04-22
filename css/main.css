@@ -3707,7 +3707,7 @@ body.videoTestimonials__body--modalOpen {
 .you-center__grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: 0;
+  gap: 32px;
   align-items: start;
 }
 @media screen and (max-width: 1220px) {
