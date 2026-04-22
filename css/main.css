@@ -1626,6 +1626,19 @@
   position: relative;
   z-index: 1;
 }
+.whoWeAre .sectionHeader--withStickySidebar .sectionHeader__title--investimentoIndependente {
+  font-size: 42px;
+}
+@media screen and (max-width: 1220px) {
+  .whoWeAre .sectionHeader--withStickySidebar .sectionHeader__title--investimentoIndependente {
+    font-size: 36px;
+  }
+}
+@media screen and (max-width: 1220px) and (max-width: 800px) {
+  .whoWeAre .sectionHeader--withStickySidebar .sectionHeader__title--investimentoIndependente {
+    font-size: 28px;
+  }
+}
 .whoWeAre__sidebarDeco {
   position: absolute;
   width: 100%;
@@ -6686,7 +6699,7 @@ body {
   margin-right: auto;
   margin-left: auto;
 }
-@media screen and (max-width: 1220px) {
+@media screen and (max-width: 1599px) {
   .wrapper {
     max-width: 1180px;
     padding-right: 16px;

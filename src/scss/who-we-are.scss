@@ -36,6 +36,17 @@
     z-index: 1;
   }
 
+  // Título "Suno Consultoria: Investimento Independente" — 42px só neste H2
+  .sectionHeader--withStickySidebar .sectionHeader__title--investimentoIndependente {
+    font-size: 42px;
+    @media screen and (max-width: 1220px) {
+      font-size: 36px;
+      @media screen and (max-width: 800px) {
+        font-size: 28px;
+      }
+    }
+  }
+
   // Decoração da sidebar (Quem Somos: retângulo + borda)
   &__sidebarDeco {
     position: absolute;
